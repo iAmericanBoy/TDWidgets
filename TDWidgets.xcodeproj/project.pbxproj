@@ -13,6 +13,9 @@
 		B694C7AD2554C6A100A61D65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B694C7AC2554C6A100A61D65 /* Assets.xcassets */; };
 		B694C7B02554C6A100A61D65 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B694C7AF2554C6A100A61D65 /* Preview Assets.xcassets */; };
 		B694C7B32554C6A100A61D65 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B694C7B12554C6A100A61D65 /* LaunchScreen.storyboard */; };
+		B694C7BD2554C89D00A61D65 /* OAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B694C7BC2554C89D00A61D65 /* OAuthViewController.swift */; };
+		B694C7C02554C93700A61D65 /* OAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B694C7BF2554C93700A61D65 /* OAuthViewModel.swift */; };
+		B694C7C32554CD9D00A61D65 /* OAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B694C7C22554CD9D00A61D65 /* OAuthManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		B694C7AF2554C6A100A61D65 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B694C7B22554C6A100A61D65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B694C7B42554C6A100A61D65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B694C7BC2554C89D00A61D65 /* OAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthViewController.swift; sourceTree = "<group>"; };
+		B694C7BF2554C93700A61D65 /* OAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthViewModel.swift; sourceTree = "<group>"; };
+		B694C7C22554CD9D00A61D65 /* OAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +69,9 @@
 				B694C7B12554C6A100A61D65 /* LaunchScreen.storyboard */,
 				B694C7B42554C6A100A61D65 /* Info.plist */,
 				B694C7AE2554C6A100A61D65 /* Preview Content */,
+				B694C7BC2554C89D00A61D65 /* OAuthViewController.swift */,
+				B694C7BF2554C93700A61D65 /* OAuthViewModel.swift */,
+				B694C7C22554CD9D00A61D65 /* OAuthManager.swift */,
 			);
 			path = TDWidgets;
 			sourceTree = "<group>";
@@ -145,6 +154,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B694C7C02554C93700A61D65 /* OAuthViewModel.swift in Sources */,
+				B694C7C32554CD9D00A61D65 /* OAuthManager.swift in Sources */,
+				B694C7BD2554C89D00A61D65 /* OAuthViewController.swift in Sources */,
 				B694C7A72554C6A000A61D65 /* AppDelegate.swift in Sources */,
 				B694C7A92554C6A000A61D65 /* SceneDelegate.swift in Sources */,
 				B694C7AB2554C6A000A61D65 /* ContentView.swift in Sources */,
