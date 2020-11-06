@@ -15,6 +15,7 @@ class OAuthViewController: UIViewController, ASWebAuthenticationPresentationCont
     init(viewModel: OAuthViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        self.viewModel.context = self
     }
     
     required init?(coder: NSCoder) {
@@ -23,6 +24,7 @@ class OAuthViewController: UIViewController, ASWebAuthenticationPresentationCont
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        viewModel.signIn()
     }
     
     func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {

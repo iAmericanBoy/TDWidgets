@@ -15,7 +15,7 @@ enum OAuthError: Error {
 }
 
 /**
- Manages / Abstracts out SSO.
+ Manages / Abstracts out OAuth.
  */
 public protocol OAuthManagerProtocol {
     // MARK: - Members
@@ -42,7 +42,7 @@ public protocol OAuthManagerProtocol {
     func fetchClientToken(completion: @escaping (Result<Void, Error>) -> Void)
 }
 
-public final class SSOManager: NSObject, OAuthManagerProtocol {
+public final class OAuthManager: NSObject, OAuthManagerProtocol {
     // MARK: - Members
 
     var webAuthSession: ASWebAuthenticationSession?
@@ -63,8 +63,7 @@ public final class SSOManager: NSObject, OAuthManagerProtocol {
         var urlComponents = URLComponents(url: URL(string: "https://auth.tdameritrade.com/auth")!, resolvingAgainstBaseURL: true)
         urlComponents?.queryItems = [URLQueryItem(name: "response_type", value: "code"),
                                      URLQueryItem(name: "redirect_uri", value: callbackUrlScheme),
-                                     URLQueryItem(name: "client_id", value: authTokenKey + "%40AMER.OAUTHAP")]
-
+                                     URLQueryItem(name: "client_id", value: authTokenKey + "@AMER.OAUTHAP")]
         guard let url = urlComponents?.url else {
             return
         }
