@@ -9,6 +9,11 @@ import AuthenticationServices
 import SafariServices
 import UIKit
 
+enum OAuthError: Error {
+    case noToken
+    case sessionError(error: Error)
+}
+
 /**
  Manages / Abstracts out SSO.
  */
@@ -64,17 +69,23 @@ public final class SSOManager: NSObject, OAuthManagerProtocol {
             return
         }
 
-        webAuthSession = ASWebAuthenticationSession(url: url, callbackURLScheme: callbackUrlScheme, completionHandler: { authSessionURL, error in
+        webAuthSession = ASWebAuthenticationSession(url: url, callbackURLScheme: callbackUrlScheme, completionHandler: { [weak self] authSessionURL, error in
             guard error == nil, let successURL = authSessionURL else {
-                completion(.failure(error!))
+                completion(.failure(OAuthError.sessionError(error: error!)))
                 return
             }
+            let successURLComponents = URLComponents(url: successURL, resolvingAgainstBaseURL: true)
+            let token = successURLComponents?.queryItems?.first(where: { $0.name == "code" })
 
-            print(successURL)
+            guard let refreshToken = token?.value else {
+                completion(.failure(OAuthError.noToken))
+                return
+            }
+            self?.storeToken(refreshToken)
         })
 
         webAuthSession?.presentationContextProvider = context
-        webAuthSession?.prefersEphemeralWebBrowserSession = true // Avoid using any existing browsing data, like cookies
+        webAuthSession?.prefersEphemeralWebBrowserSession = true
         webAuthSession?.start()
     }
 
@@ -86,4 +97,8 @@ public final class SSOManager: NSObject, OAuthManagerProtocol {
     public func fetchClientToken(completion _: @escaping (Result<Void, Error>) -> Void) {}
 
     public func signOut(viewController: UIViewController, completion: @escaping (Result<Void, Error>) -> Void) {}
+
+    private func storeToken(_ token: String) {
+        UserDefaults.standard.set(token, forKey: "refreshToken")
+    }
 }
