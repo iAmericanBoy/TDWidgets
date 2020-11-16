@@ -21,6 +21,7 @@ class Authenticator {
                     return token
                 }
             }
+            return nil
         }
         set {
             let encoder = JSONEncoder()
@@ -57,7 +58,7 @@ class Authenticator {
             }
 
             // scenario 3: we already have a valid token and don't want to force a refresh
-            if token.isValid, !forceRefresh {
+            if token.isValidAccessToken, !forceRefresh {
                 return Just(token)
                     .setFailureType(to: Error.self)
                     .eraseToAnyPublisher()
@@ -88,9 +89,24 @@ class Authenticator {
     private func request() -> URLRequest {
         let endpoint = URL(string: "https://api.tdameritrade.com/v1/oauth2/token")!
         var request = URLRequest(url: endpoint)
-        request.addValue("refresh_token", forHTTPHeaderField: "grant_type")
-        request.addValue(currentToken.refreshToken, forHTTPHeaderField: "refresh_token")
         request.addValue("", forHTTPHeaderField: "client_id")
+
+        guard let token = currentToken else {
+            request.addValue("authorization_code", forHTTPHeaderField: "grant_type")
+            request.addValue("offline", forHTTPHeaderField: "access_type")
+            request.addValue(code ?? "", forHTTPHeaderField: "code")
+            request.addValue("https://localhost", forHTTPHeaderField: "redirect_uri")
+
+            return request
+        }
+
+        request.addValue("refresh_token", forHTTPHeaderField: "grant_type")
+        request.addValue(token.refreshToken, forHTTPHeaderField: "refresh_token")
+
+        if token.isTimeToRefreshToken {
+            request.addValue("offline", forHTTPHeaderField: "access_type")
+        }
+
         return request
     }
 }
