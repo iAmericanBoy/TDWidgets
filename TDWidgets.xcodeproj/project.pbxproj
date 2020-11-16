@@ -19,7 +19,18 @@
 		B6C9EA412561F71500F9DDBF /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C9EA402561F71500F9DDBF /* Token.swift */; };
 		B6C9EA462561F76D00F9DDBF /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C9EA452561F76D00F9DDBF /* Authenticator.swift */; };
 		B6C9EA492561F7F600F9DDBF /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C9EA482561F7F600F9DDBF /* URLSession.swift */; };
+		B6C9EA5E25633FA300F9DDBF /* TokenTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C9EA5D25633FA300F9DDBF /* TokenTest.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B6C9EA5425633F7800F9DDBF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B694C79B2554C6A000A61D65 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B694C7A22554C6A000A61D65;
+			remoteInfo = TDWidgets;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		B694C7A32554C6A000A61D65 /* TDWidgets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TDWidgets.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -36,10 +47,20 @@
 		B6C9EA402561F71500F9DDBF /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		B6C9EA452561F76D00F9DDBF /* Authenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticator.swift; sourceTree = "<group>"; };
 		B6C9EA482561F7F600F9DDBF /* URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSession.swift; sourceTree = "<group>"; };
+		B6C9EA4F25633F7800F9DDBF /* TDWidgetsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TDWidgetsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6C9EA5325633F7800F9DDBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B6C9EA5D25633FA300F9DDBF /* TokenTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		B694C7A02554C6A000A61D65 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B6C9EA4C25633F7800F9DDBF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -53,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				B694C7A52554C6A000A61D65 /* TDWidgets */,
+				B6C9EA5025633F7800F9DDBF /* TDWidgetsTests */,
 				B694C7A42554C6A000A61D65 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -61,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				B694C7A32554C6A000A61D65 /* TDWidgets.app */,
+				B6C9EA4F25633F7800F9DDBF /* TDWidgetsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -101,6 +124,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		B6C9EA5025633F7800F9DDBF /* TDWidgetsTests */ = {
+			isa = PBXGroup;
+			children = (
+				B6C9EA5325633F7800F9DDBF /* Info.plist */,
+				B6C9EA5D25633FA300F9DDBF /* TokenTest.swift */,
+			);
+			path = TDWidgetsTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -121,17 +153,40 @@
 			productReference = B694C7A32554C6A000A61D65 /* TDWidgets.app */;
 			productType = "com.apple.product-type.application";
 		};
+		B6C9EA4E25633F7800F9DDBF /* TDWidgetsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B6C9EA5625633F7800F9DDBF /* Build configuration list for PBXNativeTarget "TDWidgetsTests" */;
+			buildPhases = (
+				B6C9EA4B25633F7800F9DDBF /* Sources */,
+				B6C9EA4C25633F7800F9DDBF /* Frameworks */,
+				B6C9EA4D25633F7800F9DDBF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B6C9EA5525633F7800F9DDBF /* PBXTargetDependency */,
+			);
+			name = TDWidgetsTests;
+			productName = TDWidgetsTests;
+			productReference = B6C9EA4F25633F7800F9DDBF /* TDWidgetsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		B694C79B2554C6A000A61D65 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1210;
+				LastSwiftUpdateCheck = 1220;
 				LastUpgradeCheck = 1210;
 				TargetAttributes = {
 					B694C7A22554C6A000A61D65 = {
 						CreatedOnToolsVersion = 12.1;
+					};
+					B6C9EA4E25633F7800F9DDBF = {
+						CreatedOnToolsVersion = 12.2;
+						LastSwiftMigration = 1220;
+						TestTargetID = B694C7A22554C6A000A61D65;
 					};
 				};
 			};
@@ -149,6 +204,7 @@
 			projectRoot = "";
 			targets = (
 				B694C7A22554C6A000A61D65 /* TDWidgets */,
+				B6C9EA4E25633F7800F9DDBF /* TDWidgetsTests */,
 			);
 		};
 /* End PBXProject section */
@@ -161,6 +217,13 @@
 				B694C7B32554C6A100A61D65 /* LaunchScreen.storyboard in Resources */,
 				B694C7B02554C6A100A61D65 /* Preview Assets.xcassets in Resources */,
 				B694C7AD2554C6A100A61D65 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B6C9EA4D25633F7800F9DDBF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,7 +246,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B6C9EA4B25633F7800F9DDBF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B6C9EA5E25633FA300F9DDBF /* TokenTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B6C9EA5525633F7800F9DDBF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B694C7A22554C6A000A61D65 /* TDWidgets */;
+			targetProxy = B6C9EA5425633F7800F9DDBF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		B694C7B12554C6A100A61D65 /* LaunchScreen.storyboard */ = {
@@ -355,6 +434,51 @@
 			};
 			name = Release;
 		};
+		B6C9EA5725633F7800F9DDBF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = J6B8ZX28ZW;
+				INFOPLIST_FILE = TDWidgetsTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = oskman.TDWidgetsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TDWidgets.app/TDWidgets";
+			};
+			name = Debug;
+		};
+		B6C9EA5825633F7800F9DDBF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = J6B8ZX28ZW;
+				INFOPLIST_FILE = TDWidgetsTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = oskman.TDWidgetsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TDWidgets.app/TDWidgets";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -372,6 +496,15 @@
 			buildConfigurations = (
 				B694C7B82554C6A100A61D65 /* Debug */,
 				B694C7B92554C6A100A61D65 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B6C9EA5625633F7800F9DDBF /* Build configuration list for PBXNativeTarget "TDWidgetsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B6C9EA5725633F7800F9DDBF /* Debug */,
+				B6C9EA5825633F7800F9DDBF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

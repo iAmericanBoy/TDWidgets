@@ -25,10 +25,11 @@ struct Token: Codable {
 }
 
 extension Token {
-    var isValidAccessToken:Bool {
-        return Date(timeInterval: TimeInterval(expiresIn), since: date) < Date()
+    func isValidAccessToken(currentDate: Date = Date()) -> Bool {
+        return Date(timeInterval: TimeInterval(expiresIn), since: date) > currentDate
     }
-    var isTimeToRefreshToken:Bool {
-        return Date(timeInterval: TimeInterval(refreshTokenExpiresIn + 604800), since: date) > Date()
+    func isTimeToRefreshToken(currentDate: Date = Date()) -> Bool {
+        let experationDate = Date(timeInterval: TimeInterval(refreshTokenExpiresIn - 604800), since: date)
+        return experationDate < currentDate
     }
 }
