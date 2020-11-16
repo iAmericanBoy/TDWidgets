@@ -12,10 +12,26 @@ import Foundation
 // TODO: this only works to refresh the access token. figure out a way of how you can get the refresh token after a login flow
 class Authenticator {
     private let session: NetworkSession
-    private var currentToken: Token! {
-        didSet {
-            // save token to userDefaults
+
+    private var currentToken: Token? {
+        get {
+            if let savedToken = UserDefaults.standard.object(forKey: "Authenticator.refreshToken") as? Data {
+                let decoder = JSONDecoder()
+                if let token = try? decoder.decode(Token.self, from: savedToken) {
+                    return token
+                }
+            }
         }
+        set {
+            let encoder = JSONEncoder()
+            if let encoded = try? encoder.encode(newValue) {
+                UserDefaults.standard.set(encoded, forKey: "Authenticator.refreshToken")
+            }
+        }
+    }
+
+    private var code: String? {
+        UserDefaults.standard.string(forKey: "OAuthManager.code")
     }
 
     private let queue = DispatchQueue(label: "Autenticator.\(UUID().uuidString)")
@@ -25,10 +41,9 @@ class Authenticator {
 
     init(session: NetworkSession = URLSession.shared) {
         self.session = session
-        // get refreshtoken from user defaults
     }
 
-    func validToken(forceRefresh: Bool = false) -> AnyPublisher<Token, Error> {
+    func validAccessToken(forceRefresh: Bool = false) -> AnyPublisher<Token, Error> {
         return queue.sync { [weak self] in
             // scenario 1: we're already loading a new token
             if let publisher = self?.refreshPublisher {
@@ -76,7 +91,6 @@ class Authenticator {
         request.addValue("refresh_token", forHTTPHeaderField: "grant_type")
         request.addValue(currentToken.refreshToken, forHTTPHeaderField: "refresh_token")
         request.addValue("", forHTTPHeaderField: "client_id")
-
         return request
     }
 }
