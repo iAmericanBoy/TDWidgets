@@ -12,6 +12,7 @@ struct Token: Codable {
     let expiresIn: Int
     let scope: String
     let refreshTokenExpiresIn: Int
+    let date = Date()
 
     enum CodingKeys: String, CodingKey {
         case accessToken = "access_token"
@@ -24,7 +25,10 @@ struct Token: Codable {
 }
 
 extension Token {
-    var isValid:Bool {
-        return true
+    var isValidAccessToken:Bool {
+        return Date(timeInterval: TimeInterval(expiresIn), since: date) < Date()
+    }
+    var isTimeToRefreshToken:Bool {
+        return Date(timeInterval: TimeInterval(refreshTokenExpiresIn + 604800), since: date) > Date()
     }
 }
