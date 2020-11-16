@@ -45,8 +45,6 @@ public protocol OAuthManagerProtocol {
 public final class OAuthManager: NSObject, OAuthManagerProtocol {
     // MARK: - Members
 
-    var webAuthSession: ASWebAuthenticationSession?
-
     // MARK: - Auth Token
 
     private let authTokenKey = ""
@@ -68,7 +66,7 @@ public final class OAuthManager: NSObject, OAuthManagerProtocol {
             return
         }
 
-        webAuthSession = ASWebAuthenticationSession(url: url, callbackURLScheme: callbackUrlScheme, completionHandler: { [weak self] authSessionURL, error in
+        let webAuthSession = ASWebAuthenticationSession(url: url, callbackURLScheme: callbackUrlScheme) { [weak self] authSessionURL, error in
             guard error == nil, let successURL = authSessionURL else {
                 completion(.failure(OAuthError.sessionError(error: error!)))
                 return
@@ -81,17 +79,15 @@ public final class OAuthManager: NSObject, OAuthManagerProtocol {
                 return
             }
             self?.storeToken(refreshToken)
-        })
+        }
 
-        webAuthSession?.presentationContextProvider = context
-        webAuthSession?.prefersEphemeralWebBrowserSession = true
-        webAuthSession?.start()
+        webAuthSession.presentationContextProvider = context
+        webAuthSession.prefersEphemeralWebBrowserSession = true
+        webAuthSession.start()
     }
 
     /*
-     The client token to be able to access backend APIs: Needs to be tested and debuged with backend as
-     we are getting an error.
-     Implementation taken from OAUth2
+
      */
     public func fetchClientToken(completion _: @escaping (Result<Void, Error>) -> Void) {}
 
