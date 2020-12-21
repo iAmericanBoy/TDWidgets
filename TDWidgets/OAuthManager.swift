@@ -49,7 +49,7 @@ public final class OAuthManager: NSObject, OAuthManagerProtocol {
 
     private let authTokenKey = AppSecrets.clientID
     private let clientID = ""
-    private let callbackUrlScheme = "tdWidgetsCallback"
+    private let callbackUrlScheme = "tdWidgets://auth"
 
     override public init() {}
 
@@ -66,7 +66,7 @@ public final class OAuthManager: NSObject, OAuthManagerProtocol {
             return
         }
 
-        let webAuthSession = ASWebAuthenticationSession(url: url, callbackURLScheme: callbackUrlScheme) { [weak self] authSessionURL, error in
+        let webAuthSession = ASWebAuthenticationSession(url: url, callbackURLScheme: "auth") { [weak self] authSessionURL, error in
             guard error == nil, let successURL = authSessionURL else {
                 completion(.failure(OAuthError.sessionError(error: error!)))
                 return

@@ -95,7 +95,7 @@ class Authenticator {
             request.addValue("authorization_code", forHTTPHeaderField: "grant_type")
             request.addValue("offline", forHTTPHeaderField: "access_type")
             request.addValue(code ?? "", forHTTPHeaderField: "code")
-            request.addValue("https://localhost", forHTTPHeaderField: "redirect_uri")
+            request.addValue("tdWidgets://auth", forHTTPHeaderField: "redirect_uri")
 
             return request
         }
