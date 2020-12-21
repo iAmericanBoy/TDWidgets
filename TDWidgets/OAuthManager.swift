@@ -49,7 +49,7 @@ public final class OAuthManager: NSObject, OAuthManagerProtocol {
 
     private let authTokenKey = ""
     private let clientID = ""
-    private let callbackUrlScheme = "https://localhost"
+    private let callbackUrlScheme = "tdWidgetsCallback"
 
     override public init() {}
 
@@ -79,6 +79,7 @@ public final class OAuthManager: NSObject, OAuthManagerProtocol {
                 return
             }
             self?.storeToken(refreshToken)
+            completion(.success(()))
         }
 
         webAuthSession.presentationContextProvider = context
