@@ -58,7 +58,7 @@ class Authenticator {
             }
 
             // scenario 3: we already have a valid token and don't want to force a refresh
-            if token.isValidAccessToken, !forceRefresh {
+            if token.isValidAccessToken(), !forceRefresh {
                 return Just(token)
                     .setFailureType(to: Error.self)
                     .eraseToAnyPublisher()
@@ -103,7 +103,7 @@ class Authenticator {
         request.addValue("refresh_token", forHTTPHeaderField: "grant_type")
         request.addValue(token.refreshToken, forHTTPHeaderField: "refresh_token")
 
-        if token.isTimeToRefreshToken {
+        if token.isTimeToRefreshToken() {
             request.addValue("offline", forHTTPHeaderField: "access_type")
         }
 
