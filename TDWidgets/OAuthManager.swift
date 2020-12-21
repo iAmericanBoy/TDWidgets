@@ -47,7 +47,7 @@ public final class OAuthManager: NSObject, OAuthManagerProtocol {
 
     // MARK: - Auth Token
 
-    private let authTokenKey = ""
+    private let authTokenKey = AppSecrets.clientID
     private let clientID = ""
     private let callbackUrlScheme = "tdWidgetsCallback"
 
@@ -95,6 +95,6 @@ public final class OAuthManager: NSObject, OAuthManagerProtocol {
     public func signOut(viewController: UIViewController, completion: @escaping (Result<Void, Error>) -> Void) {}
 
     private func storeToken(_ token: String) {
-        UserDefaults.standard.set(token, forKey: "refreshToken")
+        UserDefaults.standard.set(token, forKey: "OAuthManager.code")
     }
 }

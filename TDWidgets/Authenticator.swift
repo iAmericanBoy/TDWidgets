@@ -89,7 +89,7 @@ class Authenticator {
     private func request() -> URLRequest {
         let endpoint = URL(string: "https://api.tdameritrade.com/v1/oauth2/token")!
         var request = URLRequest(url: endpoint)
-        request.addValue("", forHTTPHeaderField: "client_id")
+        request.addValue(AppSecrets.clientID, forHTTPHeaderField: "client_id")
 
         guard let token = currentToken else {
             request.addValue("authorization_code", forHTTPHeaderField: "grant_type")
