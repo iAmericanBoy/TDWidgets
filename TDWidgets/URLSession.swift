@@ -20,10 +20,13 @@ extension URLSession: NetworkSession {
         }
         return dataTaskPublisher(for: request)
             .tryMap { element -> Data in
-                guard let httpResponse = element.response as? HTTPURLResponse,
-                    httpResponse.statusCode == 200 else {
+                guard let httpResponse = element.response as? HTTPURLResponse else {
                         throw URLError(.badServerResponse)
                     }
+                if httpResponse.statusCode < 200 || httpResponse.statusCode > 299 {
+                    throw URLError(URLError.Code(rawValue: httpResponse.statusCode))
+                }
+                
                 return element.data
             }
             .eraseToAnyPublisher()
