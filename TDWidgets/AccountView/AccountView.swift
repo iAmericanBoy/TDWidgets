@@ -10,7 +10,7 @@ import SwiftUI
 struct AccountView: View {
     var body: some View {
         VStack {
-            AccountHeaderView()
+            AccountHeaderView(viewModel: AccountViewModel())
             Spacer()
             List(0 ..< 8) { _ in
                 SimpleStockView()
