@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		B66B72C6259107F700CAFD25 /* AppSecret.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66B72C5259107F700CAFD25 /* AppSecret.swift */; };
+		B67A035225923AAB002F6A19 /* AccountDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67A035125923AAB002F6A19 /* AccountDataModel.swift */; };
+		B67A035625925736002F6A19 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67A035525925736002F6A19 /* Repository.swift */; };
+		B67A035C25928163002F6A19 /* AccountHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67A035B25928163002F6A19 /* AccountHeaderView.swift */; };
+		B67A03602592860E002F6A19 /* SimpleStockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67A035F2592860E002F6A19 /* SimpleStockView.swift */; };
+		B67A036625928BAF002F6A19 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67A036525928BAF002F6A19 /* AccountView.swift */; };
 		B694C7A72554C6A000A61D65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B694C7A62554C6A000A61D65 /* AppDelegate.swift */; };
 		B694C7A92554C6A000A61D65 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B694C7A82554C6A000A61D65 /* SceneDelegate.swift */; };
 		B694C7AB2554C6A000A61D65 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B694C7AA2554C6A000A61D65 /* ContentView.swift */; };
@@ -35,6 +40,11 @@
 
 /* Begin PBXFileReference section */
 		B66B72C5259107F700CAFD25 /* AppSecret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSecret.swift; sourceTree = "<group>"; };
+		B67A035125923AAB002F6A19 /* AccountDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDataModel.swift; sourceTree = "<group>"; };
+		B67A035525925736002F6A19 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		B67A035B25928163002F6A19 /* AccountHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountHeaderView.swift; sourceTree = "<group>"; };
+		B67A035F2592860E002F6A19 /* SimpleStockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleStockView.swift; sourceTree = "<group>"; };
+		B67A036525928BAF002F6A19 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		B694C7A32554C6A000A61D65 /* TDWidgets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TDWidgets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B694C7A62554C6A000A61D65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B694C7A82554C6A000A61D65 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +82,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B67A036A25928D18002F6A19 /* AccountView */ = {
+			isa = PBXGroup;
+			children = (
+				B67A035B25928163002F6A19 /* AccountHeaderView.swift */,
+				B67A036525928BAF002F6A19 /* AccountView.swift */,
+				B67A035F2592860E002F6A19 /* SimpleStockView.swift */,
+			);
+			path = AccountView;
+			sourceTree = "<group>";
+		};
 		B694C79A2554C6A000A61D65 = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +127,8 @@
 				B6C9EA452561F76D00F9DDBF /* Authenticator.swift */,
 				B6C9EA482561F7F600F9DDBF /* URLSession.swift */,
 				B66B72C5259107F700CAFD25 /* AppSecret.swift */,
+				B67A035525925736002F6A19 /* Repository.swift */,
+				B67A036A25928D18002F6A19 /* AccountView */,
 			);
 			path = TDWidgets;
 			sourceTree = "<group>";
@@ -123,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				B6C9EA402561F71500F9DDBF /* Token.swift */,
+				B67A035125923AAB002F6A19 /* AccountDataModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -240,13 +263,18 @@
 				B694C7C02554C93700A61D65 /* OAuthViewModel.swift in Sources */,
 				B6C9EA462561F76D00F9DDBF /* Authenticator.swift in Sources */,
 				B6C9EA412561F71500F9DDBF /* Token.swift in Sources */,
+				B67A035625925736002F6A19 /* Repository.swift in Sources */,
 				B66B72C6259107F700CAFD25 /* AppSecret.swift in Sources */,
+				B67A035225923AAB002F6A19 /* AccountDataModel.swift in Sources */,
 				B694C7C32554CD9D00A61D65 /* OAuthManager.swift in Sources */,
 				B694C7BD2554C89D00A61D65 /* OAuthViewController.swift in Sources */,
 				B6C9EA492561F7F600F9DDBF /* URLSession.swift in Sources */,
+				B67A036625928BAF002F6A19 /* AccountView.swift in Sources */,
 				B694C7A72554C6A000A61D65 /* AppDelegate.swift in Sources */,
 				B694C7A92554C6A000A61D65 /* SceneDelegate.swift in Sources */,
+				B67A035C25928163002F6A19 /* AccountHeaderView.swift in Sources */,
 				B694C7AB2554C6A000A61D65 /* ContentView.swift in Sources */,
+				B67A03602592860E002F6A19 /* SimpleStockView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
