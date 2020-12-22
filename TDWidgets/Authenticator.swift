@@ -53,8 +53,16 @@ class Authenticator {
 
             // scenario 2: we don't have a token at all, the user should probably log in
             guard let token = self?.currentToken else {
-                return Fail(error: AuthenticationError.loginRequired)
-                    .eraseToAnyPublisher()
+                // try to get a current token if code is set
+                if code != nil {
+                    let publisher = getToken()
+
+                    self?.refreshPublisher = publisher
+                    return publisher
+                } else {
+                    return Fail(error: AuthenticationError.loginRequired)
+                        .eraseToAnyPublisher()
+                }
             }
 
             // scenario 3: we already have a valid token and don't want to force a refresh
@@ -65,21 +73,25 @@ class Authenticator {
             }
 
             // scenario 4: we need a new token
-            let publisher = session.publisher(for: request(), token: nil)
-                .share()
-                .decode(type: Token.self, decoder: JSONDecoder())
-                .handleEvents(receiveOutput: { token in
-                    self?.currentToken = token
-                }, receiveCompletion: { _ in
-                    self?.queue.sync {
-                        self?.refreshPublisher = nil
-                    }
-                })
-                .eraseToAnyPublisher()
+            let publisher = getToken()
 
             self?.refreshPublisher = publisher
             return publisher
         }
+    }
+
+    private func getToken() -> AnyPublisher<Token, Error> {
+        return session.publisher(for: request(), token: nil)
+            .share()
+            .decode(type: Token.self, decoder: JSONDecoder())
+            .handleEvents(receiveOutput: { token in
+                self.currentToken = token
+            }, receiveCompletion: { _ in
+                self.queue.sync {
+                    self.refreshPublisher = nil
+                }
+            })
+            .eraseToAnyPublisher()
     }
 
     enum AuthenticationError: Error {

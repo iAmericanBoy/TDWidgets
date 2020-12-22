@@ -38,8 +38,6 @@ public protocol OAuthManagerProtocol {
      */
     func signOut(viewController: UIViewController,
                  completion: @escaping (Result<Void, Error>) -> Void)
-
-    func fetchClientToken(completion: @escaping (Result<Void, Error>) -> Void)
 }
 
 public final class OAuthManager: NSObject, OAuthManagerProtocol {
@@ -86,11 +84,6 @@ public final class OAuthManager: NSObject, OAuthManagerProtocol {
         webAuthSession.prefersEphemeralWebBrowserSession = true
         webAuthSession.start()
     }
-
-    /*
-
-     */
-    public func fetchClientToken(completion _: @escaping (Result<Void, Error>) -> Void) {}
 
     public func signOut(viewController: UIViewController, completion: @escaping (Result<Void, Error>) -> Void) {}
 
