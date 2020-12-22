@@ -35,7 +35,7 @@ class OAuthViewController: UIViewController, ASWebAuthenticationPresentationCont
 final class OAuthView: NSObject, UIViewControllerRepresentable {
     private var viewModel: OAuthViewModel
     
-    init(viewModel: OAuthViewModel) {
+    init(viewModel: OAuthViewModel = OAuthViewModel()) {
         self.viewModel = viewModel
     }
     

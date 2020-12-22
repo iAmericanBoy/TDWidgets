@@ -9,6 +9,10 @@
 import Combine
 import Foundation
 
+enum AuthenticationError: Error {
+    case loginRequired
+}
+
 // TODO: this only works to refresh the access token. figure out a way of how you can get the refresh token after a login flow
 class Authenticator {
     private let session: NetworkSession
@@ -92,10 +96,6 @@ class Authenticator {
                 }
             })
             .eraseToAnyPublisher()
-    }
-
-    enum AuthenticationError: Error {
-        case loginRequired
     }
 
     private func request() -> URLRequest {

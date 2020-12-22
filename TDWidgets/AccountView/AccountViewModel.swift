@@ -20,15 +20,24 @@ class AccountViewModel: ObservableObject {
     // MARK: Model
 
     @Published private var account: Account?
+    @Published var shouldShowSignIn: Bool = false
 
     init(repository: Repository = RepositoryImpl()) {
         self.repository = repository
+        getAccounts()
     }
 
     func getAccounts() {
         accountsSubscriber = repository.getAccouts()
-            .sink(receiveCompletion: { error in
-                print(error)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    ()
+                case .failure(let error as AuthenticationError) where error == .loginRequired:
+                    self.shouldShowSignIn = true
+                case .failure(let error):
+                    print(error)
+                }
             }, receiveValue: { accountsDataModel in
                 print(accountsDataModel)
                 self.account = Account(accountsDataModel[0])
@@ -36,7 +45,7 @@ class AccountViewModel: ObservableObject {
     }
 }
 
-// MARK: AccountHeaderViewModel
+// MARK: AccountHeaderView
 
 extension AccountViewModel {
     var title: String {
@@ -44,14 +53,14 @@ extension AccountViewModel {
     }
 
     var balance: String {
-        return "\(account?.longStockValue ?? 0)"
+        return "\(account?.longMarginValue ?? 0)"
     }
 
     var arrowImageName: String {
-        return account?.longStockDifference ?? 1 > 0 ? "arrow.up" : "arrow.down"
+        return account?.longMarginDifferenceValue ?? 1 > 0 ? "arrow.up" : "arrow.down"
     }
 
     var balanceSubTitle: String {
-        return "\(account?.longStockDifference ?? 0)"
+        return "\(account?.longMarginDifferenceValue ?? 0)"
     }
 }
