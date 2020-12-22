@@ -20,7 +20,7 @@ extension MockRepositry {
     struct PreviewVariation {
         static var complete: Repository {
             let mock = MockRepositry()
-            mock.accountDataModelValue = []
+            mock.accountDataModelValue = AccountDataModel.TestingVariation.complete
             return mock
         }
     }
