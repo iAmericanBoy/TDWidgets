@@ -20,7 +20,9 @@ struct AccountView: View {
             Button(action: { () }) {
                 EmptyView()
             }.sheet(isPresented: $viewModel.shouldShowSignIn) {
-                OAuthView()
+                OAuthView {
+                    viewModel.shouldShowSignIn = false
+                }
             }
         }
     }
