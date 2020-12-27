@@ -8,10 +8,12 @@
 import Foundation
 
 struct Token: Codable {
-    let accessToken, refreshToken, tokenType: String
+    let accessToken: String
+    let refreshToken: String?
+    let tokenType: String
     let expiresIn: Int
     let scope: String
-    let refreshTokenExpiresIn: Int
+    let refreshTokenExpiresIn: Int?
     let date = Date()
 
     enum CodingKeys: String, CodingKey {
@@ -29,6 +31,9 @@ extension Token {
         return Date(timeInterval: TimeInterval(expiresIn), since: date) > currentDate
     }
     func isTimeToRefreshToken(currentDate: Date = Date()) -> Bool {
+        guard let refreshTokenExpiresIn = refreshTokenExpiresIn else {
+            return true
+        }
         let experationDate = Date(timeInterval: TimeInterval(refreshTokenExpiresIn - 604800), since: date)
         return experationDate < currentDate
     }

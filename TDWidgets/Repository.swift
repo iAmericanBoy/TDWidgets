@@ -37,8 +37,6 @@ class RepositoryImpl: Repository {
     }
 
     private func performAuthenticatedRequest<T: Decodable>(_ request: URLRequest) -> AnyPublisher<T, Error> {
-        let request = URLRequest(url: URL(string: "https://donnys-app.com/authenticated/resource")!)
-
         return authenticator.validAccessToken()
             .flatMap { token in
                 // we can now use this token to authenticate the request

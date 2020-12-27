@@ -23,7 +23,7 @@ struct SecuritiesAccount: Codable {
     let type, accountID: String
     let roundTrips: Int
     let isDayTrader, isClosingOnlyRestricted: Bool
-    let positions: [Position]
+    let positions: [Position]?
     let initialBalances: InitialBalances
     let currentBalances: CurrentBalances
     let projectedBalances: ProjectedBalances
