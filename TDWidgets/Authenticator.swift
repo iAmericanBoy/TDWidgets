@@ -36,7 +36,12 @@ class Authenticator {
     }
 
     private var code: String? {
-        UserDefaults.standard.string(forKey: "OAuthManager.code")
+        get {
+            UserDefaults.standard.string(forKey: "OAuthManager.code")
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "OAuthManager.code")
+        }
     }
 
     private let queue = DispatchQueue(label: "Autenticator.\(UUID().uuidString)")
@@ -101,24 +106,32 @@ class Authenticator {
     private func request() -> URLRequest {
         let endpoint = URL(string: "https://api.tdameritrade.com/v1/oauth2/token")!
         var request = URLRequest(url: endpoint)
-        request.addValue(AppSecrets.clientID, forHTTPHeaderField: "client_id")
+        request.httpMethod = "POST"
+        request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
 
         guard let token = currentToken else {
-            request.addValue("authorization_code", forHTTPHeaderField: "grant_type")
-            request.addValue("offline", forHTTPHeaderField: "access_type")
-            request.addValue(code ?? "", forHTTPHeaderField: "code")
-            request.addValue("tdWidgets://auth", forHTTPHeaderField: "redirect_uri")
-
+            let codeString = "client_id=\(AppSecrets.clientID)&grant_type=authorization_code&access_type=offline&code=\(code?.stringByAddingPercentEncodingForRFC3986() ?? "")&redirect_uri=tdWidgets://auth"
+            request.httpBody = Data(codeString.utf8)
+            code = nil
             return request
         }
 
-        request.addValue("refresh_token", forHTTPHeaderField: "grant_type")
-        request.addValue(token.refreshToken, forHTTPHeaderField: "refresh_token")
+        let refreshString = "client_id=\(AppSecrets.clientID)&grant_type=refresh_token&refresh_token=\(token.refreshToken?.stringByAddingPercentEncodingForRFC3986() ?? "")&redirect_uri=tdWidgets://auth"
 
         if token.isTimeToRefreshToken() {
             request.addValue("offline", forHTTPHeaderField: "access_type")
         }
 
+        request.httpBody = Data(refreshString.utf8)
         return request
+    }
+}
+
+private extension String {
+    func stringByAddingPercentEncodingForRFC3986() -> String? {
+        let unreserved = "-._~/?+"
+        let allowed = NSMutableCharacterSet.alphanumeric()
+        allowed.removeCharacters(in: unreserved)
+        return addingPercentEncoding(withAllowedCharacters: allowed as CharacterSet)
     }
 }

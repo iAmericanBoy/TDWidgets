@@ -22,6 +22,7 @@ struct AccountView: View {
             }.sheet(isPresented: $viewModel.shouldShowSignIn) {
                 OAuthView {
                     viewModel.shouldShowSignIn = false
+                    viewModel.getAccounts()
                 }
             }
         }

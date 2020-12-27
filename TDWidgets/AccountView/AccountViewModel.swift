@@ -29,6 +29,7 @@ class AccountViewModel: ObservableObject {
 
     func getAccounts() {
         accountsSubscriber = repository.getAccouts()
+            .receive(on: RunLoop.main)
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .finished:
@@ -39,7 +40,6 @@ class AccountViewModel: ObservableObject {
                     print(error)
                 }
             }, receiveValue: { accountsDataModel in
-                print(accountsDataModel)
                 self.account = Account(accountsDataModel[0])
             })
     }
