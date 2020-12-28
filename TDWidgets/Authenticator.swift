@@ -8,6 +8,7 @@
 
 import Combine
 import Foundation
+import os
 
 enum AuthenticationError: Error {
     case loginRequired
@@ -47,13 +48,13 @@ class Authenticator {
     private let queue = DispatchQueue(label: "Autenticator.\(UUID().uuidString)")
 
     // this publisher is shared amongst all calls that request a token refresh
-    private var refreshPublisher: AnyPublisher<Token, Error>?
+    private var refreshPublisher: AnyPublisher<AccessToken, Error>?
 
     init(session: NetworkSession = URLSession.shared) {
         self.session = session
     }
 
-    func validAccessToken(forceRefresh: Bool = false) -> AnyPublisher<Token, Error> {
+    func validAccessToken(forceRefresh: Bool = false) -> AnyPublisher<AccessToken, Error> {
         return queue.sync { [weak self] in
             // scenario 1: we're already loading a new token
             if let publisher = self?.refreshPublisher {
@@ -76,7 +77,7 @@ class Authenticator {
 
             // scenario 3: we already have a valid token and don't want to force a refresh
             if token.isValidAccessToken(), !forceRefresh {
-                return Just(token)
+                return Just(token.accessToken)
                     .setFailureType(to: Error.self)
                     .eraseToAnyPublisher()
             }
@@ -89,18 +90,48 @@ class Authenticator {
         }
     }
 
-    private func getToken() -> AnyPublisher<Token, Error> {
-        return session.publisher(for: request(), token: nil)
+    private func getToken() -> AnyPublisher<AccessToken, Error> {
+        return session.publisher(for: request(), accessToken: nil)
             .share()
-            .decode(type: Token.self, decoder: JSONDecoder())
+            .decode(type: TokenDataModel.self, decoder: JSONDecoder())
             .handleEvents(receiveOutput: { token in
-                self.currentToken = token
+                self.update(token)
             }, receiveCompletion: { _ in
                 self.queue.sync {
                     self.refreshPublisher = nil
                 }
             })
+            .map { $0.accessToken }
             .eraseToAnyPublisher()
+    }
+
+    private func update(_ token: TokenDataModel) {
+        let logger = Logger(subsystem: "Authenticator", category: "getToken")
+        var updateToken: Token
+        if let currentToken = self.currentToken {
+            logger.debug("Token loaded form Disk")
+            updateToken = currentToken
+            logger.debug("Updated AccessToken")
+            updateToken.accessToken = token.accessToken
+            updateToken.tokenType = token.tokenType
+            updateToken.expiresIn = token.expiresIn
+            updateToken.scope = token.scope
+            updateToken.date = Date()
+        } else {
+            logger.error("Unable to load current Token from disk")
+            guard let refreshToken = token.refreshToken, let refreshTokenExpiresIn = token.refreshTokenExpiresIn else {
+                logger.error("Need to set a new token but there is no Refresh Token")
+                return
+            }
+            updateToken = Token(accessToken: token.accessToken, refreshToken: refreshToken, tokenType: token.tokenType, expiresIn: token.expiresIn, scope: token.scope, refreshTokenExpiresIn: refreshTokenExpiresIn)
+        }
+
+        if let refreshToken = token.refreshToken, let refreshTokenExpiresIn = token.refreshTokenExpiresIn {
+            logger.debug("Updated RefreshToken")
+            updateToken.refreshToken = refreshToken
+            updateToken.refreshTokenExpiresIn = refreshTokenExpiresIn
+        }
+        currentToken = updateToken
     }
 
     private func request() -> URLRequest {
@@ -116,10 +147,10 @@ class Authenticator {
             return request
         }
 
-        let refreshString = "client_id=\(AppSecrets.clientID)&grant_type=refresh_token&refresh_token=\(token.refreshToken?.stringByAddingPercentEncodingForRFC3986() ?? "")&redirect_uri=tdWidgets://auth"
+        var refreshString = "client_id=\(AppSecrets.clientID)&grant_type=refresh_token&refresh_token=\(token.refreshToken.stringByAddingPercentEncodingForRFC3986() ?? "")&redirect_uri=tdWidgets://auth"
 
         if token.isTimeToRefreshToken() {
-            request.addValue("offline", forHTTPHeaderField: "access_type")
+            refreshString += "&access_type=offline"
         }
 
         request.httpBody = Data(refreshString.utf8)

@@ -38,9 +38,9 @@ class RepositoryImpl: Repository {
 
     private func performAuthenticatedRequest<T: Decodable>(_ request: URLRequest) -> AnyPublisher<T, Error> {
         return authenticator.validAccessToken()
-            .flatMap { token in
+            .flatMap { accessToken in
                 // we can now use this token to authenticate the request
-                self.session.publisher(for: request, token: token)
+                self.session.publisher(for: request, accessToken: accessToken)
             }
             .tryCatch { error -> AnyPublisher<Data, Error> in
                 guard let serviceError = error as? URLError, serviceError.code.rawValue == 401 else {
@@ -48,9 +48,9 @@ class RepositoryImpl: Repository {
                 }
 
                 return self.authenticator.validAccessToken(forceRefresh: true)
-                    .flatMap { token in
+                    .flatMap { accessToken in
                         // we can now use this new token to authenticate the second attempt at making this request
-                        self.session.publisher(for: request, token: token)
+                        self.session.publisher(for: request, accessToken: accessToken)
                     }
                     .eraseToAnyPublisher()
             }

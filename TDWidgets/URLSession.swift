@@ -10,15 +10,15 @@ import Foundation
 import os
 
 protocol NetworkSession: AnyObject {
-    func publisher(for urlRequest: URLRequest, token: Token?) -> AnyPublisher<Data, Error>
+    func publisher(for urlRequest: URLRequest, accessToken: AccessToken?) -> AnyPublisher<Data, Error>
 }
 
 extension URLSession: NetworkSession {
-    func publisher(for urlRequest: URLRequest, token: Token?) -> AnyPublisher<Data, Error> {
+    func publisher(for urlRequest: URLRequest, accessToken: AccessToken?) -> AnyPublisher<Data, Error> {
         var request = urlRequest
         let logger = Logger(subsystem: self.description, category: "NetworkSessionPublisher")
-        if let token = token {
-            request.setValue("Bearer \(token.accessToken)", forHTTPHeaderField: "Authorization")
+        if let accessToken = accessToken {
+            request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
         }
         logger.debug("Verb: \(request.httpMethod ?? "", privacy: .public) URL: \(request.url?.absoluteString ?? "", privacy: .public) Headers: \(String(describing: request.allHTTPHeaderFields), privacy: .public)")
 
