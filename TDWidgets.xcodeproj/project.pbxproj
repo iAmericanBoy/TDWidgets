@@ -11,7 +11,7 @@
 		B67A035225923AAB002F6A19 /* AccountDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67A035125923AAB002F6A19 /* AccountDataModel.swift */; };
 		B67A035625925736002F6A19 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67A035525925736002F6A19 /* Repository.swift */; };
 		B67A035C25928163002F6A19 /* AccountHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67A035B25928163002F6A19 /* AccountHeaderView.swift */; };
-		B67A03602592860E002F6A19 /* SimpleStockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67A035F2592860E002F6A19 /* SimpleStockView.swift */; };
+		B67A03602592860E002F6A19 /* SimpleStockRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67A035F2592860E002F6A19 /* SimpleStockRow.swift */; };
 		B67A036625928BAF002F6A19 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67A036525928BAF002F6A19 /* AccountView.swift */; };
 		B694C7A72554C6A000A61D65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B694C7A62554C6A000A61D65 /* AppDelegate.swift */; };
 		B694C7A92554C6A000A61D65 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B694C7A82554C6A000A61D65 /* SceneDelegate.swift */; };
@@ -29,7 +29,7 @@
 		B6EEE3E72592917500F5FB5C /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EEE3E62592917500F5FB5C /* AccountViewModel.swift */; };
 		B6EEE3EB2592924500F5FB5C /* Mockrepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EEE3EA2592924500F5FB5C /* Mockrepository.swift */; };
 		B6EEE3EF259298DC00F5FB5C /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EEE3EE259298DC00F5FB5C /* Account.swift */; };
-		B6EEE3F9259A26C800F5FB5C /* SimpleStockPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EEE3F8259A26C800F5FB5C /* SimpleStockPosition.swift */; };
+		B6EEE3F9259A26C800F5FB5C /* SimpleStockRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EEE3F8259A26C800F5FB5C /* SimpleStockRowViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +47,7 @@
 		B67A035125923AAB002F6A19 /* AccountDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDataModel.swift; sourceTree = "<group>"; };
 		B67A035525925736002F6A19 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		B67A035B25928163002F6A19 /* AccountHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountHeaderView.swift; sourceTree = "<group>"; };
-		B67A035F2592860E002F6A19 /* SimpleStockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleStockView.swift; sourceTree = "<group>"; };
+		B67A035F2592860E002F6A19 /* SimpleStockRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleStockRow.swift; sourceTree = "<group>"; };
 		B67A036525928BAF002F6A19 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		B694C7A32554C6A000A61D65 /* TDWidgets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TDWidgets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B694C7A62554C6A000A61D65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -69,7 +69,7 @@
 		B6EEE3E62592917500F5FB5C /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
 		B6EEE3EA2592924500F5FB5C /* Mockrepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mockrepository.swift; sourceTree = "<group>"; };
 		B6EEE3EE259298DC00F5FB5C /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
-		B6EEE3F8259A26C800F5FB5C /* SimpleStockPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleStockPosition.swift; sourceTree = "<group>"; };
+		B6EEE3F8259A26C800F5FB5C /* SimpleStockRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleStockRowViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +95,8 @@
 			children = (
 				B67A035B25928163002F6A19 /* AccountHeaderView.swift */,
 				B67A036525928BAF002F6A19 /* AccountView.swift */,
-				B67A035F2592860E002F6A19 /* SimpleStockView.swift */,
+				B67A035F2592860E002F6A19 /* SimpleStockRow.swift */,
+				B6EEE3F8259A26C800F5FB5C /* SimpleStockRowViewModel.swift */,
 				B6EEE3E62592917500F5FB5C /* AccountViewModel.swift */,
 			);
 			path = AccountView;
@@ -157,7 +158,6 @@
 				B6C9EA402561F71500F9DDBF /* Token.swift */,
 				B67A035125923AAB002F6A19 /* AccountDataModel.swift */,
 				B6EEE3EE259298DC00F5FB5C /* Account.swift */,
-				B6EEE3F8259A26C800F5FB5C /* SimpleStockPosition.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -279,7 +279,7 @@
 				B66B72C6259107F700CAFD25 /* AppSecret.swift in Sources */,
 				B6EEE3EF259298DC00F5FB5C /* Account.swift in Sources */,
 				B67A035225923AAB002F6A19 /* AccountDataModel.swift in Sources */,
-				B6EEE3F9259A26C800F5FB5C /* SimpleStockPosition.swift in Sources */,
+				B6EEE3F9259A26C800F5FB5C /* SimpleStockRowViewModel.swift in Sources */,
 				B694C7C32554CD9D00A61D65 /* OAuthManager.swift in Sources */,
 				B694C7BD2554C89D00A61D65 /* OAuthViewController.swift in Sources */,
 				B6EEE3EB2592924500F5FB5C /* Mockrepository.swift in Sources */,
@@ -290,7 +290,7 @@
 				B694C7A92554C6A000A61D65 /* SceneDelegate.swift in Sources */,
 				B67A035C25928163002F6A19 /* AccountHeaderView.swift in Sources */,
 				B694C7AB2554C6A000A61D65 /* ContentView.swift in Sources */,
-				B67A03602592860E002F6A19 /* SimpleStockView.swift in Sources */,
+				B67A03602592860E002F6A19 /* SimpleStockRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,5 +1,5 @@
 //
-//  SimpleStockPosition.swift
+//  SimpleStockRowViewModel.swift
 //  TDWidgets
 //
 //  Created by Dominic Lanzillotta on 12/28/20.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SimpleStockPosition: Identifiable {
+struct SimpleStockRowViewModel: Identifiable {
     var id: UUID = UUID()
     var name: String
     var symbol: String
@@ -32,10 +32,10 @@ struct SimpleStockPosition: Identifiable {
     }
 }
 
-extension SimpleStockPosition {
+extension SimpleStockRowViewModel {
     struct TestingVariation {
-        static var completeApple: SimpleStockPosition {
-            SimpleStockPosition(name: "Apple Inc.", symbol: "AAPL", marketValue: 134.83, dayProfitLoss: 3.36, dayProfitLossPercentage: 2.56)
+        static var completeApple: SimpleStockRowViewModel {
+            SimpleStockRowViewModel(name: "Apple Inc.", symbol: "AAPL", marketValue: 134.83, dayProfitLoss: 3.36, dayProfitLossPercentage: 2.56)
         }
     }
 }

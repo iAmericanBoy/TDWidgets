@@ -1,5 +1,5 @@
 //
-//  SimpleStockView.swift
+//  SimpleStockRow.swift
 //  TDWidgets
 //
 //  Created by Dominic Lanzillotta on 12/22/20.
@@ -7,11 +7,13 @@
 
 import SwiftUI
 
-struct SimpleStockView: View {
+struct SimpleStockRow: View {
+    var viewModel: SimpleStockRowViewModel
+
     var body: some View {
         VStack(spacing: -3) {
             HStack {
-                Text("Apple")
+                Text(viewModel.name)
                     .bold()
                 Spacer()
                 Text("$ 1 034,56")
@@ -19,7 +21,7 @@ struct SimpleStockView: View {
             }
             HStack {
                 HStack {
-                    Text("AAPL")
+                    Text(viewModel.symbol)
                     Text("ᐧ")
                         .bold()
                         .font(.title)
@@ -40,8 +42,8 @@ struct SimpleStockView: View {
 
 struct SimpleStockView_Previews: PreviewProvider {
     static var previews: some View {
-        List(/*@START_MENU_TOKEN@*/0 ..< 5/*@END_MENU_TOKEN@*/) { item in
-            SimpleStockView()
+        List(/*@START_MENU_TOKEN@*/0 ..< 5/*@END_MENU_TOKEN@*/) { _ in
+            SimpleStockRow(viewModel: SimpleStockRowViewModel.TestingVariation.completeApple)
         }
     }
 }
