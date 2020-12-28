@@ -6,7 +6,7 @@
 //
 
 import Combine
-import Foundation
+import SwiftUI
 
 class AccountViewModel: ObservableObject {
     // MARK: Members:
@@ -52,20 +52,36 @@ class AccountViewModel: ObservableObject {
 // MARK: - AccountHeaderView
 
 extension AccountViewModel {
+    private var dayProfitLossPercentage: Decimal {
+        guard let initialEquity = account?.initialEquity, let currentLongMarginValue = account?.currentEquity else {
+            return 0
+        }
+        let math = (currentLongMarginValue - initialEquity) / currentLongMarginValue * 100
+        return math
+    }
+
     var title: String {
-        return "\(account?.type ?? "") account"
+        "\(account?.type ?? "") account"
     }
 
     var balance: String {
-        return "\(account?.longMarginValue ?? 0)"
+        account?.currentEquity.currencyString ?? ""
     }
 
     var arrowImageName: String {
-        return account?.longMarginDifferenceValue ?? 1 > 0 ? "arrow.up" : "arrow.down"
+        dayProfitLossPercentage > 0 ? "arrow.up" : "arrow.down"
+    }
+
+    var subtitleColor: Color {
+        return dayProfitLossPercentage > 0 ? .green : .red
     }
 
     var balanceSubTitle: String {
-        return "\(account?.longMarginDifferenceValue ?? 0)"
+        guard dayProfitLossPercentage != 0, let initialEquity = account?.initialEquity, let currentLongMarginValue = account?.currentEquity else {
+            return ""
+        }
+        let singleDayProfitLoss = initialEquity - currentLongMarginValue
+        return "\(singleDayProfitLoss.currencyString) (\(dayProfitLossPercentage.twoDigitsFormatter)%)"
     }
 }
 

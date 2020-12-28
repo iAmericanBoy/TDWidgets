@@ -27,7 +27,7 @@ struct SimpleStockRow: View {
                 Spacer()
                 HStack {
                     Image(systemName: viewModel.profitLossSymbol)
-                    Text(viewModel.profitLossString)
+                    Text(viewModel.singleStockProfitLossString)
                 }
                 .font(.subheadline)
                 .foregroundColor(viewModel.profitLossColor.opacity(0.5))

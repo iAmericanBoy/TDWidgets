@@ -9,11 +9,10 @@ import SwiftUI
 
 struct SimpleStockRowViewModel: Identifiable {
     var id: UUID = UUID()
-    var name: String
     var symbol: String
     private var quanity: Decimal
     private var marketValue: Decimal
-    private var dayProfitLoss: Decimal
+    private var totalDayProfitLoss: Decimal
     private var dayProfitLossPercentage: Decimal
 
     var quanityString: String {
@@ -21,14 +20,17 @@ struct SimpleStockRowViewModel: Identifiable {
     }
 
     var marketValueString: String {
-        marketValue.currencyString
+        (marketValue / quanity).currencyString
     }
 
-    var profitLossString: String {
-        "\(dayProfitLoss.currencyString) (\(dayProfitLossPercentage)%)"
+    var singleStockProfitLossString: String {
+        if dayProfitLossPercentage == 0 { return "" }
+        let singleStockProfitLoss = totalDayProfitLoss / quanity
+        return "\(singleStockProfitLoss.currencyString) (\(dayProfitLossPercentage.twoDigitsFormatter)%)"
     }
 
     var profitLossSymbol: String {
+        if dayProfitLossPercentage == 0 { return "" }
         return dayProfitLossPercentage > 0 ? "arrow.up" : "arrow.down"
     }
 
@@ -36,22 +38,20 @@ struct SimpleStockRowViewModel: Identifiable {
         return dayProfitLossPercentage > 0 ? .green : .red
     }
 
-    internal init(id: UUID = UUID(), name: String, symbol: String, quanity: Decimal, marketValue: Decimal, dayProfitLoss: Decimal, dayProfitLossPercentage: Decimal) {
+    internal init(id: UUID = UUID(), symbol: String, quanity: Decimal, marketValue: Decimal, totalDayProfitLoss: Decimal, dayProfitLossPercentage: Decimal) {
         self.id = id
-        self.name = name
         self.symbol = symbol
         self.quanity = quanity
         self.marketValue = marketValue
-        self.dayProfitLoss = dayProfitLoss
+        self.totalDayProfitLoss = totalDayProfitLoss
         self.dayProfitLossPercentage = dayProfitLossPercentage
     }
 
     init(_ position: PositionDataModel) {
-        name = position.instrument.instrumentDescription ?? ""
         symbol = position.instrument.symbol
         quanity = position.longQuantity
         marketValue = position.marketValue
-        dayProfitLoss = position.currentDayProfitLoss
+        totalDayProfitLoss = position.currentDayProfitLoss
         dayProfitLossPercentage = position.currentDayProfitLossPercentage
     }
 }
@@ -59,7 +59,7 @@ struct SimpleStockRowViewModel: Identifiable {
 extension SimpleStockRowViewModel {
     struct TestingVariation {
         static var completeApple: SimpleStockRowViewModel {
-            SimpleStockRowViewModel(name: "Apple Inc.", symbol: "AAPL", quanity: 4.035, marketValue: 134.83, dayProfitLoss: 3.36, dayProfitLossPercentage: 2.56)
+            SimpleStockRowViewModel(symbol: "AAPL", quanity: 4.035, marketValue: 134.83, totalDayProfitLoss: 3.36, dayProfitLossPercentage: 2.56)
         }
     }
 }

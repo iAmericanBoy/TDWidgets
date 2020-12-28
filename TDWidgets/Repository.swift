@@ -27,7 +27,7 @@ class RepositoryImpl: Repository {
 
     func getAccouts() -> AnyPublisher<AccountDataModel, Error> {
         var components = URLComponents(string: "https://api.tdameritrade.com/v1/accounts")
-        components?.queryItems = [URLQueryItem(name: "fields", value: "positions,orders")]
+        components?.queryItems = [URLQueryItem(name: "fields", value: "positions")]
         guard let url = components?.url else {
             return Fail(error: RepositoryError.urlComponents)
                 .eraseToAnyPublisher()

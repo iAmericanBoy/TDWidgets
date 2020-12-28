@@ -24,4 +24,13 @@ extension Decimal {
         let decimal: NSDecimalNumber = NSDecimalNumber(decimal: self)
         return formatter.string(from: decimal) ?? ""
     }
+
+    var twoDigitsFormatter: String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.minimumFractionDigits = 2
+        formatter.maximumFractionDigits = 2
+        let decimal: NSDecimalNumber = NSDecimalNumber(decimal: self)
+        return formatter.string(from: decimal) ?? ""
+    }
 }

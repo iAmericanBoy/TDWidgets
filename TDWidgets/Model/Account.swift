@@ -10,28 +10,28 @@ import Foundation
 struct Account {
     var type: String
     var accountID: String
-    var longMarginValue: Decimal
-    var longMarginDifferenceValue: Decimal
+    var initialEquity: Decimal
+    var currentEquity: Decimal
 
-    internal init(type: String, accountID: String, longMarginValue: Decimal, longMarginDifferenceValue: Decimal) {
+    internal init(type: String, accountID: String, initialEquity: Decimal, currentLongMarginValue: Decimal) {
         self.type = type
         self.accountID = accountID
-        self.longMarginValue = longMarginValue
-        self.longMarginDifferenceValue = longMarginDifferenceValue
+        self.initialEquity = initialEquity
+        currentEquity = currentLongMarginValue
     }
 
     init(_ accountElement: AccountElementDataModel) {
         type = accountElement.securitiesAccount.type
         accountID = accountElement.securitiesAccount.accountID
-        longMarginValue = accountElement.securitiesAccount.currentBalances.longMarginValue
-        longMarginDifferenceValue = accountElement.securitiesAccount.currentBalances.longMarginValue - accountElement.securitiesAccount.initialBalances.longMarginValue
+        initialEquity = accountElement.securitiesAccount.initialBalances.equity
+        currentEquity = accountElement.securitiesAccount.currentBalances.equity
     }
 }
 
 extension Account {
     struct TestingVariation {
         static var completeMargin: Account {
-            Account(type: "Margin", accountID: "123456", longMarginValue: 17159.50, longMarginDifferenceValue: 8.58)
+            Account(type: "MARGIN", accountID: "123456", initialEquity: 55235, currentLongMarginValue: 59342)
         }
     }
 }

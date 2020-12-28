@@ -28,7 +28,7 @@ struct AccountHeaderView: View {
                 Text(viewModel.balanceSubTitle)
             }
             .font(.subheadline)
-            .foregroundColor(Color.green.opacity(0.5))
+            .foregroundColor(viewModel.subtitleColor.opacity(0.5))
             Divider()
         }
     }
