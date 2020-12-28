@@ -16,7 +16,7 @@ struct SimpleStockRow: View {
                 Text(viewModel.name)
                     .bold()
                 Spacer()
-                Text("$ 1 034,56")
+                Text(viewModel.marketValueString)
                     .bold()
             }
             HStack {
@@ -25,16 +25,16 @@ struct SimpleStockRow: View {
                     Text("ᐧ")
                         .bold()
                         .font(.title)
-                    Text("5 Shares")
+                    Text(viewModel.quanityString)
                 }.foregroundColor(Color.black.opacity(0.5))
                     .font(.body)
                 Spacer()
                 HStack {
-                    Image(systemName: "arrow.up")
-                    Text("$ 8,58 (0.05 %)")
+                    Image(systemName: viewModel.profitLossSymbol)
+                    Text(viewModel.profitLossString)
                 }
                 .font(.subheadline)
-                .foregroundColor(Color.green.opacity(0.5))
+                .foregroundColor(viewModel.profitLossColor.opacity(0.5))
             }
         }.padding(6)
     }
