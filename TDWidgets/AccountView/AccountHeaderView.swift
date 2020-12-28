@@ -35,6 +35,15 @@ struct AccountHeaderView: View {
             }
             .font(.subheadline)
             .foregroundColor(viewModel.subtitleColor.opacity(0.5))
+            HStack {
+                Spacer()
+                Text(viewModel.timeIntervalString)
+                    .font(.subheadline)
+                    .bold()
+                    .foregroundColor(Color.gray.opacity(0.5))
+                    .padding(5)
+            }
+
             Divider()
         }
     }

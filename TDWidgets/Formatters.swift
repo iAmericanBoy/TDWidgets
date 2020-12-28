@@ -1,5 +1,5 @@
 //
-//  Numberformatter.swift
+//  Formatters.swift
 //  TDWidgets
 //
 //  Created by Dominic Lanzillotta on 12/28/20.
@@ -32,5 +32,15 @@ extension Decimal {
         formatter.maximumFractionDigits = 2
         let decimal: NSDecimalNumber = NSDecimalNumber(decimal: self)
         return formatter.string(from: decimal) ?? ""
+    }
+}
+
+extension Date {
+    var durationFormatter: String {
+        let formatter = RelativeDateTimeFormatter()
+        formatter.unitsStyle = .short
+        formatter.dateTimeStyle = .named
+
+        return formatter.string(for: self) ?? ""
     }
 }

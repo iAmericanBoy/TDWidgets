@@ -23,13 +23,19 @@ class AccountViewModel: ObservableObject {
     private var simpleStockPositions: [SimpleStockRowViewModel] = []
     @Published var shouldShowSignIn: Bool = false
     @Published var shouldStreamData: Bool = true
+    @Published private var lastUpdate: Date?
+    @Published private var now = Date()
+
+    private var timer: Timer?
 
     init(repository: Repository = RepositoryImpl()) {
         self.repository = repository
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateNow), userInfo: nil, repeats: true)
         getAccounts()
     }
 
     func getAccounts() {
+        lastUpdate = Date()
         accountsSubscriber = repository.getAccouts()
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { completion in
@@ -46,8 +52,8 @@ class AccountViewModel: ObservableObject {
                 self.simpleStockPositions = accountsDataModel[0].securitiesAccount.positions?.compactMap { (position) -> SimpleStockRowViewModel in
                     SimpleStockRowViewModel(position)
                 } ?? []
-                if self.shouldStreamData {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+                    if self.shouldStreamData {
                         self.getAccounts()
                     }
                 }
@@ -58,6 +64,20 @@ class AccountViewModel: ObservableObject {
 // MARK: - AccountHeaderView
 
 extension AccountViewModel {
+    @objc
+    func updateNow() {
+        now = Date()
+    }
+
+    var timeIntervalString: String {
+        guard let lastUpdateDate = lastUpdate else {
+            return ""
+        }
+        let interval = now.timeIntervalSince(lastUpdateDate)
+        if interval <= 0 { return "" }
+        return "\(lastUpdateDate.durationFormatter)"
+    }
+
     func streamData() {
         if shouldStreamData == false {
             getAccounts()
