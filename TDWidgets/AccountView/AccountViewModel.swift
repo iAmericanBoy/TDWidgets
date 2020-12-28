@@ -22,6 +22,7 @@ class AccountViewModel: ObservableObject {
     @Published private var account: Account?
     private var simpleStockPositions: [SimpleStockRowViewModel] = []
     @Published var shouldShowSignIn: Bool = false
+    @Published var shouldStreamData: Bool = true
 
     init(repository: Repository = RepositoryImpl()) {
         self.repository = repository
@@ -45,6 +46,11 @@ class AccountViewModel: ObservableObject {
                 self.simpleStockPositions = accountsDataModel[0].securitiesAccount.positions?.compactMap { (position) -> SimpleStockRowViewModel in
                     SimpleStockRowViewModel(position)
                 } ?? []
+                if self.shouldStreamData {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+                        self.getAccounts()
+                    }
+                }
             })
     }
 }
@@ -52,6 +58,10 @@ class AccountViewModel: ObservableObject {
 // MARK: - AccountHeaderView
 
 extension AccountViewModel {
+    func streamData() {
+        shouldStreamData.toggle()
+    }
+
     private var dayProfitLossPercentage: Decimal {
         guard let initialEquity = account?.initialEquity, let currentLongMarginValue = account?.currentEquity else {
             return 0
@@ -62,6 +72,10 @@ extension AccountViewModel {
 
     var title: String {
         "\(account?.type ?? "") account"
+    }
+
+    var streamDataImageString: String {
+        shouldStreamData ? "pause" : "play"
     }
 
     var balance: String {

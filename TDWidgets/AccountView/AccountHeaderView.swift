@@ -17,8 +17,14 @@ struct AccountHeaderView: View {
                 Text(viewModel.title)
                     .font(.headline)
                 Spacer()
-                Image(systemName: "star")
-                    .font(.body)
+                Button(action: {
+                    viewModel.streamData()
+                }, label: {
+                    Image(systemName: viewModel.streamDataImageString)
+                        .font(.title)
+                        .foregroundColor(Color.black)
+                })
+
             }.padding()
             Text(viewModel.balance)
                 .font(.largeTitle)
