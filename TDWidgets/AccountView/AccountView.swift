@@ -14,8 +14,8 @@ struct AccountView: View {
         VStack {
             AccountHeaderView(viewModel: viewModel)
             Spacer()
-            List(0 ..< 8) { _ in
-                SimpleStockView()
+            List(viewModel.simpleStockRowViewModel) { rowViewModel in
+                SimpleStockRow(viewModel: rowViewModel)
             }
             Button(action: { () }) {
                 EmptyView()

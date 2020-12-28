@@ -20,6 +20,7 @@ class AccountViewModel: ObservableObject {
     // MARK: Model
 
     @Published private var account: Account?
+    private var simpleStockPositions: [SimpleStockRowViewModel] = []
     @Published var shouldShowSignIn: Bool = false
 
     init(repository: Repository = RepositoryImpl()) {
@@ -41,11 +42,14 @@ class AccountViewModel: ObservableObject {
                 }
             }, receiveValue: { accountsDataModel in
                 self.account = Account(accountsDataModel[0])
+                self.simpleStockPositions = accountsDataModel[0].securitiesAccount.positions?.compactMap { (position) -> SimpleStockRowViewModel in
+                    SimpleStockRowViewModel(position)
+                } ?? []
             })
     }
 }
 
-// MARK: AccountHeaderView
+// MARK: - AccountHeaderView
 
 extension AccountViewModel {
     var title: String {
@@ -62,5 +66,13 @@ extension AccountViewModel {
 
     var balanceSubTitle: String {
         return "\(account?.longMarginDifferenceValue ?? 0)"
+    }
+}
+
+// MARK: - SimpleStockView
+
+extension AccountViewModel {
+    var simpleStockRowViewModel: [SimpleStockRowViewModel] {
+        simpleStockPositions
     }
 }
