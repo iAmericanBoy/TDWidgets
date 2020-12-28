@@ -9,24 +9,24 @@ import Foundation
 
 import Foundation
 
-typealias AccountDataModel = [AccountElement]
+typealias AccountDataModel = [AccountElementDataModel]
 
-// MARK: - AccountElement
+// MARK: - AccountElementDataModel
 
-struct AccountElement: Codable {
-    let securitiesAccount: SecuritiesAccount
+struct AccountElementDataModel: Codable {
+    let securitiesAccount: SecuritiesAccountDataModel
 }
 
-// MARK: - SecuritiesAccount
+// MARK: - SecuritiesAccountDataModel
 
-struct SecuritiesAccount: Codable {
+struct SecuritiesAccountDataModel: Codable {
     let type, accountID: String
     let roundTrips: Int
     let isDayTrader, isClosingOnlyRestricted: Bool
-    let positions: [Position]?
-    let initialBalances: InitialBalances
-    let currentBalances: CurrentBalances
-    let projectedBalances: ProjectedBalances
+    let positions: [PositionDataModel]?
+    let initialBalances: InitialBalancesDataModel
+    let currentBalances: CurrentBalancesDataModel
+    let projectedBalances: ProjectedBalancesDataModel
 
     enum CodingKeys: String, CodingKey {
         case type
@@ -35,9 +35,9 @@ struct SecuritiesAccount: Codable {
     }
 }
 
-// MARK: - InitialBalances
+// MARK: - InitialBalancesDataModel
 
-struct InitialBalances: Codable {
+struct InitialBalancesDataModel: Codable {
     let accruedInterest: Decimal
     let availableFundsNonMarginableTrade: Decimal
     let bondValue: Decimal
@@ -60,9 +60,9 @@ struct InitialBalances: Codable {
     let accountValue: Decimal
 }
 
-// MARK: - CurrentBalances
+// MARK: - CurrentBalancesDataModel
 
-struct CurrentBalances: Codable {
+struct CurrentBalancesDataModel: Codable {
     let accruedInterest, cashBalance, cashReceipts, longOptionMarketValue: Decimal
     let liquidationValue, longMarketValue: Decimal
     let moneyMarketFund, savings, shortMarketValue, pendingDeposits: Decimal
@@ -79,21 +79,21 @@ struct CurrentBalances: Codable {
     let bondValue: Decimal
 }
 
-// MARK: - Position
+// MARK: - PositionDataModel
 
-struct Position: Codable {
+struct PositionDataModel: Codable {
     let shortQuantity: Int
-    let averagePrice, currentDayProfitLoss, currentDayProfitLossPercentage, longQuantity: Double
-    let settledLongQuantity: Double
+    let averagePrice, currentDayProfitLoss, currentDayProfitLossPercentage, longQuantity: Decimal
+    let settledLongQuantity: Decimal
     let settledShortQuantity: Int
-    let instrument: Instrument
-    let marketValue: Double
-    let agedQuantity: Double?
+    let instrument: InstrumentDataModel
+    let marketValue: Decimal
+    let agedQuantity: Decimal?
 }
 
-// MARK: - Instrument
+// MARK: - InstrumentDataModel
 
-struct Instrument: Codable {
+struct InstrumentDataModel: Codable {
     let assetType, cusip, symbol: String
     let instrumentDescription: String?
 
@@ -103,9 +103,9 @@ struct Instrument: Codable {
     }
 }
 
-// MARK: - ProjectedBalances
+// MARK: - ProjectedBalancesDataModel
 
-struct ProjectedBalances: Codable {
+struct ProjectedBalancesDataModel: Codable {
     let availableFunds, availableFundsNonMarginableTrade, buyingPower: Double
     let dayTradingBuyingPower, dayTradingBuyingPowerCall, maintenanceCall, regTCall: Int
     let isInCall: Bool
@@ -115,15 +115,15 @@ struct ProjectedBalances: Codable {
 extension AccountDataModel {
     struct TestingVariation {
         static var complete: AccountDataModel {
-            [AccountElement(securitiesAccount: SecuritiesAccount(type: "Margin",
-                                                                 accountID: "12345",
-                                                                 roundTrips: 0,
-                                                                 isDayTrader: false,
-                                                                 isClosingOnlyRestricted: false,
-                                                                 positions: [],
-                                                                 initialBalances: InitialBalances(accruedInterest: 0, availableFundsNonMarginableTrade: 0, bondValue: 0, buyingPower: 0, cashBalance: 0, cashAvailableForTrading: 0, cashReceipts: 0, dayTradingBuyingPower: 0, dayTradingBuyingPowerCall: 0, dayTradingEquityCall: 0, equity: 0, equityPercentage: 0, liquidationValue: 0, longMarginValue: 7399.99, longOptionMarketValue: 0, longStockValue: 0, maintenanceCall: 0, maintenanceRequirement: 0, margin: 0, marginEquity: 0, moneyMarketFund: 0, mutualFundValue: 0, regTCall: 0, shortMarginValue: 0, shortOptionMarketValue: 0, shortStockValue: 0, totalCash: 0, isInCall: false, pendingDeposits: 0, marginBalance: 0, shortBalance: 0, accountValue: 0),
-                                                                 currentBalances: CurrentBalances(accruedInterest: 0, cashBalance: 0, cashReceipts: 0, longOptionMarketValue: 0, liquidationValue: 0, longMarketValue: 0, moneyMarketFund: 0, savings: 0, shortMarketValue: 0, pendingDeposits: 0, availableFunds: 0, availableFundsNonMarginableTrade: 0, buyingPower: 0, buyingPowerNonMarginableTrade: 0, dayTradingBuyingPower: 0, equity: 0, equityPercentage: 0, longMarginValue: 7428.09, maintenanceCall: 0, maintenanceRequirement: 0, marginBalance: 0, regTCall: 0, shortBalance: 0, shortMarginValue: 0, shortOptionMarketValue: 0, sma: 0, mutualFundValue: 0, bondValue: 0),
-                                                                 projectedBalances: ProjectedBalances(availableFunds: 0, availableFundsNonMarginableTrade: 0, buyingPower: 0, dayTradingBuyingPower: 0, dayTradingBuyingPowerCall: 0, maintenanceCall: 0, regTCall: 0, isInCall: false, stockBuyingPower: 0)))]
+            [AccountElementDataModel(securitiesAccount: SecuritiesAccountDataModel(type: "Margin",
+                                                                                   accountID: "12345",
+                                                                                   roundTrips: 0,
+                                                                                   isDayTrader: false,
+                                                                                   isClosingOnlyRestricted: false,
+                                                                                   positions: [],
+                                                                                   initialBalances: InitialBalancesDataModel(accruedInterest: 0, availableFundsNonMarginableTrade: 0, bondValue: 0, buyingPower: 0, cashBalance: 0, cashAvailableForTrading: 0, cashReceipts: 0, dayTradingBuyingPower: 0, dayTradingBuyingPowerCall: 0, dayTradingEquityCall: 0, equity: 0, equityPercentage: 0, liquidationValue: 0, longMarginValue: 7399.99, longOptionMarketValue: 0, longStockValue: 0, maintenanceCall: 0, maintenanceRequirement: 0, margin: 0, marginEquity: 0, moneyMarketFund: 0, mutualFundValue: 0, regTCall: 0, shortMarginValue: 0, shortOptionMarketValue: 0, shortStockValue: 0, totalCash: 0, isInCall: false, pendingDeposits: 0, marginBalance: 0, shortBalance: 0, accountValue: 0),
+                                                                                   currentBalances: CurrentBalancesDataModel(accruedInterest: 0, cashBalance: 0, cashReceipts: 0, longOptionMarketValue: 0, liquidationValue: 0, longMarketValue: 0, moneyMarketFund: 0, savings: 0, shortMarketValue: 0, pendingDeposits: 0, availableFunds: 0, availableFundsNonMarginableTrade: 0, buyingPower: 0, buyingPowerNonMarginableTrade: 0, dayTradingBuyingPower: 0, equity: 0, equityPercentage: 0, longMarginValue: 7428.09, maintenanceCall: 0, maintenanceRequirement: 0, marginBalance: 0, regTCall: 0, shortBalance: 0, shortMarginValue: 0, shortOptionMarketValue: 0, sma: 0, mutualFundValue: 0, bondValue: 0),
+                                                                                   projectedBalances: ProjectedBalancesDataModel(availableFunds: 0, availableFundsNonMarginableTrade: 0, buyingPower: 0, dayTradingBuyingPower: 0, dayTradingBuyingPowerCall: 0, maintenanceCall: 0, regTCall: 0, isInCall: false, stockBuyingPower: 0)))]
         }
     }
 }

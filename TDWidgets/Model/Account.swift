@@ -20,7 +20,7 @@ struct Account {
         self.longMarginDifferenceValue = longMarginDifferenceValue
     }
 
-    init(_ accountElement: AccountElement) {
+    init(_ accountElement: AccountElementDataModel) {
         type = accountElement.securitiesAccount.type
         accountID = accountElement.securitiesAccount.accountID
         longMarginValue = accountElement.securitiesAccount.currentBalances.longMarginValue

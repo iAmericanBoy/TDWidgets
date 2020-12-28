@@ -29,6 +29,7 @@
 		B6EEE3E72592917500F5FB5C /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EEE3E62592917500F5FB5C /* AccountViewModel.swift */; };
 		B6EEE3EB2592924500F5FB5C /* Mockrepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EEE3EA2592924500F5FB5C /* Mockrepository.swift */; };
 		B6EEE3EF259298DC00F5FB5C /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EEE3EE259298DC00F5FB5C /* Account.swift */; };
+		B6EEE3F9259A26C800F5FB5C /* SimpleStockPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EEE3F8259A26C800F5FB5C /* SimpleStockPosition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		B6EEE3E62592917500F5FB5C /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
 		B6EEE3EA2592924500F5FB5C /* Mockrepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mockrepository.swift; sourceTree = "<group>"; };
 		B6EEE3EE259298DC00F5FB5C /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		B6EEE3F8259A26C800F5FB5C /* SimpleStockPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleStockPosition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 				B6C9EA402561F71500F9DDBF /* Token.swift */,
 				B67A035125923AAB002F6A19 /* AccountDataModel.swift */,
 				B6EEE3EE259298DC00F5FB5C /* Account.swift */,
+				B6EEE3F8259A26C800F5FB5C /* SimpleStockPosition.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 				B66B72C6259107F700CAFD25 /* AppSecret.swift in Sources */,
 				B6EEE3EF259298DC00F5FB5C /* Account.swift in Sources */,
 				B67A035225923AAB002F6A19 /* AccountDataModel.swift in Sources */,
+				B6EEE3F9259A26C800F5FB5C /* SimpleStockPosition.swift in Sources */,
 				B694C7C32554CD9D00A61D65 /* OAuthManager.swift in Sources */,
 				B694C7BD2554C89D00A61D65 /* OAuthViewController.swift in Sources */,
 				B6EEE3EB2592924500F5FB5C /* Mockrepository.swift in Sources */,
