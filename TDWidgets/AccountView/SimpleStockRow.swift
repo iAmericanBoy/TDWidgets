@@ -11,9 +11,9 @@ struct SimpleStockRow: View {
     var viewModel: SimpleStockRowViewModel
 
     var body: some View {
-        VStack(spacing: -3) {
+        VStack(spacing: 3) {
             HStack {
-                Text(viewModel.name)
+                Text(viewModel.symbol)
                     .bold()
                 Spacer()
                 Text(viewModel.marketValueString)
@@ -21,10 +21,6 @@ struct SimpleStockRow: View {
             }
             HStack {
                 HStack {
-                    Text(viewModel.symbol)
-                    Text("ᐧ")
-                        .bold()
-                        .font(.title)
                     Text(viewModel.quanityString)
                 }.foregroundColor(Color.black.opacity(0.5))
                     .font(.body)
