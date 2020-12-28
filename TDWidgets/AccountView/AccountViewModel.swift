@@ -59,6 +59,9 @@ class AccountViewModel: ObservableObject {
 
 extension AccountViewModel {
     func streamData() {
+        if shouldStreamData == false {
+            getAccounts()
+        }
         shouldStreamData.toggle()
     }
 
