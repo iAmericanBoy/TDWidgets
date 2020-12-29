@@ -74,7 +74,7 @@ extension AccountViewModel {
             return ""
         }
         let interval = now.timeIntervalSince(lastUpdateDate)
-        if interval <= 0 { return "" }
+        if interval < 1  { return "loading" }
         return "\(lastUpdateDate.durationFormatter)"
     }
 
