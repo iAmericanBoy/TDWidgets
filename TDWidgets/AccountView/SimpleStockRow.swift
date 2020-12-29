@@ -30,7 +30,7 @@ struct SimpleStockRow: View {
                     Text(viewModel.singleStockProfitLossString)
                 }
                 .font(.subheadline)
-                .foregroundColor(viewModel.profitLossColor.opacity(0.5))
+                .foregroundColor(viewModel.profitLossColor.opacity(0.9))
             }
         }.padding(6)
     }

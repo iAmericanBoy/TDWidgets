@@ -34,7 +34,7 @@ struct AccountHeaderView: View {
                 Text(viewModel.balanceSubTitle)
             }
             .font(.subheadline)
-            .foregroundColor(viewModel.subtitleColor.opacity(0.5))
+            .foregroundColor(viewModel.subtitleColor.opacity(0.9))
             HStack {
                 Spacer()
                 Text(viewModel.timeIntervalString)
