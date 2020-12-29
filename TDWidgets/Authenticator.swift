@@ -14,13 +14,12 @@ enum AuthenticationError: Error {
     case loginRequired
 }
 
-// TODO: this only works to refresh the access token. figure out a way of how you can get the refresh token after a login flow
 class Authenticator {
     private let session: NetworkSession
 
     private var currentToken: Token? {
         get {
-            if let savedToken = UserDefaults.standard.object(forKey: "Authenticator.refreshToken") as? Data {
+            if let savedToken = UserDefaults(suiteName: "group.com.oskman.WidgetGroup")?.object(forKey: "Authenticator.refreshToken") as? Data {
                 let decoder = JSONDecoder()
                 if let token = try? decoder.decode(Token.self, from: savedToken) {
                     return token
@@ -31,7 +30,7 @@ class Authenticator {
         set {
             let encoder = JSONEncoder()
             if let encoded = try? encoder.encode(newValue) {
-                UserDefaults.standard.set(encoded, forKey: "Authenticator.refreshToken")
+                UserDefaults(suiteName: "group.com.oskman.WidgetGroup")?.set(encoded, forKey: "Authenticator.refreshToken")
             }
         }
     }

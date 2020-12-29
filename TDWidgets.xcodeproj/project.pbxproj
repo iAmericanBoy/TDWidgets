@@ -64,6 +64,7 @@
 		B694C7C22554CD9D00A61D65 /* OAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthManager.swift; sourceTree = "<group>"; };
 		B6C20F2F259A3041009CCEEA /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
 		B6C20F37259A45DB009CCEEA /* TokenDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenDataModel.swift; sourceTree = "<group>"; };
+		B6C20F3F259B7C4B009CCEEA /* TDWidgets.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TDWidgets.entitlements; sourceTree = "<group>"; };
 		B6C9EA402561F71500F9DDBF /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		B6C9EA452561F76D00F9DDBF /* Authenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticator.swift; sourceTree = "<group>"; };
 		B6C9EA482561F7F600F9DDBF /* URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSession.swift; sourceTree = "<group>"; };
@@ -127,6 +128,7 @@
 		B694C7A52554C6A000A61D65 /* TDWidgets */ = {
 			isa = PBXGroup;
 			children = (
+				B6C20F3F259B7C4B009CCEEA /* TDWidgets.entitlements */,
 				B694C7A62554C6A000A61D65 /* AppDelegate.swift */,
 				B694C7A82554C6A000A61D65 /* SceneDelegate.swift */,
 				B694C7AA2554C6A000A61D65 /* ContentView.swift */,
@@ -453,6 +455,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TDWidgets/TDWidgets.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"TDWidgets/Preview Content\"";
 				DEVELOPMENT_TEAM = J6B8ZX28ZW;
@@ -474,6 +477,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TDWidgets/TDWidgets.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"TDWidgets/Preview Content\"";
 				DEVELOPMENT_TEAM = J6B8ZX28ZW;
