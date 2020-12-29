@@ -12,7 +12,12 @@ struct AccountWidgetView: View {
     var entry: Provider.Entry
 
     var body: some View {
-        Text(entry.date, style: .relative)
+        HStack {
+            Text("\(entry.date, style: .relative) ago")
+                .font(.subheadline)
+                .bold()
+                .foregroundColor(Color.gray.opacity(0.5))
+        }
     }
 }
 
