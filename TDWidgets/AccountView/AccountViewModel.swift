@@ -28,13 +28,15 @@ class AccountViewModel: ObservableObject {
 
     private var timer: Timer?
 
+    // MARK: init
     init(repository: Repository = RepositoryImpl()) {
         self.repository = repository
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateNow), userInfo: nil, repeats: true)
         getAccounts()
     }
 
-    func getAccounts() {
+    // MARK: Private Function
+    private func getAccounts() {
         lastUpdate = Date()
         accountsSubscriber = repository.getAccouts()
             .receive(on: RunLoop.main)
@@ -64,20 +66,13 @@ class AccountViewModel: ObservableObject {
 // MARK: - AccountHeaderView
 
 extension AccountViewModel {
+    
+    // MARK: Intents
     @objc
     func updateNow() {
         now = Date()
     }
-
-    var timeIntervalString: String {
-        guard let lastUpdateDate = lastUpdate else {
-            return ""
-        }
-        let interval = now.timeIntervalSince(lastUpdateDate)
-        if interval < 1  { return "loading" }
-        return "\(lastUpdateDate.durationFormatter)"
-    }
-
+    
     func streamData() {
         if shouldStreamData == false {
             getAccounts()
@@ -85,12 +80,22 @@ extension AccountViewModel {
         shouldStreamData.toggle()
     }
 
+    //MARK: Variables
     private var dayProfitLossPercentage: Decimal {
         guard let initialEquity = account?.initialEquity, let currentLongMarginValue = account?.currentEquity else {
             return 0
         }
         let math = (currentLongMarginValue - initialEquity) / currentLongMarginValue * 100
         return math
+    }
+    
+    var timeIntervalString: String {
+        guard let lastUpdateDate = lastUpdate else {
+            return ""
+        }
+        let interval = now.timeIntervalSince(lastUpdateDate)
+        if interval < 1  { return "loading" }
+        return "\(lastUpdateDate.durationFormatter)"
     }
 
     var title: String {
