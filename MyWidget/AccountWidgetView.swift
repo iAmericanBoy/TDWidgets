@@ -18,7 +18,7 @@ struct AccountWidgetView: View {
 
 struct AccountWidgetView_Previews: PreviewProvider {
     static var previews: some View {
-        AccountWidgetView(entry: AccountEntry(date: Date()))
+        AccountWidgetView(entry: AccountEntry.TestingVariation.complete)
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }

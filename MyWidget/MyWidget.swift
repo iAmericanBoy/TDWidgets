@@ -10,11 +10,11 @@ import WidgetKit
 
 struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> AccountEntry {
-        AccountEntry(date: Date())
+        AccountEntry.TestingVariation.complete
     }
 
     func getSnapshot(in context: Context, completion: @escaping (AccountEntry) -> ()) {
-        let entry = AccountEntry(date: Date())
+        let entry = AccountEntry.TestingVariation.complete
         completion(entry)
     }
 
@@ -25,7 +25,7 @@ struct Provider: TimelineProvider {
         let currentDate = Date()
         for hourOffset in 0 ..< 5 {
             let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = AccountEntry(date: entryDate)
+            let entry = AccountEntry.TestingVariation.complete
             entries.append(entry)
         }
 
@@ -49,7 +49,7 @@ struct MyWidget: Widget {
 
 struct MyWidget_Previews: PreviewProvider {
     static var previews: some View {
-        AccountWidgetView(entry: AccountEntry(date: Date()))
+        AccountWidgetView(entry: AccountEntry.TestingVariation.complete)
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }

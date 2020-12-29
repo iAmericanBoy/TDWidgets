@@ -35,8 +35,8 @@ class AccountViewModel: ObservableObject {
         getAccounts()
     }
 
-    // MARK: Private Function
-    private func getAccounts() {
+    // MARK: Intent
+    func getAccounts() {
         lastUpdate = Date()
         accountsSubscriber = repository.getAccouts()
             .receive(on: RunLoop.main)

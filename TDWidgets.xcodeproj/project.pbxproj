@@ -32,6 +32,13 @@
 		B6C2101A259B8A1D009CCEEA /* AccountWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C21019259B8A1D009CCEEA /* AccountWidgetView.swift */; };
 		B6C2102F259B9099009CCEEA /* AccountEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C2102E259B9099009CCEEA /* AccountEntry.swift */; };
 		B6C21037259B90EE009CCEEA /* AccountWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C21036259B90EE009CCEEA /* AccountWidgetViewModel.swift */; };
+		B6C2103E259B9168009CCEEA /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67A035525925736002F6A19 /* Repository.swift */; };
+		B6C21042259B92D0009CCEEA /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C9EA452561F76D00F9DDBF /* Authenticator.swift */; };
+		B6C21046259B92D4009CCEEA /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C9EA482561F7F600F9DDBF /* URLSession.swift */; };
+		B6C2104A259B92E0009CCEEA /* TokenDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C20F37259A45DB009CCEEA /* TokenDataModel.swift */; };
+		B6C2104E259B92E4009CCEEA /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C9EA402561F71500F9DDBF /* Token.swift */; };
+		B6C21052259B92E7009CCEEA /* AccountDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67A035125923AAB002F6A19 /* AccountDataModel.swift */; };
+		B6C21056259B930B009CCEEA /* AppSecrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C20F89259B8830009CCEEA /* AppSecrets.swift */; };
 		B6C9EA412561F71500F9DDBF /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C9EA402561F71500F9DDBF /* Token.swift */; };
 		B6C9EA462561F76D00F9DDBF /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C9EA452561F76D00F9DDBF /* Authenticator.swift */; };
 		B6C9EA492561F7F600F9DDBF /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C9EA482561F7F600F9DDBF /* URLSession.swift */; };
@@ -421,10 +428,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6C2104E259B92E4009CCEEA /* Token.swift in Sources */,
+				B6C21052259B92E7009CCEEA /* AccountDataModel.swift in Sources */,
 				B6C21037259B90EE009CCEEA /* AccountWidgetViewModel.swift in Sources */,
+				B6C21046259B92D4009CCEEA /* URLSession.swift in Sources */,
 				B6C2101A259B8A1D009CCEEA /* AccountWidgetView.swift in Sources */,
+				B6C21056259B930B009CCEEA /* AppSecrets.swift in Sources */,
+				B6C2104A259B92E0009CCEEA /* TokenDataModel.swift in Sources */,
+				B6C2103E259B9168009CCEEA /* Repository.swift in Sources */,
 				B6C2100A259B89F2009CCEEA /* MyWidget.swift in Sources */,
 				B6C2102F259B9099009CCEEA /* AccountEntry.swift in Sources */,
+				B6C21042259B92D0009CCEEA /* Authenticator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
