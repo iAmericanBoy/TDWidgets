@@ -6,3 +6,25 @@
 //
 
 import Foundation
+import Combine
+
+
+class AccountWidgetViewModel {
+    
+    // MARK: Members:
+
+    private let repository: Repository
+
+    // MARK: Subscribers:
+
+    private var accountsSubscriber: AnyCancellable?
+    
+    init(repository: Repository = RepositoryImpl()) {
+        self.repository = repository
+        getAccounts()
+    }
+    
+    private func getAccounts() {
+        
+    }
+}
