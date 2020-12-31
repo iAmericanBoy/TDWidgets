@@ -29,7 +29,7 @@ struct AccountEntry: TimelineEntry {
 
     init(_ account: Account) {
         date = Date()
-        dayProfitLossPercentage = "\(account.dayProfitLossPercentage)"
+        dayProfitLossPercentage = "\(account.dayProfitLossPercentage.twoDigitsFormatter)%"
         dayProfitLossImage = account.dayProfitLossPercentage > 0 ? "arrow.up" : "arrow.down"
         dayProfitLossColor = account.dayProfitLossPercentage > 0 ? .green : .red
         row1 = []
@@ -39,6 +39,29 @@ struct AccountEntry: TimelineEntry {
 
 extension AccountEntry {
     struct TestingVariation {
+        static func updated(_ currentDate: Date) -> AccountEntry {
+            AccountEntry(date: currentDate,
+                         dayProfitLossValue: "3.14%",
+                         dayProfitLossColor: .green,
+                         dayProfitLossImage: "arrow.up",
+                         row1: [(symbol: "AAPL",
+                                 arrowName: "arrow.up",
+                                 percentageString: "2.02%",
+                                 color: .green),
+                                (symbol: "MSFT",
+                                 arrowName: "arrow.up",
+                                 percentageString: "2.02%",
+                                 color: .green)],
+                         row2: [(symbol: "VOO",
+                                 arrowName: "arrow.up",
+                                 percentageString: "2.02%",
+                                 color: .green),
+                                (symbol: "BYND",
+                                 arrowName: "arrow.up",
+                                 percentageString: "2.02%",
+                                 color: .green)])
+        }
+
         static var complete: AccountEntry {
             AccountEntry(date: Date(),
                          dayProfitLossValue: "3.14%",
@@ -60,6 +83,12 @@ extension AccountEntry {
                                  arrowName: "arrow.up",
                                  percentageString: "2.02%",
                                  color: .green)])
+        }
+    }
+
+    struct SnapshotVariation {
+        static var complete: AccountEntry {
+            AccountEntry(date: Date(), dayProfitLossValue: "3.14%", dayProfitLossColor: .green, dayProfitLossImage: "arrow.up", row1: [], row2: [])
         }
     }
 }

@@ -42,6 +42,7 @@
 		B6C2105E259BC909009CCEEA /* GridStockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C2105D259BC909009CCEEA /* GridStockView.swift */; };
 		B6C21062259D5A25009CCEEA /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EEE3EE259298DC00F5FB5C /* Account.swift */; };
 		B6C21067259D5A54009CCEEA /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C21066259D5A53009CCEEA /* DataStore.swift */; };
+		B6C21077259E2E9C009CCEEA /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C20F2F259A3041009CCEEA /* Formatters.swift */; };
 		B6C9EA412561F71500F9DDBF /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C9EA402561F71500F9DDBF /* Token.swift */; };
 		B6C9EA462561F76D00F9DDBF /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C9EA452561F76D00F9DDBF /* Authenticator.swift */; };
 		B6C9EA492561F7F600F9DDBF /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C9EA482561F7F600F9DDBF /* URLSession.swift */; };
@@ -442,6 +443,7 @@
 				B6C21037259B90EE009CCEEA /* AccountWidgetViewModel.swift in Sources */,
 				B6C21046259B92D4009CCEEA /* URLSession.swift in Sources */,
 				B6C2101A259B8A1D009CCEEA /* AccountWidgetView.swift in Sources */,
+				B6C21077259E2E9C009CCEEA /* Formatters.swift in Sources */,
 				B6C21056259B930B009CCEEA /* AppSecrets.swift in Sources */,
 				B6C2104A259B92E0009CCEEA /* TokenDataModel.swift in Sources */,
 				B6C2105E259BC909009CCEEA /* GridStockView.swift in Sources */,

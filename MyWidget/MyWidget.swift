@@ -5,10 +5,13 @@
 //  Created by Dominic Lanzillotta on 12/29/20.
 //
 
+import os
 import SwiftUI
 import WidgetKit
 
 struct Provider: TimelineProvider {
+    let viewModel = AccountWidgetViewModel()
+
     func placeholder(in context: Context) -> AccountEntry {
         AccountEntry.TestingVariation.complete
     }
@@ -19,18 +22,22 @@ struct Provider: TimelineProvider {
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<AccountEntry>) -> ()) {
-        var entries: [AccountEntry] = []
-
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = AccountEntry.TestingVariation.complete
-            entries.append(entry)
+        let logger = Logger()
+        logger.debug("get accounts is called")
+        viewModel.getAccounts { response in
+            logger.debug("get Accounts result received")
+            switch response {
+            case .success(let entry):
+                logger.debug("received entry")
+                let timeline = Timeline(entries: [entry], policy: .atEnd)
+                completion(timeline)
+            case .failure(let error):
+                logger.debug("received error")
+                print(error)
+                let timeline = Timeline(entries: [AccountEntry.TestingVariation.updated(Date())], policy: .atEnd)
+                completion(timeline)
+            }
         }
-
-        let timeline = Timeline(entries: entries, policy: .atEnd)
-        completion(timeline)
     }
 }
 
@@ -42,8 +49,10 @@ struct MyWidget: Widget {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             AccountWidgetView(entry: entry)
         }
-        .configurationDisplayName("TDWidget")
-        .description("This is a simple widget to see an overview of a ID Trading Account")
+        .configurationDisplayName("MyWidget")
+        .description("This is a simple widget to see an overview of a TD Trading Account")
+        .onBackgroundURLSessionEvents { _, _ in
+        }
     }
 }
 
