@@ -12,11 +12,29 @@ typealias GridValue = (symbol: String, arrowName: String, percentageString: Stri
 
 struct AccountEntry: TimelineEntry {
     let date: Date
-    let dayProfitLossValue: String
+    let dayProfitLossPercentage: String
     let dayProfitLossColor: Color
     let dayProfitLossImage: String
     let row1: [GridValue]
     let row2: [GridValue]
+
+    internal init(date: Date, dayProfitLossValue: String, dayProfitLossColor: Color, dayProfitLossImage: String, row1: [GridValue], row2: [GridValue]) {
+        self.date = date
+        dayProfitLossPercentage = dayProfitLossValue
+        self.dayProfitLossColor = dayProfitLossColor
+        self.dayProfitLossImage = dayProfitLossImage
+        self.row1 = row1
+        self.row2 = row2
+    }
+
+    init(_ account: Account) {
+        date = Date()
+        dayProfitLossPercentage = "\(account.dayProfitLossPercentage)"
+        dayProfitLossImage = account.dayProfitLossPercentage > 0 ? "arrow.up" : "arrow.down"
+        dayProfitLossColor = account.dayProfitLossPercentage > 0 ? .green : .red
+        row1 = []
+        row2 = []
+    }
 }
 
 extension AccountEntry {
