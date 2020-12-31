@@ -8,8 +8,6 @@
 import SwiftUI
 import WidgetKit
 
-typealias GridValue = (symbol: String, arrowName: String, percentageString: String, color: Color)
-
 struct AccountEntry: TimelineEntry {
     let date: Date
     let dayProfitLossPercentage: String
@@ -32,8 +30,37 @@ struct AccountEntry: TimelineEntry {
         dayProfitLossPercentage = "\(account.dayProfitLossPercentage.twoDigitsFormatter)%"
         dayProfitLossImage = account.dayProfitLossPercentage > 0 ? "arrow.up" : "arrow.down"
         dayProfitLossColor = account.dayProfitLossPercentage > 0 ? .green : .red
-        row1 = []
-        row2 = []
+
+        var array = account.positions.map { GridValue(symbol: $0.symbol, percentage: $0.dayProfitLossPercentage) }
+
+        let first = array.removeFirst()
+        let second = array.removeFirst()
+        let third = array.removeFirst()
+        let fourth = array.removeFirst()
+        row1 = [first, second]
+        row2 = [third, fourth]
+    }
+
+    struct GridValue {
+        var symbol: String
+        private var percentage: Decimal
+
+        init(symbol: String, percentage: Decimal) {
+            self.symbol = symbol
+            self.percentage = percentage
+        }
+
+        var arrowName: String {
+            percentage > 0 ?"arrow.up" : "arrow.down"
+        }
+
+        var percentageString: String {
+            "\(percentage.twoDigitsFormatter)%"
+        }
+
+        var color: Color {
+            percentage > 0 ? .green : .red
+        }
     }
 }
 
@@ -44,22 +71,10 @@ extension AccountEntry {
                          dayProfitLossValue: "3.14%",
                          dayProfitLossColor: .green,
                          dayProfitLossImage: "arrow.up",
-                         row1: [(symbol: "AAPL",
-                                 arrowName: "arrow.up",
-                                 percentageString: "2.02%",
-                                 color: .green),
-                                (symbol: "MSFT",
-                                 arrowName: "arrow.up",
-                                 percentageString: "2.02%",
-                                 color: .green)],
-                         row2: [(symbol: "VOO",
-                                 arrowName: "arrow.up",
-                                 percentageString: "2.02%",
-                                 color: .green),
-                                (symbol: "BYND",
-                                 arrowName: "arrow.up",
-                                 percentageString: "2.02%",
-                                 color: .green)])
+                         row1: [GridValue(symbol: "AAPL", percentage: 2.02),
+                                GridValue(symbol: "MSFT", percentage: 2.02)],
+                         row2: [GridValue(symbol: "VOO", percentage: 2.02),
+                                GridValue(symbol: "BYND", percentage: 2.02)])
         }
 
         static var complete: AccountEntry {
@@ -67,22 +82,10 @@ extension AccountEntry {
                          dayProfitLossValue: "3.14%",
                          dayProfitLossColor: .green,
                          dayProfitLossImage: "arrow.up",
-                         row1: [(symbol: "AAPL",
-                                 arrowName: "arrow.up",
-                                 percentageString: "2.02%",
-                                 color: .green),
-                                (symbol: "MSFT",
-                                 arrowName: "arrow.up",
-                                 percentageString: "2.02%",
-                                 color: .green)],
-                         row2: [(symbol: "VOO",
-                                 arrowName: "arrow.up",
-                                 percentageString: "2.02%",
-                                 color: .green),
-                                (symbol: "BYND",
-                                 arrowName: "arrow.up",
-                                 percentageString: "2.02%",
-                                 color: .green)])
+                         row1: [GridValue(symbol: "AAPL", percentage: 2.02),
+                                GridValue(symbol: "MSFT", percentage: 2.02)],
+                         row2: [GridValue(symbol: "VOO", percentage: 2.02),
+                                GridValue(symbol: "BYND", percentage: 2.02)])
         }
     }
 

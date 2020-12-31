@@ -19,27 +19,31 @@ struct AccountWidgetView: View {
                 Text(entry.dayProfitLossPercentage)
             }
             .font(.title)
-            .foregroundColor(Color.green.opacity(0.9))
+            .foregroundColor(entry.dayProfitLossColor.opacity(0.9))
             Text("\(entry.date, style: .relative) ago")
                 .font(.footnote)
                 .bold()
                 .foregroundColor(Color.gray.opacity(0.5))
             Divider()
                 .padding(.vertical, 4)
-            LazyHGrid(rows: [GridItem(.flexible())], content: {
-                GridStockView(gridValue: entry.row1[0])
-                GridStockView(gridValue: entry.row1[1])
-            })
-            Divider()
-                .padding(.vertical, 4)
-            LazyHGrid(rows: [GridItem(.flexible())], content: {
-                GridStockView(gridValue: entry.row2[0])
-                GridStockView(gridValue: entry.row2[1])
-            })
-            Divider()
-                .padding(.vertical, 4)
+            if entry.row1.isEmpty == false {
+                LazyHGrid(rows: [GridItem(.flexible())], content: {
+                    GridStockView(gridValue: entry.row1[0])
+                    GridStockView(gridValue: entry.row1[1])
+                })
+                Divider()
+                    .padding(.vertical, 4)
+            }
+            if entry.row2.isEmpty == false {
+                LazyHGrid(rows: [GridItem(.flexible())], content: {
+                    GridStockView(gridValue: entry.row2[0])
+                    GridStockView(gridValue: entry.row2[1])
+                })
+                Divider()
+                    .padding(.vertical, 4)
+            }
         }
-        .padding(15)
+        .padding(10)
     }
 }
 

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GridStockView: View {
-    @State var gridValue: GridValue
+    @State var gridValue: AccountEntry.GridValue
 
     var body: some View {
         VStack(alignment: .leading) {
