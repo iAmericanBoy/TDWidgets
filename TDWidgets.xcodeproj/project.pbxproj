@@ -43,6 +43,8 @@
 		B6C21062259D5A25009CCEEA /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EEE3EE259298DC00F5FB5C /* Account.swift */; };
 		B6C21067259D5A54009CCEEA /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C21066259D5A53009CCEEA /* DataStore.swift */; };
 		B6C21077259E2E9C009CCEEA /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C20F2F259A3041009CCEEA /* Formatters.swift */; };
+		B6C2107C259E316B009CCEEA /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C2107B259E316B009CCEEA /* Position.swift */; };
+		B6C21080259E38E9009CCEEA /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C2107B259E316B009CCEEA /* Position.swift */; };
 		B6C9EA412561F71500F9DDBF /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C9EA402561F71500F9DDBF /* Token.swift */; };
 		B6C9EA462561F76D00F9DDBF /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C9EA452561F76D00F9DDBF /* Authenticator.swift */; };
 		B6C9EA492561F7F600F9DDBF /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C9EA482561F7F600F9DDBF /* URLSession.swift */; };
@@ -117,6 +119,7 @@
 		B6C21036259B90EE009CCEEA /* AccountWidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountWidgetViewModel.swift; sourceTree = "<group>"; };
 		B6C2105D259BC909009CCEEA /* GridStockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridStockView.swift; sourceTree = "<group>"; };
 		B6C21066259D5A53009CCEEA /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
+		B6C2107B259E316B009CCEEA /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 		B6C9EA402561F71500F9DDBF /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		B6C9EA452561F76D00F9DDBF /* Authenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticator.swift; sourceTree = "<group>"; };
 		B6C9EA482561F7F600F9DDBF /* URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSession.swift; sourceTree = "<group>"; };
@@ -261,6 +264,7 @@
 			children = (
 				B67A035125923AAB002F6A19 /* AccountDataModel.swift */,
 				B6EEE3EE259298DC00F5FB5C /* Account.swift */,
+				B6C2107B259E316B009CCEEA /* Position.swift */,
 				B6C9EA402561F71500F9DDBF /* Token.swift */,
 				B6C20F37259A45DB009CCEEA /* TokenDataModel.swift */,
 			);
@@ -416,6 +420,7 @@
 				B6EEE3EF259298DC00F5FB5C /* Account.swift in Sources */,
 				B67A035225923AAB002F6A19 /* AccountDataModel.swift in Sources */,
 				B6EEE3F9259A26C800F5FB5C /* SimpleStockRowViewModel.swift in Sources */,
+				B6C2107C259E316B009CCEEA /* Position.swift in Sources */,
 				B694C7C32554CD9D00A61D65 /* OAuthManager.swift in Sources */,
 				B694C7BD2554C89D00A61D65 /* OAuthViewController.swift in Sources */,
 				B6EEE3EB2592924500F5FB5C /* Mockrepository.swift in Sources */,
@@ -445,6 +450,7 @@
 				B6C2101A259B8A1D009CCEEA /* AccountWidgetView.swift in Sources */,
 				B6C21077259E2E9C009CCEEA /* Formatters.swift in Sources */,
 				B6C21056259B930B009CCEEA /* AppSecrets.swift in Sources */,
+				B6C21080259E38E9009CCEEA /* Position.swift in Sources */,
 				B6C2104A259B92E0009CCEEA /* TokenDataModel.swift in Sources */,
 				B6C2105E259BC909009CCEEA /* GridStockView.swift in Sources */,
 				B6C2103E259B9168009CCEEA /* Repository.swift in Sources */,

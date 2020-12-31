@@ -11,8 +11,8 @@ struct SimpleStockRowViewModel: Identifiable {
     var id: UUID = UUID()
     var symbol: String
     private var quanity: Decimal
-    private var marketValue: Decimal
-    private var totalDayProfitLoss: Decimal
+    private var singleStockValue: Decimal
+    private var dayProfitLossValue: Decimal
     private var dayProfitLossPercentage: Decimal
 
     var quanityString: String {
@@ -20,13 +20,12 @@ struct SimpleStockRowViewModel: Identifiable {
     }
 
     var marketValueString: String {
-        (marketValue / quanity).currencyString
+        singleStockValue.currencyString
     }
 
     var singleStockProfitLossString: String {
         if dayProfitLossPercentage == 0 { return "" }
-        let singleStockProfitLoss = totalDayProfitLoss / quanity
-        return "\(singleStockProfitLoss.currencyString) (\(dayProfitLossPercentage.twoDigitsFormatter)%)"
+        return "\(dayProfitLossValue.currencyString) (\(dayProfitLossPercentage.twoDigitsFormatter)%)"
     }
 
     var profitLossSymbol: String {
@@ -38,28 +37,28 @@ struct SimpleStockRowViewModel: Identifiable {
         return dayProfitLossPercentage > 0 ? .green : .red
     }
 
-    internal init(id: UUID = UUID(), symbol: String, quanity: Decimal, marketValue: Decimal, totalDayProfitLoss: Decimal, dayProfitLossPercentage: Decimal) {
+    internal init(id: UUID = UUID(), symbol: String, quanity: Decimal, singleStockValue: Decimal, dayProfitLossValue: Decimal, dayProfitLossPercentage: Decimal) {
         self.id = id
         self.symbol = symbol
         self.quanity = quanity
-        self.marketValue = marketValue
-        self.totalDayProfitLoss = totalDayProfitLoss
+        self.singleStockValue = singleStockValue
+        self.dayProfitLossValue = dayProfitLossValue
         self.dayProfitLossPercentage = dayProfitLossPercentage
     }
 
-    init(_ position: PositionDataModel) {
-        symbol = position.instrument.symbol
-        quanity = position.longQuantity
-        marketValue = position.marketValue
-        totalDayProfitLoss = position.currentDayProfitLoss
-        dayProfitLossPercentage = position.currentDayProfitLossPercentage
+    init(_ position: Position) {
+        symbol = position.symbol
+        quanity = position.quanity
+        singleStockValue = position.singleStockValue
+        dayProfitLossValue = position.dayProfitLossValue
+        dayProfitLossPercentage = position.dayProfitLossPercentage
     }
 }
 
 extension SimpleStockRowViewModel {
     struct TestingVariation {
         static var completeApple: SimpleStockRowViewModel {
-            SimpleStockRowViewModel(symbol: "AAPL", quanity: 4.035, marketValue: 134.83, totalDayProfitLoss: 3.36, dayProfitLossPercentage: 2.56)
+            SimpleStockRowViewModel(symbol: "AAPL", quanity: 4.035, singleStockValue: 134.83, dayProfitLossValue: 3.36, dayProfitLossPercentage: 2.56)
         }
     }
 }

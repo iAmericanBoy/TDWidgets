@@ -52,10 +52,13 @@ class AccountViewModel: ObservableObject {
                     print(error)
                 }
             }, receiveValue: { accountsDataModel in
-                self.account = Account(accountsDataModel[0])
-                self.simpleStockPositions = accountsDataModel[0].securitiesAccount.positions?.compactMap { (position) -> SimpleStockRowViewModel in
-                    SimpleStockRowViewModel(position)
-                } ?? []
+                if let first = accountsDataModel.first {
+                    let account = Account(first)
+                    self.account = account
+                    self.simpleStockPositions = account.positions.compactMap { (position) -> SimpleStockRowViewModel in
+                        SimpleStockRowViewModel(position)
+                    }
+                }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
                     if self.shouldStreamData {
                         self.getAccounts()

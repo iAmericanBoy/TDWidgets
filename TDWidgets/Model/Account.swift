@@ -12,12 +12,14 @@ struct Account {
     var accountID: String
     var initialEquity: Decimal
     var currentEquity: Decimal
+    var positions: [Position]
 
-    internal init(type: String, accountID: String, initialEquity: Decimal, currentLongMarginValue: Decimal) {
+    internal init(type: String, accountID: String, initialEquity: Decimal, currentEquity: Decimal, positions: [Position]) {
         self.type = type
         self.accountID = accountID
         self.initialEquity = initialEquity
-        currentEquity = currentLongMarginValue
+        self.currentEquity = currentEquity
+        self.positions = positions
     }
 
     init(_ accountElement: AccountElementDataModel) {
@@ -25,6 +27,7 @@ struct Account {
         accountID = accountElement.securitiesAccount.accountID
         initialEquity = accountElement.securitiesAccount.initialBalances.equity
         currentEquity = accountElement.securitiesAccount.currentBalances.equity
+        positions = accountElement.securitiesAccount.positions?.compactMap { Position($0) } ?? []
     }
 
     var dayProfitLossPercentage: Decimal {
@@ -39,7 +42,7 @@ struct Account {
 extension Account {
     struct TestingVariation {
         static var completeMargin: Account {
-            Account(type: "MARGIN", accountID: "123456", initialEquity: 55235, currentLongMarginValue: 59342)
+            Account(type: "MARGIN", accountID: "123456", initialEquity: 55235, currentEquity: 59342, positions: [Position.TestingVariation.completeApple])
         }
     }
 }
