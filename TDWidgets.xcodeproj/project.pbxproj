@@ -164,8 +164,7 @@
 			children = (
 				B67A035B25928163002F6A19 /* AccountHeaderView.swift */,
 				B67A036525928BAF002F6A19 /* AccountView.swift */,
-				B67A035F2592860E002F6A19 /* SimpleStockRow.swift */,
-				B6EEE3F8259A26C800F5FB5C /* SimpleStockRowViewModel.swift */,
+				B6C21084259E3A9A009CCEEA /* SimpleStockRow */,
 				B6EEE3E62592917500F5FB5C /* AccountViewModel.swift */,
 			);
 			path = AccountView;
@@ -257,6 +256,15 @@
 				B6C2100D259B89F3009CCEEA /* Info.plist */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		B6C21084259E3A9A009CCEEA /* SimpleStockRow */ = {
+			isa = PBXGroup;
+			children = (
+				B67A035F2592860E002F6A19 /* SimpleStockRow.swift */,
+				B6EEE3F8259A26C800F5FB5C /* SimpleStockRowViewModel.swift */,
+			);
+			path = SimpleStockRow;
 			sourceTree = "<group>";
 		};
 		B6C9EA432561F72100F9DDBF /* Model */ = {
