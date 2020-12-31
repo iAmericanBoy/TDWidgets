@@ -80,15 +80,7 @@ extension AccountViewModel {
         shouldStreamData.toggle()
     }
 
-    //MARK: Variables
-    private var dayProfitLossPercentage: Decimal {
-        guard let initialEquity = account?.initialEquity, let currentLongMarginValue = account?.currentEquity else {
-            return 0
-        }
-        let math = (currentLongMarginValue - initialEquity) / currentLongMarginValue * 100
-        return math
-    }
-    
+    //MARK: Variables    
     var timeIntervalString: String {
         guard let lastUpdateDate = lastUpdate else {
             return ""
@@ -111,19 +103,19 @@ extension AccountViewModel {
     }
 
     var arrowImageName: String {
-        dayProfitLossPercentage > 0 ? "arrow.up" : "arrow.down"
+        account?.dayProfitLossPercentage ?? 0 > 0 ? "arrow.up" : "arrow.down"
     }
 
     var subtitleColor: Color {
-        return dayProfitLossPercentage > 0 ? .green : .red
+        return account?.dayProfitLossPercentage ?? 0 > 0 ? .green : .red
     }
 
     var balanceSubTitle: String {
-        guard dayProfitLossPercentage != 0, let initialEquity = account?.initialEquity, let currentLongMarginValue = account?.currentEquity else {
+        guard account?.dayProfitLossPercentage != 0, let initialEquity = account?.initialEquity, let currentLongMarginValue = account?.currentEquity else {
             return ""
         }
         let singleDayProfitLoss = initialEquity - currentLongMarginValue
-        return "\(singleDayProfitLoss.currencyString) (\(dayProfitLossPercentage.twoDigitsFormatter)%)"
+        return "\(singleDayProfitLoss.currencyString) (\(account?.dayProfitLossPercentage.twoDigitsFormatter ?? "")%)"
     }
 }
 
