@@ -28,11 +28,11 @@ struct Account {
     }
 
     var dayProfitLossPercentage: Decimal {
-        return dayProfitLoss / currentEquity * 100
+        return dayProfitLoss / initialEquity * 100
     }
 
     var dayProfitLoss: Decimal {
-        return initialEquity - currentEquity
+        return currentEquity - initialEquity
     }
 }
 
