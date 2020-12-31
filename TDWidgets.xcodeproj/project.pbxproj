@@ -40,6 +40,8 @@
 		B6C21052259B92E7009CCEEA /* AccountDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67A035125923AAB002F6A19 /* AccountDataModel.swift */; };
 		B6C21056259B930B009CCEEA /* AppSecrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C20F89259B8830009CCEEA /* AppSecrets.swift */; };
 		B6C2105E259BC909009CCEEA /* GridStockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C2105D259BC909009CCEEA /* GridStockView.swift */; };
+		B6C21062259D5A25009CCEEA /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EEE3EE259298DC00F5FB5C /* Account.swift */; };
+		B6C21067259D5A54009CCEEA /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C21066259D5A53009CCEEA /* DataStore.swift */; };
 		B6C9EA412561F71500F9DDBF /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C9EA402561F71500F9DDBF /* Token.swift */; };
 		B6C9EA462561F76D00F9DDBF /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C9EA452561F76D00F9DDBF /* Authenticator.swift */; };
 		B6C9EA492561F7F600F9DDBF /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C9EA482561F7F600F9DDBF /* URLSession.swift */; };
@@ -113,6 +115,7 @@
 		B6C2102E259B9099009CCEEA /* AccountEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountEntry.swift; sourceTree = "<group>"; };
 		B6C21036259B90EE009CCEEA /* AccountWidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountWidgetViewModel.swift; sourceTree = "<group>"; };
 		B6C2105D259BC909009CCEEA /* GridStockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridStockView.swift; sourceTree = "<group>"; };
+		B6C21066259D5A53009CCEEA /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		B6C9EA402561F71500F9DDBF /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		B6C9EA452561F76D00F9DDBF /* Authenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticator.swift; sourceTree = "<group>"; };
 		B6C9EA482561F7F600F9DDBF /* URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSession.swift; sourceTree = "<group>"; };
@@ -205,6 +208,7 @@
 				B6C9EA482561F7F600F9DDBF /* URLSession.swift */,
 				B6C20F89259B8830009CCEEA /* AppSecrets.swift */,
 				B67A035525925736002F6A19 /* Repository.swift */,
+				B6C21066259D5A53009CCEEA /* DataStore.swift */,
 				B67A036A25928D18002F6A19 /* AccountView */,
 				B6C20F2F259A3041009CCEEA /* Formatters.swift */,
 			);
@@ -418,6 +422,7 @@
 				B6C9EA492561F7F600F9DDBF /* URLSession.swift in Sources */,
 				B67A036625928BAF002F6A19 /* AccountView.swift in Sources */,
 				B6EEE3E72592917500F5FB5C /* AccountViewModel.swift in Sources */,
+				B6C21067259D5A54009CCEEA /* DataStore.swift in Sources */,
 				B694C7A72554C6A000A61D65 /* AppDelegate.swift in Sources */,
 				B694C7A92554C6A000A61D65 /* SceneDelegate.swift in Sources */,
 				B67A035C25928163002F6A19 /* AccountHeaderView.swift in Sources */,
@@ -432,6 +437,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6C2104E259B92E4009CCEEA /* Token.swift in Sources */,
+				B6C21062259D5A25009CCEEA /* Account.swift in Sources */,
 				B6C21052259B92E7009CCEEA /* AccountDataModel.swift in Sources */,
 				B6C21037259B90EE009CCEEA /* AccountWidgetViewModel.swift in Sources */,
 				B6C21046259B92D4009CCEEA /* URLSession.swift in Sources */,

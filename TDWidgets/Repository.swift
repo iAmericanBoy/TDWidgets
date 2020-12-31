@@ -5,6 +5,11 @@
 //  Created by Dominic Lanzillotta on 12/22/20.
 //
 
+
+// the repositorys job is to be a single point of entry to the service that powers the app
+// it takes a datamodel and converts it to the appmodel but also would be in charge of caching and saving data for later use
+// it should also take errors form the datastore and handle them gracefully or populate to the view layers of the app
+
 import Combine
 import Foundation
 
