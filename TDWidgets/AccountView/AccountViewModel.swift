@@ -29,6 +29,7 @@ class AccountViewModel: ObservableObject {
     private var timer: Timer?
 
     // MARK: init
+
     init(repository: Repository = RepositoryImpl()) {
         self.repository = repository
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateNow), userInfo: nil, repeats: true)
@@ -36,6 +37,7 @@ class AccountViewModel: ObservableObject {
     }
 
     // MARK: Intent
+
     func getAccounts() {
         lastUpdate = Date()
         accountsSubscriber = repository.getAccouts()
@@ -66,13 +68,13 @@ class AccountViewModel: ObservableObject {
 // MARK: - AccountHeaderView
 
 extension AccountViewModel {
-    
     // MARK: Intents
+
     @objc
     func updateNow() {
         now = Date()
     }
-    
+
     func streamData() {
         if shouldStreamData == false {
             getAccounts()
@@ -80,13 +82,14 @@ extension AccountViewModel {
         shouldStreamData.toggle()
     }
 
-    //MARK: Variables    
+    // MARK: Variables
+
     var timeIntervalString: String {
         guard let lastUpdateDate = lastUpdate else {
             return ""
         }
         let interval = now.timeIntervalSince(lastUpdateDate)
-        if interval < 1  { return "loading" }
+        if interval < 1 { return "loading" }
         return "\(lastUpdateDate.durationFormatter)"
     }
 
@@ -111,11 +114,10 @@ extension AccountViewModel {
     }
 
     var balanceSubTitle: String {
-        guard account?.dayProfitLossPercentage != 0, let initialEquity = account?.initialEquity, let currentLongMarginValue = account?.currentEquity else {
+        guard account?.dayProfitLossPercentage != 0 else {
             return ""
         }
-        let singleDayProfitLoss = initialEquity - currentLongMarginValue
-        return "\(singleDayProfitLoss.currencyString) (\(account?.dayProfitLossPercentage.twoDigitsFormatter ?? "")%)"
+        return "\(account?.dayProfitLoss.currencyString ?? "") (\(account?.dayProfitLossPercentage.twoDigitsFormatter ?? "")%)"
     }
 }
 

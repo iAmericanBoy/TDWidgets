@@ -26,9 +26,13 @@ struct Account {
         initialEquity = accountElement.securitiesAccount.initialBalances.equity
         currentEquity = accountElement.securitiesAccount.currentBalances.equity
     }
-    
+
     var dayProfitLossPercentage: Decimal {
-        return (currentEquity - initialEquity) / currentEquity * 100
+        return dayProfitLoss / currentEquity * 100
+    }
+
+    var dayProfitLoss: Decimal {
+        return initialEquity - currentEquity
     }
 }
 
