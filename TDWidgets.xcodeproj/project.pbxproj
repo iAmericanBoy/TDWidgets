@@ -164,8 +164,8 @@
 			children = (
 				B67A035B25928163002F6A19 /* AccountHeaderView.swift */,
 				B67A036525928BAF002F6A19 /* AccountView.swift */,
-				B6C21084259E3A9A009CCEEA /* SimpleStockRow */,
 				B6EEE3E62592917500F5FB5C /* AccountViewModel.swift */,
+				B6C21084259E3A9A009CCEEA /* SimpleStockRow */,
 			);
 			path = AccountView;
 			sourceTree = "<group>";
@@ -267,14 +267,22 @@
 			path = SimpleStockRow;
 			sourceTree = "<group>";
 		};
-		B6C9EA432561F72100F9DDBF /* Model */ = {
+		B6C2108B25A495D7009CCEEA /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
 				B67A035125923AAB002F6A19 /* AccountDataModel.swift */,
+				B6C20F37259A45DB009CCEEA /* TokenDataModel.swift */,
+			);
+			path = DataModel;
+			sourceTree = "<group>";
+		};
+		B6C9EA432561F72100F9DDBF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B6C2108B25A495D7009CCEEA /* DataModel */,
 				B6EEE3EE259298DC00F5FB5C /* Account.swift */,
 				B6C2107B259E316B009CCEEA /* Position.swift */,
 				B6C9EA402561F71500F9DDBF /* Token.swift */,
-				B6C20F37259A45DB009CCEEA /* TokenDataModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
