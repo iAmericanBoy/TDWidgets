@@ -9,9 +9,15 @@ import Combine
 import Foundation
 
 class MockRepositry: Repository {
-    var accountDataModelValue: AccountDataModel!
-    func getAccouts() -> AnyPublisher<AccountDataModel, Error> {
-        let mockResult: Result<AccountDataModel, Error> = .success(accountDataModelValue)
+    var marketHoursDataModelValue: MarketDataModel!
+    func getMarketHours() -> AnyPublisher<MarketDataModel, Error> {
+        let mockResult: Result<MarketDataModel, Error> = .success(marketHoursDataModelValue)
+        return mockResult.publisher.eraseToAnyPublisher()
+    }
+
+    var accountAppModelValue: [Account]!
+    func getAccouts() -> AnyPublisher<[Account], Error> {
+        let mockResult: Result<[Account], Error> = .success(accountAppModelValue)
         return mockResult.publisher.eraseToAnyPublisher()
     }
 }
@@ -20,7 +26,8 @@ extension MockRepositry {
     struct PreviewVariation {
         static var complete: Repository {
             let mock = MockRepositry()
-            mock.accountDataModelValue = AccountDataModel.TestingVariation.complete
+            mock.accountAppModelValue = [Account.TestingVariation.completeMargin]
+//            mock.marketHoursDataModelValue = MarketDataModel.
             return mock
         }
     }

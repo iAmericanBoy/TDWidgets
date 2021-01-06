@@ -46,6 +46,8 @@
 		B6C2107C259E316B009CCEEA /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C2107B259E316B009CCEEA /* Position.swift */; };
 		B6C21080259E38E9009CCEEA /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C2107B259E316B009CCEEA /* Position.swift */; };
 		B6C2109025A49623009CCEEA /* MarketDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C2108F25A49623009CCEEA /* MarketDataModel.swift */; };
+		B6C2109425A54024009CCEEA /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C21066259D5A53009CCEEA /* DataStore.swift */; };
+		B6C2109825A54039009CCEEA /* MarketDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C2108F25A49623009CCEEA /* MarketDataModel.swift */; };
 		B6C9EA412561F71500F9DDBF /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C9EA402561F71500F9DDBF /* Token.swift */; };
 		B6C9EA462561F76D00F9DDBF /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C9EA452561F76D00F9DDBF /* Authenticator.swift */; };
 		B6C9EA492561F7F600F9DDBF /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C9EA482561F7F600F9DDBF /* URLSession.swift */; };
@@ -463,9 +465,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6C2104E259B92E4009CCEEA /* Token.swift in Sources */,
+				B6C2109425A54024009CCEEA /* DataStore.swift in Sources */,
 				B6C21062259D5A25009CCEEA /* Account.swift in Sources */,
 				B6C21052259B92E7009CCEEA /* AccountDataModel.swift in Sources */,
 				B6C21037259B90EE009CCEEA /* AccountWidgetViewModel.swift in Sources */,
+				B6C2109825A54039009CCEEA /* MarketDataModel.swift in Sources */,
 				B6C21046259B92D4009CCEEA /* URLSession.swift in Sources */,
 				B6C2101A259B8A1D009CCEEA /* AccountWidgetView.swift in Sources */,
 				B6C21077259E2E9C009CCEEA /* Formatters.swift in Sources */,

@@ -51,11 +51,10 @@ class AccountViewModel: ObservableObject {
                 case .failure(let error):
                     print(error)
                 }
-            }, receiveValue: { accountsDataModel in
-                if let first = accountsDataModel.first {
-                    let account = Account(first)
-                    self.account = account
-                    self.simpleStockPositions = account.positions.compactMap { (position) -> SimpleStockRowViewModel in
+            }, receiveValue: { accounts in
+                if let first = accounts.first {
+                    self.account = first
+                    self.simpleStockPositions = first.positions.compactMap { (position) -> SimpleStockRowViewModel in
                         SimpleStockRowViewModel(position)
                     }
                 }

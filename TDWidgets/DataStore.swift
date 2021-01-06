@@ -8,9 +8,6 @@
 import Combine
 import Foundation
 
-// set up network calls
-// decode to datamodel
-
 protocol DataStore {
     func getAccouts() -> AnyPublisher<AccountDataModel, Error>
     func getMarketHours(for date: String) -> AnyPublisher<MarketDataModel, Error>
@@ -21,6 +18,7 @@ class DataStoreImpl: DataStore {
     private let authenticator: Authenticator
 
     init(session: NetworkSession = URLSession.shared) {
+        // Add singleton pattern
         self.session = session
         self.authenticator = Authenticator(session: session)
     }

@@ -34,7 +34,7 @@ class AccountWidgetViewModel {
                 }
             }, receiveValue: { dataModel in
                 if let firstAccount = dataModel.first {
-                    completion(.success(AccountEntry(Account(firstAccount))))
+                    completion(.success(AccountEntry(firstAccount)))
                 }
             })
     }
