@@ -18,7 +18,7 @@ enum RepositoryError: Error {
 
 protocol Repository {
     func getAccouts() -> AnyPublisher<[Account], Error>
-    func getMarketHours() -> AnyPublisher<MarketDataModel, Error>
+    func getMarketHours() -> AnyPublisher<MarketHours, Error>
 }
 
 class RepositoryImpl: Repository {
@@ -28,8 +28,14 @@ class RepositoryImpl: Repository {
         self.dataStore = dataStore
     }
 
-    func getMarketHours() -> AnyPublisher<MarketDataModel, Error> {
-        return dataStore.getMarketHours(for: "")
+    func getMarketHours() -> AnyPublisher<MarketHours, Error> {
+        let dateFormater = DateFormatter()
+        dateFormater.dateFormat = "yyyy-MM-dd"
+        return dataStore.getMarketHours(for: dateFormater.string(from: Date()))
+            .map { dataModel in
+                MarketHours(dataModel)
+            }
+            .eraseToAnyPublisher()
     }
 
     func getAccouts() -> AnyPublisher<[Account], Error> {
