@@ -9,9 +9,9 @@ import Combine
 import Foundation
 
 class MockRepositry: Repository {
-    var marketHoursDataModelValue: MarketDataModel!
-    func getMarketHours() -> AnyPublisher<MarketDataModel, Error> {
-        let mockResult: Result<MarketDataModel, Error> = .success(marketHoursDataModelValue)
+    var marketHoursAppModelValue: MarketHours!
+    func getMarketHours() -> AnyPublisher<MarketHours, Error> {
+        let mockResult: Result<MarketHours, Error> = .success(marketHoursAppModelValue)
         return mockResult.publisher.eraseToAnyPublisher()
     }
 
@@ -27,7 +27,7 @@ extension MockRepositry {
         static var complete: Repository {
             let mock = MockRepositry()
             mock.accountAppModelValue = [Account.TestingVariation.completeMargin]
-//            mock.marketHoursDataModelValue = MarketDataModel.
+            mock.marketHoursAppModelValue = MarketHours.TestingVariation.completeEquity
             return mock
         }
     }

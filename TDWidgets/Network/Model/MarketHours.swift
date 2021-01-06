@@ -36,3 +36,14 @@ struct MarketHours {
         self.postMarket = (start: dataModel.equity.eq.sessionHours.postMarket[0].start, end: dataModel.equity.eq.sessionHours.postMarket[0].end)
     }
 }
+
+extension MarketHours {
+    struct TestingVariation {
+        static var completeEquity: MarketHours {
+            MarketHours(marketType: .equity,
+                        preMarket: (start: Date(), end: Date()),
+                        regularMarket: (start: Date(), end: Date()),
+                        postMarket: (start: Date(), end: Date()))
+        }
+    }
+}
