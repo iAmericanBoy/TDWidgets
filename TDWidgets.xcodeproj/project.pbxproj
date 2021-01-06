@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B6067A0225A5EEA700A2FFB7 /* MarketHours.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C2109C25A543EC009CCEEA /* MarketHours.swift */; };
 		B67A035225923AAB002F6A19 /* AccountDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67A035125923AAB002F6A19 /* AccountDataModel.swift */; };
 		B67A035625925736002F6A19 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67A035525925736002F6A19 /* Repository.swift */; };
 		B67A035C25928163002F6A19 /* AccountHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67A035B25928163002F6A19 /* AccountHeaderView.swift */; };
@@ -509,6 +510,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6C2104E259B92E4009CCEEA /* Token.swift in Sources */,
+				B6067A0225A5EEA700A2FFB7 /* MarketHours.swift in Sources */,
 				B6C2109425A54024009CCEEA /* DataStore.swift in Sources */,
 				B6C21062259D5A25009CCEEA /* Account.swift in Sources */,
 				B6C21052259B92E7009CCEEA /* AccountDataModel.swift in Sources */,
@@ -685,12 +687,12 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = TDWidgets/TDWidgets.entitlements;
+				CODE_SIGN_ENTITLEMENTS = TDWidgets/Resources/TDWidgets.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"TDWidgets/Preview Content\"";
 				DEVELOPMENT_TEAM = J6B8ZX28ZW;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = TDWidgets/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/TDWidgets/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -708,12 +710,12 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = TDWidgets/TDWidgets.entitlements;
+				CODE_SIGN_ENTITLEMENTS = TDWidgets/Resources/TDWidgets.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"TDWidgets/Preview Content\"";
 				DEVELOPMENT_TEAM = J6B8ZX28ZW;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = TDWidgets/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/TDWidgets/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
