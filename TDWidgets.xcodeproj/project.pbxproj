@@ -201,25 +201,12 @@
 		B694C7A52554C6A000A61D65 /* TDWidgets */ = {
 			isa = PBXGroup;
 			children = (
-				B6C20F3F259B7C4B009CCEEA /* TDWidgets.entitlements */,
-				B694C7A62554C6A000A61D65 /* AppDelegate.swift */,
-				B694C7A82554C6A000A61D65 /* SceneDelegate.swift */,
-				B694C7AA2554C6A000A61D65 /* ContentView.swift */,
-				B694C7AC2554C6A100A61D65 /* Assets.xcassets */,
-				B694C7B12554C6A100A61D65 /* LaunchScreen.storyboard */,
-				B694C7B42554C6A100A61D65 /* Info.plist */,
+				B6C210AD25A5E772009CCEEA /* Network */,
+				B6C210A925A5E760009CCEEA /* Oauth */,
 				B694C7AE2554C6A100A61D65 /* Preview Content */,
-				B694C7BC2554C89D00A61D65 /* OAuthViewController.swift */,
-				B694C7BF2554C93700A61D65 /* OAuthViewModel.swift */,
-				B694C7C22554CD9D00A61D65 /* OAuthManager.swift */,
-				B6C9EA432561F72100F9DDBF /* Model */,
-				B6C9EA452561F76D00F9DDBF /* Authenticator.swift */,
-				B6C9EA482561F7F600F9DDBF /* URLSession.swift */,
-				B6C20F89259B8830009CCEEA /* AppSecrets.swift */,
-				B67A035525925736002F6A19 /* Repository.swift */,
-				B6C21066259D5A53009CCEEA /* DataStore.swift */,
-				B67A036A25928D18002F6A19 /* AccountView */,
-				B6C20F2F259A3041009CCEEA /* Formatters.swift */,
+				B6C210B125A5E78F009CCEEA /* Resources */,
+				B6C210A525A5E750009CCEEA /* Util */,
+				B6C210A125A5E748009CCEEA /* Views */,
 			);
 			path = TDWidgets;
 			sourceTree = "<group>";
@@ -249,8 +236,8 @@
 				B6C21019259B8A1D009CCEEA /* AccountWidgetView.swift */,
 				B6C21036259B90EE009CCEEA /* AccountWidgetViewModel.swift */,
 				B6C2102E259B9099009CCEEA /* AccountEntry.swift */,
-				B6C21018259B89FE009CCEEA /* Resources */,
 				B6C2105D259BC909009CCEEA /* GridStockView.swift */,
+				B6C21018259B89FE009CCEEA /* Resources */,
 			);
 			path = MyWidget;
 			sourceTree = "<group>";
@@ -281,6 +268,59 @@
 				B6C2108F25A49623009CCEEA /* MarketDataModel.swift */,
 			);
 			path = DataModel;
+			sourceTree = "<group>";
+		};
+		B6C210A125A5E748009CCEEA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B694C7AA2554C6A000A61D65 /* ContentView.swift */,
+				B67A036A25928D18002F6A19 /* AccountView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B6C210A525A5E750009CCEEA /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				B6C20F2F259A3041009CCEEA /* Formatters.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		B6C210A925A5E760009CCEEA /* Oauth */ = {
+			isa = PBXGroup;
+			children = (
+				B694C7BC2554C89D00A61D65 /* OAuthViewController.swift */,
+				B694C7BF2554C93700A61D65 /* OAuthViewModel.swift */,
+				B694C7C22554CD9D00A61D65 /* OAuthManager.swift */,
+			);
+			path = Oauth;
+			sourceTree = "<group>";
+		};
+		B6C210AD25A5E772009CCEEA /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				B6C9EA432561F72100F9DDBF /* Model */,
+				B6C9EA452561F76D00F9DDBF /* Authenticator.swift */,
+				B6C20F89259B8830009CCEEA /* AppSecrets.swift */,
+				B6C21066259D5A53009CCEEA /* DataStore.swift */,
+				B6C9EA482561F7F600F9DDBF /* URLSession.swift */,
+				B67A035525925736002F6A19 /* Repository.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		B6C210B125A5E78F009CCEEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B6C20F3F259B7C4B009CCEEA /* TDWidgets.entitlements */,
+				B694C7A62554C6A000A61D65 /* AppDelegate.swift */,
+				B694C7A82554C6A000A61D65 /* SceneDelegate.swift */,
+				B694C7AC2554C6A100A61D65 /* Assets.xcassets */,
+				B694C7B12554C6A100A61D65 /* LaunchScreen.storyboard */,
+				B694C7B42554C6A100A61D65 /* Info.plist */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		B6C9EA432561F72100F9DDBF /* Model */ = {
