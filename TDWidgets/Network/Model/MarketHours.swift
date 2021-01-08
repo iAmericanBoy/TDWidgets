@@ -29,11 +29,20 @@ struct MarketHours {
         self.postMarket = postMarket
     }
 
-    init(_ dataModel: MarketDataModel) {
+    init(_ dataModel: MarketDataModel) throws {
         self.marketType = MarketType(rawValue: dataModel.equity.eq.marketType) ?? .unknown
-        self.preMarket = (start: dataModel.equity.eq.sessionHours.preMarket[0].start, end: dataModel.equity.eq.sessionHours.preMarket[0].end)
-        self.regularMarket = (start: dataModel.equity.eq.sessionHours.regularMarket[0].start, end: dataModel.equity.eq.sessionHours.regularMarket[0].end)
-        self.postMarket = (start: dataModel.equity.eq.sessionHours.postMarket[0].start, end: dataModel.equity.eq.sessionHours.postMarket[0].end)
+
+        guard let preStart = dataModel.equity.eq.sessionHours.preMarket[0].start.date,
+            let preEnd = dataModel.equity.eq.sessionHours.preMarket[0].end.date,
+            let regularStart = dataModel.equity.eq.sessionHours.regularMarket[0].start.date,
+            let regularEnd = dataModel.equity.eq.sessionHours.regularMarket[0].end.date,
+            let postStart = dataModel.equity.eq.sessionHours.postMarket[0].start.date,
+            let postEnd = dataModel.equity.eq.sessionHours.postMarket[0].end.date else {
+            throw NSError()
+        }
+        self.preMarket = (start: preStart, end: preEnd)
+        self.regularMarket = (start: regularStart, end: regularEnd)
+        self.postMarket = (start: postStart, end: postEnd)
     }
 }
 
@@ -45,5 +54,14 @@ extension MarketHours {
                         regularMarket: (start: Date(), end: Date()),
                         postMarket: (start: Date(), end: Date()))
         }
+    }
+}
+
+private extension String {
+    var date: Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale.current
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssz"
+        return dateFormatter.date(from: self)
     }
 }

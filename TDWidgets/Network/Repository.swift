@@ -32,8 +32,8 @@ class RepositoryImpl: Repository {
         let dateFormater = DateFormatter()
         dateFormater.dateFormat = "yyyy-MM-dd"
         return dataStore.getMarketHours(for: dateFormater.string(from: Date()))
-            .map { dataModel in
-                MarketHours(dataModel)
+            .tryMap { dataModel in
+                try MarketHours(dataModel)
             }
             .eraseToAnyPublisher()
     }

@@ -16,6 +16,7 @@ class AccountViewModel: ObservableObject {
     // MARK: Subscribers:
 
     private var accountsSubscriber: AnyCancellable?
+    private var marketHourTypeSubscriber: AnyCancellable?
 
     // MARK: Model
 
@@ -34,6 +35,7 @@ class AccountViewModel: ObservableObject {
         self.repository = repository
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateNow), userInfo: nil, repeats: true)
         getAccounts()
+        getMarketHourType()
     }
 
     // MARK: Intent
@@ -63,6 +65,21 @@ class AccountViewModel: ObservableObject {
                         self.getAccounts()
                     }
                 }
+            })
+    }
+    
+    func getMarketHourType() {
+        marketHourTypeSubscriber = repository.getMarketHours()
+            .receive(on: RunLoop.main)
+            .sink(receiveCompletion: { (completion) in
+                switch completion {
+                case .finished:
+                    ()
+                case .failure(let error):
+                    print(error)
+                }
+            }, receiveValue: { (marketHours) in
+                print(marketHours)
             })
     }
 }
