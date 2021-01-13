@@ -8,16 +8,15 @@
 import SwiftUI
 
 struct MarketHoursTypeIcon: View {
-    @State var title: String
-    @State var color: Color
+    @State var viewModel: MarketHourTypeViewModel
 
     var body: some View {
-        Text(title)
+        Text(viewModel.title)
             .bold()
             .font(.footnote)
             .padding(4)
             .foregroundColor(.white)
-            .background(color)
+            .background(viewModel.color)
             .clipShape(RoundedRectangle(cornerRadius: 5, style: .circular))
     }
 }
@@ -25,9 +24,10 @@ struct MarketHoursTypeIcon: View {
 struct MarketHoursIcon_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            MarketHoursTypeIcon(title: "pre market", color: Colors.morningOrange)
-            MarketHoursTypeIcon(title: "open", color: Colors.oliveGreen)
-            MarketHoursTypeIcon(title: "after market", color: Colors.nightPurple)
+            MarketHoursTypeIcon(viewModel: .pre)
+            MarketHoursTypeIcon(viewModel: .regular)
+            MarketHoursTypeIcon(viewModel: .post)
+            MarketHoursTypeIcon(viewModel: .closed)
         }
     }
 }

@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		B6067A0225A5EEA700A2FFB7 /* MarketHours.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C2109C25A543EC009CCEEA /* MarketHours.swift */; };
-		B6067A1025A5EFB200A2FFB7 /* MarketHoursIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6067A0F25A5EFB200A2FFB7 /* MarketHoursIcon.swift */; };
+		B6067A1025A5EFB200A2FFB7 /* MarketHoursTypeIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6067A0F25A5EFB200A2FFB7 /* MarketHoursTypeIcon.swift */; };
 		B6067A1525AF1E6200A2FFB7 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6067A1425AF1E6200A2FFB7 /* Colors.swift */; };
+		B6067A1A25AF231B00A2FFB7 /* MarketHourTypeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6067A1925AF231B00A2FFB7 /* MarketHourTypeViewModel.swift */; };
 		B67A035225923AAB002F6A19 /* AccountDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67A035125923AAB002F6A19 /* AccountDataModel.swift */; };
 		B67A035625925736002F6A19 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67A035525925736002F6A19 /* Repository.swift */; };
 		B67A035C25928163002F6A19 /* AccountHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67A035B25928163002F6A19 /* AccountHeaderView.swift */; };
@@ -94,8 +95,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		B6067A0F25A5EFB200A2FFB7 /* MarketHoursIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketHoursIcon.swift; sourceTree = "<group>"; };
+		B6067A0F25A5EFB200A2FFB7 /* MarketHoursTypeIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketHoursTypeIcon.swift; sourceTree = "<group>"; };
 		B6067A1425AF1E6200A2FFB7 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		B6067A1925AF231B00A2FFB7 /* MarketHourTypeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketHourTypeViewModel.swift; sourceTree = "<group>"; };
 		B67A035125923AAB002F6A19 /* AccountDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDataModel.swift; sourceTree = "<group>"; };
 		B67A035525925736002F6A19 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		B67A035B25928163002F6A19 /* AccountHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountHeaderView.swift; sourceTree = "<group>"; };
@@ -170,6 +172,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B6067A2125AF252A00A2FFB7 /* MarketHourIcon */ = {
+			isa = PBXGroup;
+			children = (
+				B6067A0F25A5EFB200A2FFB7 /* MarketHoursTypeIcon.swift */,
+				B6067A1925AF231B00A2FFB7 /* MarketHourTypeViewModel.swift */,
+			);
+			path = MarketHourIcon;
+			sourceTree = "<group>";
+		};
 		B67A036A25928D18002F6A19 /* AccountView */ = {
 			isa = PBXGroup;
 			children = (
@@ -177,7 +188,7 @@
 				B67A036525928BAF002F6A19 /* AccountView.swift */,
 				B6EEE3E62592917500F5FB5C /* AccountViewModel.swift */,
 				B6C21084259E3A9A009CCEEA /* SimpleStockRow */,
-				B6067A0F25A5EFB200A2FFB7 /* MarketHoursIcon.swift */,
+				B6067A2125AF252A00A2FFB7 /* MarketHourIcon */,
 			);
 			path = AccountView;
 			sourceTree = "<group>";
@@ -483,7 +494,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6067A1025A5EFB200A2FFB7 /* MarketHoursIcon.swift in Sources */,
+				B6067A1A25AF231B00A2FFB7 /* MarketHourTypeViewModel.swift in Sources */,
+				B6067A1025A5EFB200A2FFB7 /* MarketHoursTypeIcon.swift in Sources */,
 				B694C7C02554C93700A61D65 /* OAuthViewModel.swift in Sources */,
 				B6C9EA462561F76D00F9DDBF /* Authenticator.swift in Sources */,
 				B6C9EA412561F71500F9DDBF /* Token.swift in Sources */,

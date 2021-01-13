@@ -17,7 +17,7 @@ struct AccountHeaderView: View {
                 Text(viewModel.title)
                     .font(.headline)
                 Spacer()
-                MarketHoursIcon(title: "open", color: Colors.oliveGreen)
+                MarketHoursTypeIcon(viewModel: .regular)
                     .padding(10)
                 Button(action: {
                     viewModel.streamData()
