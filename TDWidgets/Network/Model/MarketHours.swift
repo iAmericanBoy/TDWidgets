@@ -7,6 +7,10 @@
 
 import Foundation
 
+enum MarketTypeError: Error {
+    case parsingError
+}
+
 enum MarketType: String, Equatable {
     case equity
     case option
@@ -38,7 +42,7 @@ struct MarketHours {
             let regularEnd = dataModel.equity.eq.sessionHours.regularMarket[0].end.date,
             let postStart = dataModel.equity.eq.sessionHours.postMarket[0].start.date,
             let postEnd = dataModel.equity.eq.sessionHours.postMarket[0].end.date else {
-            throw NSError()
+            throw MarketTypeError.parsingError
         }
         self.preMarket = (start: preStart, end: preEnd)
         self.regularMarket = (start: regularStart, end: regularEnd)
