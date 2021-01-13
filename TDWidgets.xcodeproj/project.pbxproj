@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B6067A0225A5EEA700A2FFB7 /* MarketHours.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C2109C25A543EC009CCEEA /* MarketHours.swift */; };
 		B6067A1025A5EFB200A2FFB7 /* MarketHoursIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6067A0F25A5EFB200A2FFB7 /* MarketHoursIcon.swift */; };
+		B6067A1525AF1E6200A2FFB7 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6067A1425AF1E6200A2FFB7 /* Colors.swift */; };
 		B67A035225923AAB002F6A19 /* AccountDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67A035125923AAB002F6A19 /* AccountDataModel.swift */; };
 		B67A035625925736002F6A19 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67A035525925736002F6A19 /* Repository.swift */; };
 		B67A035C25928163002F6A19 /* AccountHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67A035B25928163002F6A19 /* AccountHeaderView.swift */; };
@@ -94,6 +95,7 @@
 
 /* Begin PBXFileReference section */
 		B6067A0F25A5EFB200A2FFB7 /* MarketHoursIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketHoursIcon.swift; sourceTree = "<group>"; };
+		B6067A1425AF1E6200A2FFB7 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		B67A035125923AAB002F6A19 /* AccountDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDataModel.swift; sourceTree = "<group>"; };
 		B67A035525925736002F6A19 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		B67A035B25928163002F6A19 /* AccountHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountHeaderView.swift; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 			children = (
 				B694C7AA2554C6A000A61D65 /* ContentView.swift */,
 				B67A036A25928D18002F6A19 /* AccountView */,
+				B6067A1425AF1E6200A2FFB7 /* Colors.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -490,6 +493,7 @@
 				B67A035225923AAB002F6A19 /* AccountDataModel.swift in Sources */,
 				B6C2109025A49623009CCEEA /* MarketDataModel.swift in Sources */,
 				B6EEE3F9259A26C800F5FB5C /* SimpleStockRowViewModel.swift in Sources */,
+				B6067A1525AF1E6200A2FFB7 /* Colors.swift in Sources */,
 				B6C2107C259E316B009CCEEA /* Position.swift in Sources */,
 				B694C7C32554CD9D00A61D65 /* OAuthManager.swift in Sources */,
 				B694C7BD2554C89D00A61D65 /* OAuthViewController.swift in Sources */,

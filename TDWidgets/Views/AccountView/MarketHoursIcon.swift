@@ -9,25 +9,25 @@ import SwiftUI
 
 struct MarketHoursIcon: View {
     @State var title: String
+    @State var color: Color
 
     var body: some View {
         Text(title)
+            .bold()
             .font(.footnote)
             .padding(4)
-            .foregroundColor(.black)
-            .background(Color.green.opacity(0.7))
-            .clipShape(RoundedRectangle(cornerRadius: 25, style: .circular))
-            .overlay(RoundedRectangle(cornerRadius: 25, style: .circular)
-                .stroke(Color.black, lineWidth: 2))
+            .foregroundColor(.white)
+            .background(color)
+            .clipShape(RoundedRectangle(cornerRadius: 5, style: .circular))
     }
 }
 
 struct MarketHoursIcon_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            MarketHoursIcon(title: "pre market")
-            MarketHoursIcon(title: "open")
-            MarketHoursIcon(title: "after Market")
+            MarketHoursIcon(title: "pre market", color: Colors.morningOrange)
+            MarketHoursIcon(title: "open", color: Colors.oliveGreen)
+            MarketHoursIcon(title: "after market", color: Colors.nightPurple)
         }
     }
 }
