@@ -11,7 +11,7 @@ enum MarketTypeError: Error {
     case parsingError
 }
 
-enum MarketType: String, Equatable {
+enum MarketType: String, Equatable, Codable {
     case equity
     case option
     case future
@@ -20,13 +20,20 @@ enum MarketType: String, Equatable {
     case unknown
 }
 
-struct MarketHours {
-    let marketType: MarketType
-    let preMarket: (start: Date, end: Date)
-    let regularMarket: (start: Date, end: Date)
-    let postMarket: (start: Date, end: Date)
+struct SessionHours: Codable {
+    let start: Date
+    let end: Date
+}
 
-    internal init(marketType: MarketType, preMarket: (start: Date, end: Date), regularMarket: (start: Date, end: Date), postMarket: (start: Date, end: Date)) {
+struct MarketHours: Codable {
+    let date: Date
+    let marketType: MarketType
+    let preMarket: SessionHours
+    let regularMarket: SessionHours
+    let postMarket: SessionHours
+
+    internal init(date: Date = Date(), marketType: MarketType, preMarket: SessionHours, regularMarket: SessionHours, postMarket: SessionHours) {
+        self.date = date
         self.marketType = marketType
         self.preMarket = preMarket
         self.regularMarket = regularMarket
@@ -44,9 +51,10 @@ struct MarketHours {
             let postEnd = dataModel.equity.eq.sessionHours.postMarket[0].end.date else {
             throw MarketTypeError.parsingError
         }
-        self.preMarket = (start: preStart, end: preEnd)
-        self.regularMarket = (start: regularStart, end: regularEnd)
-        self.postMarket = (start: postStart, end: postEnd)
+        self.preMarket = SessionHours(start: preStart, end: preEnd)
+        self.regularMarket = SessionHours(start: regularStart, end: regularEnd)
+        self.postMarket = SessionHours(start: postStart, end: postEnd)
+        self.date = Date()
     }
 }
 
@@ -54,9 +62,9 @@ extension MarketHours {
     struct TestingVariation {
         static var completeEquity: MarketHours {
             MarketHours(marketType: .equity,
-                        preMarket: (start: Date(), end: Date()),
-                        regularMarket: (start: Date(), end: Date()),
-                        postMarket: (start: Date(), end: Date()))
+                        preMarket: SessionHours(start: Date(), end: Date()),
+                        regularMarket: SessionHours(start: Date(), end: Date()),
+                        postMarket: SessionHours(start: Date(), end: Date()))
         }
     }
 }

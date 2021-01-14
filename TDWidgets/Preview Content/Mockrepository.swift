@@ -10,7 +10,7 @@ import Foundation
 
 class MockRepositry: Repository {
     var marketHoursAppModelValue: MarketHours!
-    func getMarketHours() -> AnyPublisher<MarketHours, Error> {
+    func getMarketHours(for date: Date) -> AnyPublisher<MarketHours, Error> {
         let mockResult: Result<MarketHours, Error> = .success(marketHoursAppModelValue)
         return mockResult.publisher.eraseToAnyPublisher()
     }

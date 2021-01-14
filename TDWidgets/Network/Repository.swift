@@ -18,7 +18,7 @@ enum RepositoryError: Error {
 
 protocol Repository {
     func getAccouts() -> AnyPublisher<[Account], Error>
-    func getMarketHours() -> AnyPublisher<MarketHours, Error>
+    func getMarketHours(for date: Date) -> AnyPublisher<MarketHours, Error>
 }
 
 class RepositoryImpl: Repository {
@@ -28,15 +28,34 @@ class RepositoryImpl: Repository {
         self.dataStore = dataStore
     }
 
-    func getMarketHours() -> AnyPublisher<MarketHours, Error> {
+    // MARK: MarketHourType
+
+    func getMarketHours(for date: Date) -> AnyPublisher<MarketHours, Error> {
+        if let savedHours = UserDefaults(suiteName: "group.com.oskman.WidgetGroup")?.object(forKey: "Repository.marketHours") as? Data {
+            let decoder = JSONDecoder()
+            if let hours = try? decoder.decode(MarketHours.self, from: savedHours) {
+                return Just(hours)
+                    .setFailureType(to: Error.self)
+                    .eraseToAnyPublisher()
+            }
+        }
+
         let dateFormater = DateFormatter()
         dateFormater.dateFormat = "yyyy-MM-dd"
-        return dataStore.getMarketHours(for: dateFormater.string(from: Date()))
+        return dataStore.getMarketHours(for: dateFormater.string(from: date))
             .tryMap { dataModel in
                 try MarketHours(dataModel)
             }
+            .handleEvents(receiveOutput: { hours in
+                let encoder = JSONEncoder()
+                if let encoded = try? encoder.encode(hours) {
+                    UserDefaults(suiteName: "group.com.oskman.WidgetGroup")?.set(encoded, forKey: "Repository.marketHours")
+                }
+            })
             .eraseToAnyPublisher()
     }
+
+    // MARK: Accounts
 
     func getAccouts() -> AnyPublisher<[Account], Error> {
         return dataStore.getAccouts()

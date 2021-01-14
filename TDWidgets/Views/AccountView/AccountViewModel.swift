@@ -67,18 +67,18 @@ class AccountViewModel: ObservableObject {
                 }
             })
     }
-    
+
     func getMarketHourType() {
-        marketHourTypeSubscriber = repository.getMarketHours()
+        marketHourTypeSubscriber = repository.getMarketHours(for: Date())
             .receive(on: RunLoop.main)
-            .sink(receiveCompletion: { (completion) in
+            .sink(receiveCompletion: { completion in
                 switch completion {
                 case .finished:
                     ()
                 case .failure(let error):
                     print(error)
                 }
-            }, receiveValue: { (marketHours) in
+            }, receiveValue: { marketHours in
                 print(marketHours)
             })
     }
@@ -137,6 +137,10 @@ extension AccountViewModel {
             return ""
         }
         return "\(account?.dayProfitLoss.currencyString ?? "") (\(account?.dayProfitLossPercentage.twoDigitsFormatter ?? "")%)"
+    }
+
+    var marketHourTypeViewModel: MarketHourTypeViewModel {
+        return .regular
     }
 }
 
