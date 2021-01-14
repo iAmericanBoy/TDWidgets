@@ -33,7 +33,7 @@ class RepositoryImpl: Repository {
     func getMarketHours(for date: Date) -> AnyPublisher<MarketHours, Error> {
         if let savedHours = UserDefaults(suiteName: "group.com.oskman.WidgetGroup")?.object(forKey: "Repository.marketHours") as? Data {
             let decoder = JSONDecoder()
-            if let hours = try? decoder.decode(MarketHours.self, from: savedHours) {
+            if let hours = try? decoder.decode(MarketHours.self, from: savedHours), Calendar.current.isDateInToday(hours.date) {
                 return Just(hours)
                     .setFailureType(to: Error.self)
                     .eraseToAnyPublisher()
