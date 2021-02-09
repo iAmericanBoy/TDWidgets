@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MarketHoursTypeIcon: View {
-    @State var viewModel: MarketHourTypeViewModel
+    @State var viewModel: MarketSessionType
 
     var body: some View {
         Text(viewModel.title)

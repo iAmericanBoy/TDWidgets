@@ -10,7 +10,7 @@
 		B6067A0225A5EEA700A2FFB7 /* MarketHours.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C2109C25A543EC009CCEEA /* MarketHours.swift */; };
 		B6067A1025A5EFB200A2FFB7 /* MarketHoursTypeIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6067A0F25A5EFB200A2FFB7 /* MarketHoursTypeIcon.swift */; };
 		B6067A1525AF1E6200A2FFB7 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6067A1425AF1E6200A2FFB7 /* Colors.swift */; };
-		B6067A1A25AF231B00A2FFB7 /* MarketHourTypeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6067A1925AF231B00A2FFB7 /* MarketHourTypeViewModel.swift */; };
+		B6067A1A25AF231B00A2FFB7 /* MarketSessionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6067A1925AF231B00A2FFB7 /* MarketSessionType.swift */; };
 		B67A035225923AAB002F6A19 /* AccountDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67A035125923AAB002F6A19 /* AccountDataModel.swift */; };
 		B67A035625925736002F6A19 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67A035525925736002F6A19 /* Repository.swift */; };
 		B67A035C25928163002F6A19 /* AccountHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67A035B25928163002F6A19 /* AccountHeaderView.swift */; };
@@ -53,6 +53,7 @@
 		B6C2109425A54024009CCEEA /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C21066259D5A53009CCEEA /* DataStore.swift */; };
 		B6C2109825A54039009CCEEA /* MarketDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C2108F25A49623009CCEEA /* MarketDataModel.swift */; };
 		B6C2109D25A543EC009CCEEA /* MarketHours.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C2109C25A543EC009CCEEA /* MarketHours.swift */; };
+		B6C5D0EE25D2BAD4004F5BE3 /* MarketHourIconViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C5D0ED25D2BAD4004F5BE3 /* MarketHourIconViewModel.swift */; };
 		B6C9EA412561F71500F9DDBF /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C9EA402561F71500F9DDBF /* Token.swift */; };
 		B6C9EA462561F76D00F9DDBF /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C9EA452561F76D00F9DDBF /* Authenticator.swift */; };
 		B6C9EA492561F7F600F9DDBF /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C9EA482561F7F600F9DDBF /* URLSession.swift */; };
@@ -97,7 +98,7 @@
 /* Begin PBXFileReference section */
 		B6067A0F25A5EFB200A2FFB7 /* MarketHoursTypeIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketHoursTypeIcon.swift; sourceTree = "<group>"; };
 		B6067A1425AF1E6200A2FFB7 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		B6067A1925AF231B00A2FFB7 /* MarketHourTypeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketHourTypeViewModel.swift; sourceTree = "<group>"; };
+		B6067A1925AF231B00A2FFB7 /* MarketSessionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketSessionType.swift; sourceTree = "<group>"; };
 		B67A035125923AAB002F6A19 /* AccountDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDataModel.swift; sourceTree = "<group>"; };
 		B67A035525925736002F6A19 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		B67A035B25928163002F6A19 /* AccountHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountHeaderView.swift; sourceTree = "<group>"; };
@@ -133,6 +134,7 @@
 		B6C2107B259E316B009CCEEA /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 		B6C2108F25A49623009CCEEA /* MarketDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketDataModel.swift; sourceTree = "<group>"; };
 		B6C2109C25A543EC009CCEEA /* MarketHours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketHours.swift; sourceTree = "<group>"; };
+		B6C5D0ED25D2BAD4004F5BE3 /* MarketHourIconViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketHourIconViewModel.swift; sourceTree = "<group>"; };
 		B6C9EA402561F71500F9DDBF /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		B6C9EA452561F76D00F9DDBF /* Authenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticator.swift; sourceTree = "<group>"; };
 		B6C9EA482561F7F600F9DDBF /* URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSession.swift; sourceTree = "<group>"; };
@@ -176,7 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				B6067A0F25A5EFB200A2FFB7 /* MarketHoursTypeIcon.swift */,
-				B6067A1925AF231B00A2FFB7 /* MarketHourTypeViewModel.swift */,
+				B6C5D0ED25D2BAD4004F5BE3 /* MarketHourIconViewModel.swift */,
 			);
 			path = MarketHourIcon;
 			sourceTree = "<group>";
@@ -349,6 +351,7 @@
 				B6C2107B259E316B009CCEEA /* Position.swift */,
 				B6C9EA402561F71500F9DDBF /* Token.swift */,
 				B6C2109C25A543EC009CCEEA /* MarketHours.swift */,
+				B6067A1925AF231B00A2FFB7 /* MarketSessionType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -494,7 +497,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6067A1A25AF231B00A2FFB7 /* MarketHourTypeViewModel.swift in Sources */,
+				B6067A1A25AF231B00A2FFB7 /* MarketSessionType.swift in Sources */,
 				B6067A1025A5EFB200A2FFB7 /* MarketHoursTypeIcon.swift in Sources */,
 				B694C7C02554C93700A61D65 /* OAuthViewModel.swift in Sources */,
 				B6C9EA462561F76D00F9DDBF /* Authenticator.swift in Sources */,
@@ -509,6 +512,7 @@
 				B6C2107C259E316B009CCEEA /* Position.swift in Sources */,
 				B694C7C32554CD9D00A61D65 /* OAuthManager.swift in Sources */,
 				B694C7BD2554C89D00A61D65 /* OAuthViewController.swift in Sources */,
+				B6C5D0EE25D2BAD4004F5BE3 /* MarketHourIconViewModel.swift in Sources */,
 				B6EEE3EB2592924500F5FB5C /* Mockrepository.swift in Sources */,
 				B6C20F8A259B8830009CCEEA /* AppSecrets.swift in Sources */,
 				B6C9EA492561F7F600F9DDBF /* URLSession.swift in Sources */,

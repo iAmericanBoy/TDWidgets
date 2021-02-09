@@ -139,7 +139,7 @@ extension AccountViewModel {
         return "\(account?.dayProfitLoss.currencyString ?? "") (\(account?.dayProfitLossPercentage.twoDigitsFormatter ?? "")%)"
     }
 
-    var marketHourTypeViewModel: MarketHourTypeViewModel {
+    var marketHourTypeViewModel: MarketSessionType {
         return .regular
     }
 }
