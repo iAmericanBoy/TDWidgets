@@ -28,11 +28,11 @@ struct SessionHours: Codable {
 struct MarketHours: Codable {
     let date: Date
     let marketType: MarketType
-    let preMarket: SessionHours
-    let regularMarket: SessionHours
-    let postMarket: SessionHours
+    let preMarket: DateInterval
+    let regularMarket: DateInterval
+    let postMarket: DateInterval
 
-    internal init(date: Date = Date(), marketType: MarketType, preMarket: SessionHours, regularMarket: SessionHours, postMarket: SessionHours) {
+    internal init(date: Date = Date(), marketType: MarketType, preMarket: DateInterval, regularMarket: DateInterval, postMarket: DateInterval) {
         self.date = date
         self.marketType = marketType
         self.preMarket = preMarket
@@ -51,9 +51,9 @@ struct MarketHours: Codable {
             let postEnd = dataModel.equity.eq.sessionHours.postMarket[0].end.date else {
             throw MarketTypeError.parsingError
         }
-        self.preMarket = SessionHours(start: preStart, end: preEnd)
-        self.regularMarket = SessionHours(start: regularStart, end: regularEnd)
-        self.postMarket = SessionHours(start: postStart, end: postEnd)
+        self.preMarket = DateInterval(start: preStart, end: preEnd)
+        self.regularMarket = DateInterval(start: regularStart, end: regularEnd)
+        self.postMarket = DateInterval(start: postStart, end: postEnd)
         self.date = Date()
     }
 }
@@ -62,9 +62,9 @@ extension MarketHours {
     struct TestingVariation {
         static var completeEquity: MarketHours {
             MarketHours(marketType: .equity,
-                        preMarket: SessionHours(start: Date(), end: Date()),
-                        regularMarket: SessionHours(start: Date(), end: Date()),
-                        postMarket: SessionHours(start: Date(), end: Date()))
+                        preMarket: DateInterval(start: Date(), end: Date()),
+                        regularMarket: DateInterval(start: Date(), end: Date()),
+                        postMarket: DateInterval(start: Date(), end: Date()))
         }
     }
 }

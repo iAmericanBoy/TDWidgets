@@ -18,7 +18,8 @@ enum RepositoryError: Error {
 
 protocol Repository {
     func getAccouts() -> AnyPublisher<[Account], Error>
-    func getMarketHours(for date: Date) -> AnyPublisher<MarketHours, Error>
+    func getCurrentMarketHours() -> AnyPublisher<MarketHours, Error>
+    func getCurrentMarketHourType() -> AnyPublisher<MarketSessionType, Never>
 }
 
 class RepositoryImpl: Repository {
@@ -30,7 +31,14 @@ class RepositoryImpl: Repository {
 
     // MARK: MarketHourType
 
-    func getMarketHours(for date: Date) -> AnyPublisher<MarketHours, Error> {
+    func getCurrentMarketHourType() -> AnyPublisher<MarketSessionType, Never> {
+        getCurrentMarketHours()
+            .map { MarketSessionType($0) }
+            .replaceError(with: .closed)
+            .eraseToAnyPublisher()
+    }
+
+    func getCurrentMarketHours() -> AnyPublisher<MarketHours, Error> {
         if let savedHours = UserDefaults(suiteName: "group.com.oskman.WidgetGroup")?.object(forKey: "Repository.marketHours") as? Data {
             let decoder = JSONDecoder()
             if let hours = try? decoder.decode(MarketHours.self, from: savedHours), Calendar.current.isDateInToday(hours.date) {
@@ -42,7 +50,7 @@ class RepositoryImpl: Repository {
 
         let dateFormater = DateFormatter()
         dateFormater.dateFormat = "yyyy-MM-dd"
-        return dataStore.getMarketHours(for: dateFormater.string(from: date))
+        return dataStore.getMarketHours(for: dateFormater.string(from: Date()))
             .tryMap { dataModel in
                 try MarketHours(dataModel)
             }
