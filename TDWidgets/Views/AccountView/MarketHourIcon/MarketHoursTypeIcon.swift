@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MarketHoursTypeIcon: View {
-    @State var viewModel: MarketSessionType
+    var viewModel: MarketHourIconViewModel
 
     var body: some View {
         Text(viewModel.title)
@@ -24,10 +24,10 @@ struct MarketHoursTypeIcon: View {
 struct MarketHoursIcon_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            MarketHoursTypeIcon(viewModel: .pre)
-            MarketHoursTypeIcon(viewModel: .regular)
-            MarketHoursTypeIcon(viewModel: .post)
-            MarketHoursTypeIcon(viewModel: .closed)
+            MarketHoursTypeIcon(viewModel: MarketHourIconViewModel(.pre))
+            MarketHoursTypeIcon(viewModel: MarketHourIconViewModel(.regular))
+            MarketHoursTypeIcon(viewModel: MarketHourIconViewModel(.post))
+            MarketHoursTypeIcon(viewModel: MarketHourIconViewModel(.closed))
         }
     }
 }

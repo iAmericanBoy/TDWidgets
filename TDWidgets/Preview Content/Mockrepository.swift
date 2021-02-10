@@ -9,8 +9,14 @@ import Combine
 import Foundation
 
 class MockRepositry: Repository {
+    var marketSessionAppModelValue: MarketSessionType!
+    func getCurrentMarketHourType() -> AnyPublisher<MarketSessionType, Never> {
+        let mockResult: Result<MarketSessionType, Never> = .success(marketSessionAppModelValue)
+        return mockResult.publisher.eraseToAnyPublisher()
+    }
+    
     var marketHoursAppModelValue: MarketHours!
-    func getMarketHours(for date: Date) -> AnyPublisher<MarketHours, Error> {
+    func getCurrentMarketHours() -> AnyPublisher<MarketHours, Error> {
         let mockResult: Result<MarketHours, Error> = .success(marketHoursAppModelValue)
         return mockResult.publisher.eraseToAnyPublisher()
     }

@@ -7,9 +7,14 @@
 
 import SwiftUI
 
-extension MarketSessionType {
+struct MarketHourIconViewModel {
+    private let type: MarketSessionType
+    init(_ sessionType: MarketSessionType) {
+        self.type = sessionType
+    }
+
     var title: String {
-        switch self {
+        switch type {
         case .pre:
             return "pre market"
         case .regular:
@@ -22,7 +27,7 @@ extension MarketSessionType {
     }
 
     var color: Color {
-        switch self {
+        switch type {
         case .pre:
             return Colors.morningOrange
         case .regular:

@@ -16,9 +16,9 @@ class AccountViewModel: ObservableObject {
     // MARK: Subscribers:
 
     private var accountsSubscriber: AnyCancellable?
-    private var marketHourTypeSubscriber: AnyCancellable?
+    private var marketHourSessionSubscriber: AnyCancellable?
 
-    // MARK: Model
+    // MARK: Publishers
 
     @Published private var account: Account?
     private var simpleStockPositions: [SimpleStockRowViewModel] = []
@@ -26,6 +26,7 @@ class AccountViewModel: ObservableObject {
     @Published var shouldStreamData: Bool = true
     @Published private var lastUpdate: Date?
     @Published private var now = Date()
+    @Published private(set) var marketSessionType: MarketSessionType = .closed
 
     private var timer: Timer?
 
@@ -63,24 +64,18 @@ class AccountViewModel: ObservableObject {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
                     if self.shouldStreamData {
                         self.getAccounts()
+                        self.getMarketHourType()
                     }
                 }
             })
     }
 
     func getMarketHourType() {
-        marketHourTypeSubscriber = repository.getMarketHours(for: Date())
+        marketHourSessionSubscriber = repository.getCurrentMarketHourType()
             .receive(on: RunLoop.main)
-            .sink(receiveCompletion: { completion in
-                switch completion {
-                case .finished:
-                    ()
-                case .failure(let error):
-                    print(error)
-                }
-            }, receiveValue: { marketHours in
-                print(marketHours)
-            })
+            .sink { type in
+                self.marketSessionType = type
+            }
     }
 }
 
@@ -137,10 +132,6 @@ extension AccountViewModel {
             return ""
         }
         return "\(account?.dayProfitLoss.currencyString ?? "") (\(account?.dayProfitLossPercentage.twoDigitsFormatter ?? "")%)"
-    }
-
-    var marketHourTypeViewModel: MarketSessionType {
-        return .regular
     }
 }
 
