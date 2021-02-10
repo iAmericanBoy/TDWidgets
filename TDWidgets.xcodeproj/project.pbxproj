@@ -17,6 +17,7 @@
 		B67A03602592860E002F6A19 /* SimpleStockRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67A035F2592860E002F6A19 /* SimpleStockRow.swift */; };
 		B67A036625928BAF002F6A19 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67A036525928BAF002F6A19 /* AccountView.swift */; };
 		B68364CC25D2BE7E00AF3E6B /* MarketSessionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6067A1925AF231B00A2FFB7 /* MarketSessionType.swift */; };
+		B68364D025D4104B00AF3E6B /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6067A1425AF1E6200A2FFB7 /* Colors.swift */; };
 		B694C7A72554C6A000A61D65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B694C7A62554C6A000A61D65 /* AppDelegate.swift */; };
 		B694C7A92554C6A000A61D65 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B694C7A82554C6A000A61D65 /* SceneDelegate.swift */; };
 		B694C7AB2554C6A000A61D65 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B694C7AA2554C6A000A61D65 /* ContentView.swift */; };
@@ -535,6 +536,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B68364CC25D2BE7E00AF3E6B /* MarketSessionType.swift in Sources */,
+				B68364D025D4104B00AF3E6B /* Colors.swift in Sources */,
 				B6C2104E259B92E4009CCEEA /* Token.swift in Sources */,
 				B6067A0225A5EEA700A2FFB7 /* MarketHours.swift in Sources */,
 				B6C2109425A54024009CCEEA /* DataStore.swift in Sources */,

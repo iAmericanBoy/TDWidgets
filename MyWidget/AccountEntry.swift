@@ -13,23 +13,26 @@ struct AccountEntry: TimelineEntry {
     let dayProfitLossPercentage: String
     let dayProfitLossColor: Color
     let dayProfitLossImage: String
+    let sessionTypeColor: Color
     let row1: [GridValue]
     let row2: [GridValue]
 
-    internal init(date: Date, dayProfitLossValue: String, dayProfitLossColor: Color, dayProfitLossImage: String, row1: [GridValue], row2: [GridValue]) {
+    internal init(date: Date, dayProfitLossValue: String, dayProfitLossColor: Color, dayProfitLossImage: String, sessionTypeColor: Color, row1: [GridValue], row2: [GridValue]) {
         self.date = date
         dayProfitLossPercentage = dayProfitLossValue
         self.dayProfitLossColor = dayProfitLossColor
         self.dayProfitLossImage = dayProfitLossImage
+        self.sessionTypeColor = sessionTypeColor
         self.row1 = row1
         self.row2 = row2
     }
 
-    init(_ account: Account) {
+    init(_ account: Account, sessionType: MarketSessionType) {
         date = Date()
         dayProfitLossPercentage = "\(account.dayProfitLossPercentage.twoDigitsFormatter)%"
         dayProfitLossImage = account.dayProfitLossPercentage > 0 ? "arrow.up" : "arrow.down"
         dayProfitLossColor = account.dayProfitLossPercentage > 0 ? .green : .red
+        sessionTypeColor = .black
 
         var array = account.positions.map { GridValue(symbol: $0.symbol, percentage: $0.dayProfitLossPercentage) }
 
@@ -71,6 +74,7 @@ extension AccountEntry {
                          dayProfitLossValue: "3.14%",
                          dayProfitLossColor: .green,
                          dayProfitLossImage: "arrow.up",
+                         sessionTypeColor: Colors.morningOrange,
                          row1: [GridValue(symbol: "AAPL", percentage: 2.02),
                                 GridValue(symbol: "MSFT", percentage: 2.02)],
                          row2: [GridValue(symbol: "VOO", percentage: 2.02),
@@ -82,6 +86,7 @@ extension AccountEntry {
                          dayProfitLossValue: "3.14%",
                          dayProfitLossColor: .green,
                          dayProfitLossImage: "arrow.up",
+                         sessionTypeColor: Colors.nightPurple,
                          row1: [GridValue(symbol: "AAPL", percentage: 2.02),
                                 GridValue(symbol: "MSFT", percentage: 2.02)],
                          row2: [GridValue(symbol: "VOO", percentage: 2.02),
@@ -91,7 +96,7 @@ extension AccountEntry {
 
     struct SnapshotVariation {
         static var complete: AccountEntry {
-            AccountEntry(date: Date(), dayProfitLossValue: "3.14%", dayProfitLossColor: .green, dayProfitLossImage: "arrow.up", row1: [], row2: [])
+            AccountEntry(date: Date(), dayProfitLossValue: "3.14%", dayProfitLossColor: .green, dayProfitLossImage: "arrow.up", sessionTypeColor: .black, row1: [], row2: [])
         }
     }
 }

@@ -25,6 +25,8 @@ struct AccountWidgetView: View {
                 .bold()
                 .foregroundColor(Color.gray.opacity(0.5))
             Divider()
+                .frame(height: 1.5)
+                .background(entry.sessionTypeColor)
                 .padding(.vertical, 4)
             if entry.row1.isEmpty == false {
                 LazyHGrid(rows: [GridItem(.flexible())], content: {
