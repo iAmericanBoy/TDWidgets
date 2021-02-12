@@ -24,10 +24,16 @@ struct AccountWidgetView: View {
                 .font(.footnote)
                 .bold()
                 .foregroundColor(Color.gray.opacity(0.5))
-            Divider()
-                .frame(height: 1.5)
-                .background(entry.sessionTypeColor)
-                .padding(.vertical, 4)
+            if entry.showSessionTypeDivider {
+                Divider()
+                    .frame(height: 1.5)
+                    .background(entry.sessionTypeColor)
+                    .padding(.vertical, 4)
+            } else {
+                Divider()
+                    .padding(.vertical, 4)
+            }
+
             if entry.row1.isEmpty == false {
                 LazyHGrid(rows: [GridItem(.flexible())], content: {
                     GridStockView(gridValue: entry.row1[0])
@@ -51,7 +57,15 @@ struct AccountWidgetView: View {
 
 struct AccountWidgetView_Previews: PreviewProvider {
     static var previews: some View {
-        AccountWidgetView(entry: AccountEntry.TestingVariation.complete)
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
+        Group {
+            AccountWidgetView(entry: AccountEntry.TestingVariation.updated(Date()))
+                .previewContext(WidgetPreviewContext(family: .systemSmall))
+            AccountWidgetView(entry: AccountEntry.TestingVariation.complete)
+                .previewContext(WidgetPreviewContext(family: .systemSmall))
+            AccountWidgetView(entry: AccountEntry.TestingVariation.openComplete)
+                .previewContext(WidgetPreviewContext(family: .systemSmall))
+            AccountWidgetView(entry: AccountEntry.TestingVariation.closedComplete)
+                .previewContext(WidgetPreviewContext(family: .systemSmall))
+        }
     }
 }
