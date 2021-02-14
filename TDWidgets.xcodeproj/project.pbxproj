@@ -31,6 +31,7 @@
 		B694C7BD2554C89D00A61D65 /* OAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B694C7BC2554C89D00A61D65 /* OAuthViewController.swift */; };
 		B694C7C02554C93700A61D65 /* OAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B694C7BF2554C93700A61D65 /* OAuthViewModel.swift */; };
 		B694C7C32554CD9D00A61D65 /* OAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B694C7C22554CD9D00A61D65 /* OAuthManager.swift */; };
+		B6999CFD25D9BB680047CDA2 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C20F2F259A3041009CCEEA /* Formatters.swift */; };
 		B6C20F30259A3041009CCEEA /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C20F2F259A3041009CCEEA /* Formatters.swift */; };
 		B6C20F38259A45DB009CCEEA /* TokenDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C20F37259A45DB009CCEEA /* TokenDataModel.swift */; };
 		B6C20F8A259B8830009CCEEA /* AppSecrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C20F89259B8830009CCEEA /* AppSecrets.swift */; };
@@ -52,7 +53,6 @@
 		B6C2105E259BC909009CCEEA /* GridStockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C2105D259BC909009CCEEA /* GridStockView.swift */; };
 		B6C21062259D5A25009CCEEA /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EEE3EE259298DC00F5FB5C /* Account.swift */; };
 		B6C21067259D5A54009CCEEA /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C21066259D5A53009CCEEA /* DataStore.swift */; };
-		B6C21077259E2E9C009CCEEA /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C20F2F259A3041009CCEEA /* Formatters.swift */; };
 		B6C2107C259E316B009CCEEA /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C2107B259E316B009CCEEA /* Position.swift */; };
 		B6C21080259E38E9009CCEEA /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C2107B259E316B009CCEEA /* Position.swift */; };
 		B6C2109025A49623009CCEEA /* MarketDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C2108F25A49623009CCEEA /* MarketDataModel.swift */; };
@@ -562,12 +562,12 @@
 				B6C2109425A54024009CCEEA /* DataStore.swift in Sources */,
 				B6C21062259D5A25009CCEEA /* Account.swift in Sources */,
 				B6C21052259B92E7009CCEEA /* AccountDataModel.swift in Sources */,
+				B6999CFD25D9BB680047CDA2 /* Formatters.swift in Sources */,
 				B6C21037259B90EE009CCEEA /* AccountWidgetEntryFactory.swift in Sources */,
 				B6C2109825A54039009CCEEA /* MarketDataModel.swift in Sources */,
 				B6C21046259B92D4009CCEEA /* URLSession.swift in Sources */,
 				B6C2101A259B8A1D009CCEEA /* AccountWidgetEntryView.swift in Sources */,
 				B68364EA25D9909800AF3E6B /* Date+Extension.swift in Sources */,
-				B6C21077259E2E9C009CCEEA /* Formatters.swift in Sources */,
 				B6C21056259B930B009CCEEA /* AppSecrets.swift in Sources */,
 				B6C21080259E38E9009CCEEA /* Position.swift in Sources */,
 				B6C2104A259B92E0009CCEEA /* TokenDataModel.swift in Sources */,

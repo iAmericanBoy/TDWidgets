@@ -9,7 +9,7 @@ import SwiftUI
 import WidgetKit
 
 struct AccountWidgetView: View {
-    @State var entry: Provider.Entry
+    var entry: Provider.Entry
 
     var body: some View {
         VStack(alignment: .leading) {
