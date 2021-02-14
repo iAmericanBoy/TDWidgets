@@ -51,17 +51,19 @@ struct AccountEntry: TimelineEntry {
 
         var array = account.positions.map { GridValue(symbol: $0.symbol, percentage: $0.dayProfitLossPercentage) }
 
-        let first = array.removeFirst()
-        let second = array.removeFirst()
-        let third = array.removeFirst()
-        let fourth = array.removeFirst()
-        row1 = [first, second]
-        row2 = [third, fourth]
+        array.sort(by: { $0.percentage > $1.percentage })
+
+        let best = array.removeFirst()
+        let secondbest = array.removeFirst()
+        let worst = array.removeLast()
+        let secondWorst = array.removeLast()
+        row1 = [best, secondbest]
+        row2 = [secondWorst, worst]
     }
 
     struct GridValue {
         var symbol: String
-        private var percentage: Decimal
+        var percentage: Decimal
 
         init(symbol: String, percentage: Decimal) {
             self.symbol = symbol
