@@ -24,19 +24,9 @@ struct Provider: TimelineProvider {
     func getTimeline(in context: Context, completion: @escaping (Timeline<AccountEntry>) -> ()) {
         let logger = Logger()
         logger.debug("get accounts is called")
-        viewModel.createEntry { response in
-            logger.debug("get Accounts result received")
-            switch response {
-            case .success(let entry):
-                logger.debug("received entry")
-                let timeline = Timeline(entries: [entry], policy: .atEnd)
-                completion(timeline)
-            case .failure(let error):
-                logger.debug("received error")
-                print(error)
-                let timeline = Timeline(entries: [AccountEntry.TestingVariation.updated(Date())], policy: .atEnd)
-                completion(timeline)
-            }
+        viewModel.createTimeline { timeline in
+            logger.debug("Timeline created")
+            completion(timeline)
         }
     }
 }

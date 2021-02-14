@@ -26,8 +26,9 @@ class AccountWidgetEntryFactory {
         self.repository = repository
     }
 
-    func createEntry(completion: @escaping (Result<AccountEntry, Error>) -> Void) {
+    func createTimeline(completion: @escaping (Timeline<AccountEntry>) -> Void) {
         entrySubscriber = repository.getAccouts()
+            .retry(1)
             .map { dataModel -> Result<Account, Error> in
                 if let firstAccount = dataModel.first {
                     return .success(firstAccount)
@@ -37,13 +38,20 @@ class AccountWidgetEntryFactory {
             }
             .zip(repository.getCurrentMarketHourType().setFailureType(to: Error.self))
             .receive(on: RunLoop.main)
-            .map { (firstAccountResponse, sessionType) -> Result<AccountEntry, Error> in
-                switch firstAccountResponse {
-                case .success(let firstAccount):
-                    return .success(AccountEntry(firstAccount, sessionType: sessionType))
-                case .failure(let error):
-                    return .failure(error)
+            .map { (firstAccountResponse, sessionType) -> Timeline<AccountEntry> in
+                if let account = try? firstAccountResponse.get() {
+                    if sessionType == .closed {
+                        return Timeline(entries: [AccountEntry(account, sessionType: sessionType)], policy: .after(Date.tomorrow))
+                    } else {
+                        return Timeline(entries: [AccountEntry(account, sessionType: sessionType)], policy: .atEnd)
+                    }
+                } else {
+                    return Timeline(entries: [AccountEntry.SnapshotVariation.complete], policy: .atEnd)
                 }
+            }
+            .catch { (_) -> AnyPublisher<Timeline<AccountEntry>, Never> in
+                Just(Timeline(entries: [AccountEntry.SnapshotVariation.complete], policy: .atEnd))
+                    .eraseToAnyPublisher()
             }
             .sink(receiveCompletion: { finishedCompletion in
                 print(finishedCompletion)
