@@ -37,7 +37,7 @@
 		B6C21010259B89F3009CCEEA /* MyWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B6C21002259B89F2009CCEEA /* MyWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B6C2101A259B8A1D009CCEEA /* AccountWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C21019259B8A1D009CCEEA /* AccountWidgetView.swift */; };
 		B6C2102F259B9099009CCEEA /* AccountEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C2102E259B9099009CCEEA /* AccountEntry.swift */; };
-		B6C21037259B90EE009CCEEA /* AccountWidgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C21036259B90EE009CCEEA /* AccountWidgetViewModel.swift */; };
+		B6C21037259B90EE009CCEEA /* AccountWidgetEntryFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C21036259B90EE009CCEEA /* AccountWidgetEntryFactory.swift */; };
 		B6C2103E259B9168009CCEEA /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67A035525925736002F6A19 /* Repository.swift */; };
 		B6C21042259B92D0009CCEEA /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C9EA452561F76D00F9DDBF /* Authenticator.swift */; };
 		B6C21046259B92D4009CCEEA /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C9EA482561F7F600F9DDBF /* URLSession.swift */; };
@@ -130,7 +130,7 @@
 		B6C21019259B8A1D009CCEEA /* AccountWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountWidgetView.swift; sourceTree = "<group>"; };
 		B6C2102A259B8CF4009CCEEA /* MyWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyWidgetExtension.entitlements; sourceTree = "<group>"; };
 		B6C2102E259B9099009CCEEA /* AccountEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountEntry.swift; sourceTree = "<group>"; };
-		B6C21036259B90EE009CCEEA /* AccountWidgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountWidgetViewModel.swift; sourceTree = "<group>"; };
+		B6C21036259B90EE009CCEEA /* AccountWidgetEntryFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountWidgetEntryFactory.swift; sourceTree = "<group>"; };
 		B6C2105D259BC909009CCEEA /* GridStockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridStockView.swift; sourceTree = "<group>"; };
 		B6C21066259D5A53009CCEEA /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		B6C2107B259E316B009CCEEA /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
@@ -255,7 +255,7 @@
 			children = (
 				B6C21009259B89F2009CCEEA /* MyWidget.swift */,
 				B6C21019259B8A1D009CCEEA /* AccountWidgetView.swift */,
-				B6C21036259B90EE009CCEEA /* AccountWidgetViewModel.swift */,
+				B6C21036259B90EE009CCEEA /* AccountWidgetEntryFactory.swift */,
 				B6C2102E259B9099009CCEEA /* AccountEntry.swift */,
 				B6C2105D259BC909009CCEEA /* GridStockView.swift */,
 				B6C21018259B89FE009CCEEA /* Resources */,
@@ -542,7 +542,7 @@
 				B6C2109425A54024009CCEEA /* DataStore.swift in Sources */,
 				B6C21062259D5A25009CCEEA /* Account.swift in Sources */,
 				B6C21052259B92E7009CCEEA /* AccountDataModel.swift in Sources */,
-				B6C21037259B90EE009CCEEA /* AccountWidgetViewModel.swift in Sources */,
+				B6C21037259B90EE009CCEEA /* AccountWidgetEntryFactory.swift in Sources */,
 				B6C2109825A54039009CCEEA /* MarketDataModel.swift in Sources */,
 				B6C21046259B92D4009CCEEA /* URLSession.swift in Sources */,
 				B6C2101A259B8A1D009CCEEA /* AccountWidgetView.swift in Sources */,

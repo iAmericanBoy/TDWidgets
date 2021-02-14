@@ -26,7 +26,7 @@ struct AccountWidgetView: View {
                 .foregroundColor(Color.gray.opacity(0.5))
             if entry.showSessionTypeDivider {
                 Divider()
-                    .frame(height: 1.5)
+                    .frame(height: 3)
                     .background(entry.sessionTypeColor)
                     .padding(.vertical, 4)
             } else {

@@ -10,7 +10,7 @@ import SwiftUI
 import WidgetKit
 
 struct Provider: TimelineProvider {
-    let viewModel = AccountWidgetViewModel()
+    let viewModel = AccountWidgetEntryFactory()
 
     func placeholder(in context: Context) -> AccountEntry {
         AccountEntry.TestingVariation.complete
@@ -24,7 +24,7 @@ struct Provider: TimelineProvider {
     func getTimeline(in context: Context, completion: @escaping (Timeline<AccountEntry>) -> ()) {
         let logger = Logger()
         logger.debug("get accounts is called")
-        viewModel.getAccounts { response in
+        viewModel.createEntry { response in
             logger.debug("get Accounts result received")
             switch response {
             case .success(let entry):
