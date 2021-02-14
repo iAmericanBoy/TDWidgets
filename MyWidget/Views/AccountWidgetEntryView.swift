@@ -13,7 +13,7 @@ struct AccountWidgetEntryView: View {
 
     var body: some View {
         if entry.isError {
-            Text("Error")
+            Text("Error!")
         } else {
             AccountWidgetView(entry: entry)
         }

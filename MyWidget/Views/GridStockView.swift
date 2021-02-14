@@ -17,7 +17,7 @@ struct GridStockView: View {
                 .font(.footnote)
             HStack(spacing: 2) {
                 Image(systemName: gridValue.arrowName)
-                Text(gridValue.percentageString)
+                Text(gridValue.string)
             }
             .font(.footnote)
             .foregroundColor(gridValue.color.opacity(0.9))
@@ -29,6 +29,5 @@ struct GridStockView_Previews: PreviewProvider {
     static var previews: some View {
         GridStockView(gridValue: AccountEntry.TestingVariation.complete.row1[0])
             .previewContext(WidgetPreviewContext(family: .systemSmall))
-
     }
 }

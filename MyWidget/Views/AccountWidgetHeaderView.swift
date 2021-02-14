@@ -16,7 +16,7 @@ struct AccountWidgetHeaderView: View {
             HStack(spacing: 2) {
                 Image(systemName: entry.dayProfitLossImage)
                     .frame(width: 25, height: 10, alignment: .center)
-                Text(entry.dayProfitLossPercentage)
+                Text(entry.dayProfitLossText)
             }
             .font(.title)
             .foregroundColor(entry.dayProfitLossColor.opacity(0.9))
