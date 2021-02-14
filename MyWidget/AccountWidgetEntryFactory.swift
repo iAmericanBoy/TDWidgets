@@ -50,13 +50,9 @@ class AccountWidgetEntryFactory {
                 }
             }
             .catch { (_) -> AnyPublisher<Timeline<AccountEntry>, Never> in
-                Just(Timeline(entries: [AccountEntry.SnapshotVariation.complete], policy: .atEnd))
+                Just(Timeline(entries: [AccountEntry.SnapshotVariation.error], policy: .atEnd))
                     .eraseToAnyPublisher()
             }
-            .sink(receiveCompletion: { finishedCompletion in
-                print(finishedCompletion)
-            }, receiveValue: { result in
-                completion(result)
-            })
+            .sink(receiveValue: completion)
     }
 }

@@ -13,11 +13,11 @@ struct Provider: TimelineProvider {
     let viewModel = AccountWidgetEntryFactory()
 
     func placeholder(in context: Context) -> AccountEntry {
-        AccountEntry.TestingVariation.complete
+        AccountEntry.SnapshotVariation.complete
     }
 
     func getSnapshot(in context: Context, completion: @escaping (AccountEntry) -> ()) {
-        let entry = AccountEntry.TestingVariation.complete
+        let entry = AccountEntry.SnapshotVariation.complete
         completion(entry)
     }
 
@@ -37,7 +37,7 @@ struct MyWidget: Widget {
 
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
-            AccountWidgetView(entry: entry)
+            AccountWidgetEntryView(entry: entry)
         }
         .configurationDisplayName("MyWidget")
         .description("This is a simple widget to see an overview of a TD Trading Account")
@@ -48,7 +48,7 @@ struct MyWidget: Widget {
 
 struct MyWidget_Previews: PreviewProvider {
     static var previews: some View {
-        AccountWidgetView(entry: AccountEntry.TestingVariation.complete)
+        AccountWidgetEntryView(entry: AccountEntry.TestingVariation.complete)
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }

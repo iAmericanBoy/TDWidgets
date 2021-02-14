@@ -11,15 +11,20 @@ import WidgetKit
 struct AccountEntry: TimelineEntry {
     let date: Date
     let dateText: String
+
     let dayProfitLossPercentage: String
     let dayProfitLossColor: Color
     let dayProfitLossImage: String
+
     let sessionTypeColor: Color
     let isSessionTypeClosed: Bool
+
     let row1: [GridValue]
     let row2: [GridValue]
 
-    internal init(date: Date, dateText: String, dayProfitLossValue: String, dayProfitLossColor: Color, dayProfitLossImage: String, sessionTypeColor: Color, isSessionTypeClosed: Bool, row1: [GridValue], row2: [GridValue]) {
+    let isError: Bool
+
+    internal init(date: Date, dateText: String, dayProfitLossValue: String, dayProfitLossColor: Color, dayProfitLossImage: String, sessionTypeColor: Color, isSessionTypeClosed: Bool, row1: [GridValue], row2: [GridValue], isError: Bool) {
         self.date = date
         self.dateText = dateText
         dayProfitLossPercentage = dayProfitLossValue
@@ -29,6 +34,7 @@ struct AccountEntry: TimelineEntry {
         self.isSessionTypeClosed = isSessionTypeClosed
         self.row1 = row1
         self.row2 = row2
+        self.isError = isError
     }
 
     init(_ account: Account, sessionType: MarketSessionType) {
@@ -59,6 +65,7 @@ struct AccountEntry: TimelineEntry {
         let secondWorst = array.removeLast()
         row1 = [best, secondbest]
         row2 = [secondWorst, worst]
+        isError = false
     }
 
     struct GridValue {
@@ -97,7 +104,8 @@ extension AccountEntry {
                          row1: [GridValue(symbol: "AAPL", percentage: 2.02),
                                 GridValue(symbol: "MSFT", percentage: 2.02)],
                          row2: [GridValue(symbol: "VOO", percentage: 2.02),
-                                GridValue(symbol: "BYND", percentage: 2.02)])
+                                GridValue(symbol: "BYND", percentage: 2.02)],
+                         isError: false)
         }
 
         static var complete: AccountEntry {
@@ -111,7 +119,8 @@ extension AccountEntry {
                          row1: [GridValue(symbol: "AAPL", percentage: 2.02),
                                 GridValue(symbol: "MSFT", percentage: 2.02)],
                          row2: [GridValue(symbol: "VOO", percentage: 2.02),
-                                GridValue(symbol: "BYND", percentage: 2.02)])
+                                GridValue(symbol: "BYND", percentage: 2.02)],
+                         isError: false)
         }
 
         static var closedComplete: AccountEntry {
@@ -125,7 +134,8 @@ extension AccountEntry {
                          row1: [GridValue(symbol: "AAPL", percentage: 2.02),
                                 GridValue(symbol: "MSFT", percentage: 2.02)],
                          row2: [GridValue(symbol: "VOO", percentage: 2.02),
-                                GridValue(symbol: "BYND", percentage: 2.02)])
+                                GridValue(symbol: "BYND", percentage: 2.02)],
+                         isError: false)
         }
 
         static var openComplete: AccountEntry {
@@ -139,13 +149,18 @@ extension AccountEntry {
                          row1: [GridValue(symbol: "AAPL", percentage: 2.02),
                                 GridValue(symbol: "MSFT", percentage: 2.02)],
                          row2: [GridValue(symbol: "VOO", percentage: 2.02),
-                                GridValue(symbol: "BYND", percentage: 2.02)])
+                                GridValue(symbol: "BYND", percentage: 2.02)],
+                         isError: false)
         }
     }
 
     struct SnapshotVariation {
         static var complete: AccountEntry {
-            AccountEntry(date: Date(), dateText: "closed", dayProfitLossValue: "3.14%", dayProfitLossColor: .green, dayProfitLossImage: "arrow.up", sessionTypeColor: .black, isSessionTypeClosed: false, row1: [], row2: [])
+            AccountEntry(date: Date(), dateText: "closed", dayProfitLossValue: "3.14%", dayProfitLossColor: .green, dayProfitLossImage: "arrow.up", sessionTypeColor: .black, isSessionTypeClosed: false, row1: [], row2: [], isError: false)
+        }
+
+        static var error: AccountEntry {
+            AccountEntry(date: Date(), dateText: "", dayProfitLossValue: "", dayProfitLossColor: .green, dayProfitLossImage: "", sessionTypeColor: .black, isSessionTypeClosed: false, row1: [], row2: [], isError: true)
         }
     }
 }
