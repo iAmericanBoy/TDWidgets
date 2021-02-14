@@ -19,3 +19,10 @@ struct AccountWidgetEntryView: View {
         }
     }
 }
+
+struct AccountWidgetEntryView_Previews: PreviewProvider {
+    static var previews: some View {
+        AccountWidgetEntryView(entry: AccountEntry.TestingVariation.openComplete)
+            .previewContext(WidgetPreviewContext(family: .systemSmall))
+    }
+}

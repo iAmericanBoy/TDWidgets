@@ -210,6 +210,7 @@
 				B6C21019259B8A1D009CCEEA /* AccountWidgetEntryView.swift */,
 				B683650025D9A2A000AF3E6B /* AccountWidgetHeaderView.swift */,
 				B68364F125D9A04E00AF3E6B /* AccountWidgetView.swift */,
+				B6C2105D259BC909009CCEEA /* GridStockView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -274,7 +275,6 @@
 				B683650525D9A2B600AF3E6B /* Views */,
 				B6C21036259B90EE009CCEEA /* AccountWidgetEntryFactory.swift */,
 				B6C2102E259B9099009CCEEA /* AccountEntry.swift */,
-				B6C2105D259BC909009CCEEA /* GridStockView.swift */,
 				B6C21018259B89FE009CCEEA /* Resources */,
 			);
 			path = MyWidget;

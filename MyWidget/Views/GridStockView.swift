@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 struct GridStockView: View {
     @State var gridValue: AccountEntry.GridValue
@@ -27,5 +28,7 @@ struct GridStockView: View {
 struct GridStockView_Previews: PreviewProvider {
     static var previews: some View {
         GridStockView(gridValue: AccountEntry.TestingVariation.complete.row1[0])
+            .previewContext(WidgetPreviewContext(family: .systemSmall))
+
     }
 }
