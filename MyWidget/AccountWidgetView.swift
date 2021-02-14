@@ -20,17 +20,24 @@ struct AccountWidgetView: View {
             }
             .font(.title)
             .foregroundColor(entry.dayProfitLossColor.opacity(0.9))
-            Text("\(entry.date, style: .relative) ago")
-                .font(.footnote)
-                .bold()
-                .foregroundColor(Color.gray.opacity(0.5))
-            if entry.showSessionTypeDivider {
+            if entry.isSessionTypeClosed {
+                Text("\(entry.dateText)")
+                    .font(.footnote)
+                    .bold()
+                    .foregroundColor(Color.gray.opacity(0.5))
+            } else {
+                Text("\(entry.date, style: .relative) \(entry.dateText)")
+                    .font(.footnote)
+                    .bold()
+                    .foregroundColor(Color.gray.opacity(0.5))
+            }
+            if entry.isSessionTypeClosed {
                 Divider()
-                    .frame(height: 3)
-                    .background(entry.sessionTypeColor)
                     .padding(.vertical, 4)
             } else {
                 Divider()
+                    .frame(height: 3)
+                    .background(entry.sessionTypeColor)
                     .padding(.vertical, 4)
             }
 

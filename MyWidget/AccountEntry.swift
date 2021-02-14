@@ -10,27 +10,30 @@ import WidgetKit
 
 struct AccountEntry: TimelineEntry {
     let date: Date
+    let dateText: String
     let dayProfitLossPercentage: String
     let dayProfitLossColor: Color
     let dayProfitLossImage: String
     let sessionTypeColor: Color
-    let showSessionTypeDivider: Bool
+    let isSessionTypeClosed: Bool
     let row1: [GridValue]
     let row2: [GridValue]
 
-    internal init(date: Date, dayProfitLossValue: String, dayProfitLossColor: Color, dayProfitLossImage: String, sessionTypeColor: Color, showSessionTypeDivider: Bool, row1: [GridValue], row2: [GridValue]) {
+    internal init(date: Date, dateText: String, dayProfitLossValue: String, dayProfitLossColor: Color, dayProfitLossImage: String, sessionTypeColor: Color, isSessionTypeClosed: Bool, row1: [GridValue], row2: [GridValue]) {
         self.date = date
+        self.dateText = dateText
         dayProfitLossPercentage = dayProfitLossValue
         self.dayProfitLossColor = dayProfitLossColor
         self.dayProfitLossImage = dayProfitLossImage
         self.sessionTypeColor = sessionTypeColor
-        self.showSessionTypeDivider = showSessionTypeDivider
+        self.isSessionTypeClosed = isSessionTypeClosed
         self.row1 = row1
         self.row2 = row2
     }
 
     init(_ account: Account, sessionType: MarketSessionType) {
         date = Date()
+        dateText = sessionType == .closed ? "closed" : "ago"
         dayProfitLossPercentage = "\(account.dayProfitLossPercentage.twoDigitsFormatter)%"
         dayProfitLossImage = account.dayProfitLossPercentage > 0 ? "arrow.up" : "arrow.down"
         dayProfitLossColor = account.dayProfitLossPercentage > 0 ? .green : .red
@@ -44,7 +47,7 @@ struct AccountEntry: TimelineEntry {
         case .closed:
             sessionTypeColor = .black
         }
-        showSessionTypeDivider = sessionType != .closed
+        isSessionTypeClosed = sessionType == .closed
 
         var array = account.positions.map { GridValue(symbol: $0.symbol, percentage: $0.dayProfitLossPercentage) }
 
@@ -83,11 +86,12 @@ extension AccountEntry {
     struct TestingVariation {
         static func updated(_ currentDate: Date) -> AccountEntry {
             AccountEntry(date: currentDate,
+                         dateText: "ago",
                          dayProfitLossValue: "3.14%",
                          dayProfitLossColor: .green,
                          dayProfitLossImage: "arrow.up",
                          sessionTypeColor: Colors.morningOrange,
-                         showSessionTypeDivider: true,
+                         isSessionTypeClosed: false,
                          row1: [GridValue(symbol: "AAPL", percentage: 2.02),
                                 GridValue(symbol: "MSFT", percentage: 2.02)],
                          row2: [GridValue(symbol: "VOO", percentage: 2.02),
@@ -96,11 +100,12 @@ extension AccountEntry {
 
         static var complete: AccountEntry {
             AccountEntry(date: Date(),
+                         dateText: "ago",
                          dayProfitLossValue: "3.14%",
                          dayProfitLossColor: .green,
                          dayProfitLossImage: "arrow.up",
                          sessionTypeColor: Colors.nightPurple,
-                         showSessionTypeDivider: true,
+                         isSessionTypeClosed: false,
                          row1: [GridValue(symbol: "AAPL", percentage: 2.02),
                                 GridValue(symbol: "MSFT", percentage: 2.02)],
                          row2: [GridValue(symbol: "VOO", percentage: 2.02),
@@ -109,11 +114,12 @@ extension AccountEntry {
 
         static var closedComplete: AccountEntry {
             AccountEntry(date: Date(),
+                         dateText: "closed",
                          dayProfitLossValue: "3.14%",
                          dayProfitLossColor: .green,
                          dayProfitLossImage: "arrow.up",
                          sessionTypeColor: .black,
-                         showSessionTypeDivider: false,
+                         isSessionTypeClosed: true,
                          row1: [GridValue(symbol: "AAPL", percentage: 2.02),
                                 GridValue(symbol: "MSFT", percentage: 2.02)],
                          row2: [GridValue(symbol: "VOO", percentage: 2.02),
@@ -122,11 +128,12 @@ extension AccountEntry {
 
         static var openComplete: AccountEntry {
             AccountEntry(date: Date(),
+                         dateText: "ago",
                          dayProfitLossValue: "3.14%",
                          dayProfitLossColor: .green,
                          dayProfitLossImage: "arrow.up",
                          sessionTypeColor: Colors.oliveGreen,
-                         showSessionTypeDivider: true,
+                         isSessionTypeClosed: false,
                          row1: [GridValue(symbol: "AAPL", percentage: 2.02),
                                 GridValue(symbol: "MSFT", percentage: 2.02)],
                          row2: [GridValue(symbol: "VOO", percentage: 2.02),
@@ -136,7 +143,7 @@ extension AccountEntry {
 
     struct SnapshotVariation {
         static var complete: AccountEntry {
-            AccountEntry(date: Date(), dayProfitLossValue: "3.14%", dayProfitLossColor: .green, dayProfitLossImage: "arrow.up", sessionTypeColor: .black, showSessionTypeDivider: false, row1: [], row2: [])
+            AccountEntry(date: Date(), dateText: "closed", dayProfitLossValue: "3.14%", dayProfitLossColor: .green, dayProfitLossImage: "arrow.up", sessionTypeColor: .black, isSessionTypeClosed: false, row1: [], row2: [])
         }
     }
 }
