@@ -17,20 +17,21 @@ struct AccountWidgetHeaderView: View {
                 Image(systemName: entry.dayProfitLossImage)
                     .frame(width: 25, height: 10, alignment: .center)
                 Text(entry.dayProfitLossText)
+                    .foregroundColor(entry.dayProfitLossColor)
             }
             .font(.title)
             .foregroundColor(entry.dayProfitLossColor.opacity(0.9))
             if entry.isSessionTypeClosed {
                 Text("\(entry.dateText)")
+                    .foregroundColor(Color.gray)
                     .font(.footnote)
                     .bold()
-                    .foregroundColor(Color.gray.opacity(0.5))
                 Divider()
             } else {
                 Text("\(entry.date, style: .relative) \(entry.dateText)")
+                    .foregroundColor(Color.gray)
                     .font(.footnote)
                     .bold()
-                    .foregroundColor(Color.gray.opacity(0.5))
                 Divider()
                     .frame(height: 3)
                     .background(entry.sessionTypeColor)

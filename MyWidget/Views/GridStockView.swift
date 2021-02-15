@@ -9,7 +9,7 @@ import SwiftUI
 import WidgetKit
 
 struct GridStockView: View {
-    @State var gridValue: AccountEntry.GridValue
+    var gridValue: AccountEntry.GridValue
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -18,6 +18,7 @@ struct GridStockView: View {
             HStack(spacing: 2) {
                 Image(systemName: gridValue.arrowName)
                 Text(gridValue.string)
+                    .foregroundColor(gridValue.color)
             }
             .font(.footnote)
             .foregroundColor(gridValue.color.opacity(0.9))

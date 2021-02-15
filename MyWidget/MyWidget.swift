@@ -48,7 +48,7 @@ struct MyWidget: Widget {
 
 struct MyWidget_Previews: PreviewProvider {
     static var previews: some View {
-        AccountWidgetEntryView(entry: AccountEntry.TestingVariation.complete)
+        AccountWidgetView(entry: AccountEntry.TestingVariation.complete)
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }
