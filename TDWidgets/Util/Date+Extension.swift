@@ -10,9 +10,12 @@ import Foundation
 extension Date {
     static var tomorrow:  Date { return Date().dayAfter }
     var dayAfter: Date {
-        return Calendar.current.date(byAdding: .day, value: 1, to: sixAM)!
+        return Calendar.current.date(byAdding: .day, value: 1, to: fourAM)!
     }
-    var sixAM: Date {
-        return Calendar.current.date(bySettingHour: 6, minute: 0, second: 0, of: self)!
+    var fourAM: Date {
+        return Calendar.current.date(bySettingHour: 4, minute: 0, second: 0, of: self)!
+    }
+    var eightPM: Date {
+        return Calendar.current.date(bySettingHour: 20, minute: 0, second: 0, of: self)!
     }
 }
