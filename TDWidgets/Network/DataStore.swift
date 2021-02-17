@@ -42,11 +42,13 @@ class DataStoreImpl: DataStore {
             return Fail(error: RepositoryError.urlComponents)
                 .eraseToAnyPublisher()
         }
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
 
-        return performAuthenticatedRequest(URLRequest(url: url))
+        return performAuthenticatedRequest(URLRequest(url: url),decoder: decoder)
     }
 
-    private func performAuthenticatedRequest<T: Decodable>(_ request: URLRequest) -> AnyPublisher<T, Error> {
+    private func performAuthenticatedRequest<T: Decodable>(_ request: URLRequest, decoder: JSONDecoder = JSONDecoder()) -> AnyPublisher<T, Error> {
         return authenticator.validAccessToken()
             .flatMap { accessToken in
                 // we can now use this token to authenticate the request
@@ -64,7 +66,7 @@ class DataStoreImpl: DataStore {
                     }
                     .eraseToAnyPublisher()
             }
-            .decode(type: T.self, decoder: JSONDecoder())
+            .decode(type: T.self, decoder: decoder)
             .eraseToAnyPublisher()
     }
 }

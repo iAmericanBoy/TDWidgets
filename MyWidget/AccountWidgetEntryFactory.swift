@@ -37,9 +37,8 @@ class AccountWidgetEntryFactory {
                 }
             }
             .zip(repository.getCurrentMarketHourType().setFailureType(to: Error.self))
-            .receive(on: RunLoop.main)
             .map { (firstAccountResponse, sessionType) -> Timeline<AccountEntry> in
-                let usualMarketHours = DateInterval(start: Date().fourAM, end: Date().eightPM)
+                let usualMarketHours = DateInterval(start: Date().sevenAM, end: Date().eightPM)
                 if let account = try? firstAccountResponse.get() {
                     // if its closed between 4 am and 8pm check tomorrow
                     if sessionType == .closed, usualMarketHours.contains(Date()) {

@@ -41,5 +41,5 @@ struct SessionHoursDataModel: Codable {
 // MARK: MarketHoursDataModel
 
 struct MarketHoursDataModel: Codable {
-    let start, end: String
+    let start, end: Date
 }

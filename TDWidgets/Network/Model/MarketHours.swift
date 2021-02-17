@@ -12,7 +12,7 @@ enum MarketTypeError: Error {
 }
 
 enum MarketType: String, Equatable, Codable {
-    case equity
+    case equity = "EQUITY"
     case option
     case future
     case bond
@@ -43,14 +43,13 @@ struct MarketHours: Codable {
     init(_ dataModel: MarketDataModel) throws {
         self.marketType = MarketType(rawValue: dataModel.equity.eq.marketType) ?? .unknown
 
-        guard let preStart = dataModel.equity.eq.sessionHours.preMarket[0].start.date,
-            let preEnd = dataModel.equity.eq.sessionHours.preMarket[0].end.date,
-            let regularStart = dataModel.equity.eq.sessionHours.regularMarket[0].start.date,
-            let regularEnd = dataModel.equity.eq.sessionHours.regularMarket[0].end.date,
-            let postStart = dataModel.equity.eq.sessionHours.postMarket[0].start.date,
-            let postEnd = dataModel.equity.eq.sessionHours.postMarket[0].end.date else {
-            throw MarketTypeError.parsingError
-        }
+        let preStart = dataModel.equity.eq.sessionHours.preMarket[0].start
+        let preEnd = dataModel.equity.eq.sessionHours.preMarket[0].end
+        let regularStart = dataModel.equity.eq.sessionHours.regularMarket[0].start
+        let regularEnd = dataModel.equity.eq.sessionHours.regularMarket[0].end
+        let postStart = dataModel.equity.eq.sessionHours.postMarket[0].start
+        let postEnd = dataModel.equity.eq.sessionHours.postMarket[0].end
+
         self.preMarket = DateInterval(start: preStart, end: preEnd)
         self.regularMarket = DateInterval(start: regularStart, end: regularEnd)
         self.postMarket = DateInterval(start: postStart, end: postEnd)
@@ -72,7 +71,6 @@ extension MarketHours {
 private extension String {
     var date: Date? {
         let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale.current
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssz"
         return dateFormatter.date(from: self)
     }
