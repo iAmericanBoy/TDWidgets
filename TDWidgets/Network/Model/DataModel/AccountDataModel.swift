@@ -107,7 +107,7 @@ struct InstrumentDataModel: Codable {
 
 struct ProjectedBalancesDataModel: Codable {
     let availableFunds, availableFundsNonMarginableTrade, buyingPower: Double
-    let dayTradingBuyingPower, dayTradingBuyingPowerCall, maintenanceCall, regTCall: Int
+    let dayTradingBuyingPower, dayTradingBuyingPowerCall, maintenanceCall, regTCall: Decimal
     let isInCall: Bool
     let stockBuyingPower: Double
 }
